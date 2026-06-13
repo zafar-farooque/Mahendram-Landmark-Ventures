@@ -206,7 +206,12 @@ export default function Projects() {
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             {/* Search */}
             <div className="relative w-full sm:max-w-sm flex-shrink-0">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm" style={{ color: '#9CA3AF' }}>🔍</span>
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="6.5" cy="6.5" r="5" stroke="#9CA3AF" strokeWidth="1.5"/>
+                  <line x1="10.354" y1="10.646" x2="13.5" y2="13.793" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </span>
               <input id="projects-search" type="text" placeholder="Search by name or location…" value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm bg-white focus:outline-none focus:ring-2"
