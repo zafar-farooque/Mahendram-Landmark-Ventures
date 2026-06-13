@@ -19,7 +19,7 @@ const SERVICE_LINKS = [
   { label: 'Facility Management',        to: '/services' },
 ];
 
-const WHATSAPP_NUMBER = '919999999999'; // replace with real number
+const WHATSAPP_NUMBER = '918210146579';
 const WHATSAPP_MSG    = encodeURIComponent('Hello, I would like to request a proposal from Mahendram Landmark Ventures.');
 
 /* ── Footer ──────────────────────────────────────── */
