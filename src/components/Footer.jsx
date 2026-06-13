@@ -30,16 +30,19 @@ export default function Footer() {
     <>
       <footer
         id="main-footer"
-        className="text-white"
-        style={{ backgroundColor: '#050A14', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        className="text-white relative overflow-hidden"
+        style={{ backgroundColor: '#050A14', borderTop: '1px solid rgba(212,137,26,0.1)' }}
       >
+        {/* Ambient Glow */}
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.06) 0%, transparent 70%)', top: '0%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        
         {/* Grid */}
-        <div className="container-xl py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="container-xl py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative z-10">
 
           {/* Col 1: Brand */}
           <div className="flex flex-col gap-5">
             <Link to="/" id="footer-logo" className="flex flex-col leading-tight select-none w-fit">
-              <span className="font-extrabold text-sm tracking-tight text-white" style={{ letterSpacing: '-0.01em' }}>
+              <span className="font-extrabold text-sm tracking-tight gradient-text" style={{ letterSpacing: '-0.01em' }}>
                 MAHENDRAM LANDMARK
               </span>
               <span className="text-[10px] font-semibold tracking-[0.18em] uppercase" style={{ color: '#D4891A' }}>
@@ -185,10 +188,10 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }} />
+        <div className="relative z-10" style={{ borderTop: '1px solid rgba(212,137,26,0.1)' }} />
 
         {/* Bottom Bar */}
-        <div className="container-xl py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="container-xl py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left relative z-10">
           <p className="text-xs" style={{ color: '#4A5568' }}>
             © {year} Mahendram Landmark Ventures Pvt Ltd. All Rights Reserved.
           </p>

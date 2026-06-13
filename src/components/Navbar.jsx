@@ -84,7 +84,7 @@ export default function Navbar() {
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
               background: 'rgba(5, 10, 20, 0.85)',
-              borderBottom: '1px solid rgba(255,255,255,0.07)',
+              borderBottom: '1px solid rgba(212,137,26,0.1)',
               boxShadow: '0 4px 32px rgba(0,0,0,0.4)',
             }
           : {
@@ -102,7 +102,7 @@ export default function Navbar() {
           className="flex flex-col leading-tight select-none"
         >
           <span
-            className="font-extrabold text-base tracking-tight text-white"
+            className="font-extrabold text-base tracking-tight gradient-text"
             style={{ letterSpacing: '-0.01em' }}
           >
             MAHENDRAM LANDMARK
