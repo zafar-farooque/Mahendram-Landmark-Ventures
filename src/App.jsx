@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -36,29 +37,60 @@ function PageLoader() {
   );
 }
 
+function PageTransition({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.4 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/"                 element={<PageTransition><Home /></PageTransition>}            />
+        <Route path="/about"            element={<PageTransition><About /></PageTransition>}           />
+        <Route path="/services"         element={<PageTransition><Services /></PageTransition>}        />
+        <Route path="/industries"       element={<PageTransition><Industries /></PageTransition>}      />
+        <Route path="/projects"         element={<PageTransition><Projects /></PageTransition>}        />
+        <Route path="/knowledge-center" element={<PageTransition><KnowledgeCenter /></PageTransition>} />
+        <Route path="/contact"          element={<PageTransition><Contact /></PageTransition>}         />
+        <Route path="*"                 element={<PageTransition><NotFound /></PageTransition>}        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  return (
+    <div className={`flex flex-col min-h-screen ${isHome ? 'h-screen overflow-hidden' : ''}`}>
+      <Navbar />
+      <main className="flex-grow">
+        <Suspense fallback={<PageLoader />}>
+          <AnimatedRoutes />
+        </Suspense>
+      </main>
+      {!isHome && <Footer />}
+    </div>
+  );
+}
+
 /* ── App ──────────────────────────────────────────────────────────── */
 export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/"                 element={<Home />}            />
-                <Route path="/about"            element={<About />}           />
-                <Route path="/services"         element={<Services />}        />
-                <Route path="/industries"       element={<Industries />}      />
-                <Route path="/projects"         element={<Projects />}        />
-                <Route path="/knowledge-center" element={<KnowledgeCenter />} />
-                <Route path="/contact"          element={<Contact />}         />
-                <Route path="*"                 element={<NotFound />}        />
-              </Routes>
-            </Suspense>
-          </main>
-          <Footer />
-        </div>
+        <AppContent />
       </BrowserRouter>
     </HelmetProvider>
   );

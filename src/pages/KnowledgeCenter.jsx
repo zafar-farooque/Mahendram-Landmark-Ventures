@@ -48,7 +48,8 @@ function PageHero() {
   return (
     <section id="kc-hero" className="relative py-20 md:py-24 overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0F1C2E 0%,#1A2B4A 70%,#1e3a5f 100%)' }}>
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
         <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#64748B' }}>
@@ -61,7 +62,7 @@ function PageHero() {
           <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
           4–8 Articles Published Monthly
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-extrabold gradient-text leading-tight tracking-tight">
           Knowledge Center
         </h1>
         <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8A9BB5' }}>
@@ -80,8 +81,7 @@ function ArticleCard({ post }) {
 
   return (
     <article id={`post-${post._id}`}
-      className="group flex flex-col rounded-2xl border hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-      style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
+      className="glass-card group flex flex-col overflow-hidden">
       {/* Image / placeholder */}
       <div className="relative h-44 flex items-center justify-center overflow-hidden"
         style={{ background: `${catColor}18` }}>
@@ -103,7 +103,7 @@ function ArticleCard({ post }) {
           <span>{formatDate(post.publishedAt)}</span>
           {post.readTime && <span>📖 {post.readTime} min read</span>}
         </div>
-        <h2 className="font-extrabold text-sm leading-snug text-white">
+        <h2 className="font-extrabold text-sm leading-snug gradient-text">
           {post.title}
         </h2>
         {post.excerpt && (
@@ -177,8 +177,9 @@ export default function KnowledgeCenter() {
         <meta property="og:url" content="https://www.mahendramlandmark.com/knowledge-center" />
       </Helmet>
       <PageHero />
-      <section id="kc-content" className="section-padding" style={{ background: '#050A14' }}>
-        <div className="container-xl">
+      <section id="kc-content" className="section-padding relative overflow-hidden" style={{ background: '#050A14' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="container-xl relative z-10">
 
           {/* Search + filters */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">

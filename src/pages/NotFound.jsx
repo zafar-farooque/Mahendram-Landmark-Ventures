@@ -29,7 +29,7 @@ export default function NotFound() {
           <div className="text-[8rem] font-black leading-none" style={{ background: 'linear-gradient(135deg,#D4891A,#f5c842)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             404
           </div>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-white">Page Not Found</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold gradient-text">Page Not Found</h1>
           <p className="text-sm max-w-md leading-relaxed" style={{ color: '#8A9BB5' }}>
             The page you're looking for doesn't exist or has been moved. Let's get you back on track.
           </p>

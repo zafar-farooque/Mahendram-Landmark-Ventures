@@ -41,7 +41,8 @@ function PageHero() {
   return (
     <section id="projects-hero" className="relative py-20 md:py-24 overflow-hidden"
       style={{ background: '#050A14' }}>
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle,rgba(212,137,26,0.15),transparent 70%)' }} />
@@ -57,7 +58,7 @@ function PageHero() {
           <span className="w-1.5 h-1.5 rounded-full bg-current" />
           500+ Projects Delivered Pan India
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-extrabold gradient-text leading-tight tracking-tight">
           Our Projects
         </h1>
         <p className="text-base max-w-xl leading-relaxed" style={{ color: '#94A3B8' }}>
@@ -87,8 +88,7 @@ function ProjectCard({ project }) {
 
   return (
     <article id={`project-${project._id}`}
-      className="group flex flex-col rounded-2xl border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-      style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
+      className="glass-card group flex flex-col overflow-hidden">
 
       {/* Cover */}
       <div className="relative h-48 overflow-hidden flex items-center justify-center"
@@ -117,7 +117,7 @@ function ProjectCard({ project }) {
 
       {/* Body */}
       <div className="flex flex-col gap-3 p-5 flex-grow">
-        <h2 className="font-extrabold text-sm leading-snug text-white">{project.title}</h2>
+        <h2 className="font-extrabold text-sm leading-snug gradient-text">{project.title}</h2>
 
         <div className="flex flex-wrap gap-3 text-xs" style={{ color: '#8A9BB5' }}>
           <span className="flex items-center gap-1">📍 {project.location}</span>
@@ -200,8 +200,9 @@ export default function Projects() {
         <meta property="og:url" content="https://www.mahendramlandmark.com/projects" />
       </Helmet>
       <PageHero />
-      <section id="projects-content" className="section-padding" style={{ background: '#050A14' }}>
-        <div className="container-xl">
+      <section id="projects-content" className="section-padding relative overflow-hidden" style={{ background: '#050A14' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="container-xl relative z-10">
 
           {/* Search + filters */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -286,7 +287,7 @@ export default function Projects() {
           {!loading && filtered.length > 0 && (
             <div className="mt-14 rounded-2xl p-10 text-center"
               style={{ background: 'linear-gradient(135deg,#0D1B2E,#050A14)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <h2 className="text-2xl font-extrabold text-white mb-2">Have a Project in Mind?</h2>
+              <h2 className="text-2xl font-extrabold gradient-text mb-2">Have a Project in Mind?</h2>
               <p className="text-sm mb-6" style={{ color: '#8A9BB5' }}>
                 Share your requirements and our team will get back to you within 24 hours.
               </p>

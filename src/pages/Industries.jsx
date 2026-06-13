@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import FadeIn from '../components/FadeIn';
 
 const BORDER = 'rgba(255,255,255,0.08)';
 
@@ -34,6 +35,7 @@ export default function Industries() {
 
       {/* Hero */}
       <section id="industries-hero" className="relative py-20 md:py-28 overflow-hidden" style={{ background: '#050A14' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
         <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background:'radial-gradient(circle,rgba(212,137,26,0.15),transparent 70%)', filter:'blur(60px)' }} />
         <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
@@ -42,32 +44,35 @@ export default function Industries() {
             <span>/</span>
             <span style={{ color:'#D4891A' }}>Industries</span>
           </div>
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border" style={{ color:'#D4891A', borderColor:'rgba(212,137,26,0.4)', background:'rgba(212,137,26,0.08)' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-current" />15+ Industries Served
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight max-w-3xl">Industries We Serve</h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color:'#8A9BB5' }}>
-            Mahendram Landmark Ventures delivers specialized engineering, construction and facility management solutions across diverse industry verticals.
-          </p>
+          <div className="text-center mb-12">
+            <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color:'#D4891A' }}>Industries We Serve</p></FadeIn>
+            <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold gradient-text">Industries We Serve</h2></FadeIn>
+            <FadeIn delay={0.2}><p className="text-base max-w-2xl mx-auto leading-relaxed mt-3" style={{ color:'#8A9BB5' }}>
+              Mahendram Landmark Ventures delivers specialized engineering, construction and facility management solutions across diverse industry verticals.
+            </p></FadeIn>
+          </div>
         </div>
       </section>
 
       {/* Grid */}
-      <section id="industries-grid" className="section-padding" style={{ background:'#050A14' }}>
-        <div className="container-xl">
+      <section id="industries-grid" className="section-padding relative overflow-hidden" style={{ background:'#050A14' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="container-xl relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INDUSTRIES_DATA.map((ind) => (
-              <div key={ind.id} id={`industry-${ind.id}`}
-                className="group flex gap-5 p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1"
-                style={{ background:'#0D1B2E', borderColor:BORDER }}>
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style={{ background:'rgba(212,137,26,0.1)' }}>
-                  {ind.icon}
+            {INDUSTRIES_DATA.map((ind, i) => (
+              <FadeIn key={ind.id} delay={i * 0.05}>
+                <div id={`industry-${ind.id}`}
+                  className="group flex gap-5 p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1"
+                  style={{ background:'#0D1B2E', borderColor:BORDER }}>
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style={{ background:'rgba(212,137,26,0.1)' }}>
+                    {ind.icon}
+                  </div>
+                  <div>
+                    <h2 className="font-extrabold text-base gradient-text mb-1">{ind.name}</h2>
+                    <p className="text-xs leading-relaxed" style={{ color:'#8A9BB5' }}>{ind.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="font-extrabold text-base text-white mb-1">{ind.name}</h2>
-                  <p className="text-xs leading-relaxed" style={{ color:'#8A9BB5' }}>{ind.desc}</p>
-                </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -75,10 +80,11 @@ export default function Industries() {
 
       {/* CTA */}
       <section id="industries-cta" className="py-20 relative overflow-hidden" style={{ background:'linear-gradient(135deg,#0D1B2E 0%,#050A14 100%)' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
         <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at center,rgba(212,137,26,0.1) 0%,transparent 70%)' }} />
         <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white">Don't See Your Industry?</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold gradient-text">Don't See Your Industry?</h2>
             <p className="mt-2 text-sm max-w-lg leading-relaxed" style={{ color:'#8A9BB5' }}>
               Our multidisciplinary team has the expertise to deliver engineering and infrastructure solutions for any sector. Let's discuss your requirements.
             </p>

@@ -144,7 +144,8 @@ function ContactForm({ tabId }) {
 function PageHero() {
   return (
     <section id="contact-hero" className="relative py-20 md:py-24 overflow-hidden" style={{ background: '#050A14' }}>
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
       <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background:'radial-gradient(circle,rgba(212,137,26,0.15),transparent 70%)', filter:'blur(60px)' }} />
       <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
         <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#8A9BB5' }}>
@@ -152,7 +153,7 @@ function PageHero() {
           <span>/</span>
           <span style={{ color: '#D4891A' }}>Contact</span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">Get in Touch</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold gradient-text leading-tight tracking-tight">Get in Touch</h1>
         <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8A9BB5' }}>
           Business enquiries, tender submissions, vendor registrations and career applications — all in one place.
         </p>
@@ -182,8 +183,9 @@ export default function Contact() {
       <PageHero />
 
       {/* Forms + offices */}
-      <section id="contact-forms" className="section-padding" style={{ background: '#050A14' }}>
-        <div className="container-xl">
+      <section id="contact-forms" className="section-padding relative overflow-hidden" style={{ background: '#050A14' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-[1fr_360px] gap-10">
             {/* Left: tab forms */}
             <div>
@@ -205,7 +207,7 @@ export default function Contact() {
               {/* Form panel */}
               <div id={`panel-${activeTab}`} role="tabpanel" aria-labelledby={`tab-${activeTab}`}
                 className="p-8 rounded-2xl border" style={{ background: '#0D1B2E', borderColor: BORDER }}>
-                <h2 className="text-xl font-extrabold text-white mb-1">{FORMS[activeTab].title}</h2>
+                <h2 className="text-xl font-extrabold gradient-text mb-1">{FORMS[activeTab].title}</h2>
                 <p className="text-xs mb-6" style={{ color: '#8A9BB5' }}>
                   Fields marked <span style={{ color: '#D4891A' }}>*</span> are required.
                 </p>
@@ -215,7 +217,7 @@ export default function Contact() {
 
             {/* Right: offices */}
             <div className="flex flex-col gap-5">
-              <h2 className="text-lg font-extrabold text-white">Our Offices</h2>
+              <h2 className="text-lg font-extrabold gradient-text">Our Offices</h2>
               {OFFICES.map((office) => (
                 <div key={office.id} id={`office-${office.id}`}
                   className="p-6 rounded-2xl border flex flex-col gap-4" style={{ background: '#0D1B2E', borderColor: BORDER }}>

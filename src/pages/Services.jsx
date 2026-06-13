@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import FadeIn from '../components/FadeIn';
 
 const BORDER = 'rgba(255,255,255,0.08)';
 
@@ -17,7 +18,8 @@ const SERVICES = [
 function PageHero() {
   return (
     <section id="services-hero" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#050A14' }}>
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
       <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full pointer-events-none" style={{ background:'radial-gradient(circle,rgba(212,137,26,0.15),transparent 70%)', filter:'blur(60px)' }} />
       <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
         <div className="flex items-center gap-2 text-xs font-medium" style={{ color:'#8A9BB5' }}>
@@ -29,7 +31,7 @@ function PageHero() {
           <span className="w-1.5 h-1.5 rounded-full bg-current" />
           14 Specialized Service Lines
         </span>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight max-w-3xl">Our Services</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text leading-tight tracking-tight max-w-3xl">Our Services</h1>
         <p className="text-base md:text-lg max-w-2xl leading-relaxed" style={{ color:'#8A9BB5' }}>
           From concept to completion and beyond — Mahendram Landmark Ventures delivers engineering, construction, interiors and facility management under one roof.
         </p>
@@ -46,15 +48,15 @@ function PageHero() {
 function ServiceCard({ service }) {
   return (
     <article id={`service-card-${service.id}`}
-      className="group relative flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-      style={{ background:'#0D1B2E', borderColor:BORDER }}>
+      className="glass-card group relative flex flex-col overflow-hidden"
+      style={{ borderRadius: '12px' }}>
       <div className="absolute top-0 left-0 right-0 h-0.5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-t-2xl" style={{ backgroundColor:'#D4891A' }} />
       <div className="flex flex-col gap-4 p-7 flex-grow">
         <div className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style={{ background:'rgba(212,137,26,0.1)' }}>
           {service.icon}
         </div>
         <div>
-          <h2 className="text-base font-extrabold text-white leading-snug">{service.title}</h2>
+          <h2 className="text-base font-extrabold gradient-text leading-snug">{service.title}</h2>
           <p className="text-xs font-semibold uppercase tracking-wide mt-0.5" style={{ color:'#D4891A' }}>{service.tagline}</p>
         </div>
         <p className="text-sm leading-relaxed flex-grow" style={{ color:'#8A9BB5' }}>{service.desc}</p>
@@ -79,17 +81,22 @@ function ServiceCard({ service }) {
 
 function ServicesGrid() {
   return (
-    <section id="services-grid" className="section-padding" style={{ background:'#050A14' }}>
-      <div className="container-xl">
+    <section id="services-grid" className="section-padding relative overflow-hidden" style={{ background:'#050A14' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="container-xl relative z-10">
         <div className="text-center mb-12">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color:'#D4891A' }}>What We Offer</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">End-to-End Engineering Solutions</h2>
-          <p className="mt-3 text-sm md:text-base max-w-2xl mx-auto leading-relaxed" style={{ color:'#8A9BB5' }}>
+          <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color:'#D4891A' }}>What We Offer</p></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold gradient-text">End-to-End Engineering Solutions</h2></FadeIn>
+          <FadeIn delay={0.2}><p className="mt-3 text-sm md:text-base max-w-2xl mx-auto leading-relaxed" style={{ color:'#8A9BB5' }}>
             Eight core service verticals, delivered by qualified professionals with deep domain expertise across commercial, industrial and institutional sectors.
-          </p>
+          </p></FadeIn>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES.map((svc) => <ServiceCard key={svc.id} service={svc} />)}
+          {SERVICES.map((svc, i) => (
+            <FadeIn key={svc.id} delay={i * 0.1}>
+              <ServiceCard service={svc} />
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
@@ -103,11 +110,12 @@ function ProcessStrip() {
     { n:'05', label:'Quality Check' }, { n:'06', label:'Handover & Support' },
   ];
   return (
-    <section id="delivery-process" className="py-16" style={{ background:'#0D1B2E' }}>
-      <div className="container-xl">
+    <section id="delivery-process" className="py-16 relative overflow-hidden" style={{ background:'#0D1B2E' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="container-xl relative z-10">
         <div className="text-center mb-10">
           <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color:'#D4891A' }}>How We Work</p>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Our Delivery Process</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold gradient-text">Our Delivery Process</h2>
         </div>
         <div className="overflow-x-auto pb-2 -mx-4 px-4">
           <div className="flex items-start justify-start md:justify-center gap-0 min-w-max md:min-w-0">
@@ -134,10 +142,11 @@ function ProcessStrip() {
 function CTABanner() {
   return (
     <section id="services-cta" className="py-20 relative overflow-hidden" style={{ background:'linear-gradient(135deg,#0D1B2E 0%,#050A14 100%)' }}>
-      <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at center,rgba(212,137,26,0.1) 0%,transparent 70%)' }} />
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at center,rgba(212,137,26,0.1) 0%,transparent 70%)' }} />
       <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white">Need a Custom Engineering Solution?</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold gradient-text">Need a Custom Engineering Solution?</h2>
           <p className="mt-2 text-sm md:text-base max-w-lg leading-relaxed" style={{ color:'#8A9BB5' }}>
             Tell us your project requirements and our team will prepare a detailed scope and proposal tailored to your needs.
           </p>

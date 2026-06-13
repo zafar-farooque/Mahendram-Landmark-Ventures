@@ -14,11 +14,46 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setScrolled(scrollTop > 20);
+      
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        setScrollProgress((scrollTop / docHeight) * 100);
+      } else {
+        setScrollProgress(0);
+      }
+    };
+
+    const handleContainerScroll = (e) => {
+      const scrollTop = e.detail?.scrollTop ?? 0;
+      setScrolled(scrollTop > 20);
+      
+      const target = e.target || e.currentTarget || document.getElementById('home-scroll-container');
+      if (target) {
+        const docHeight = target.scrollHeight - target.clientHeight;
+        if (docHeight > 0) {
+          setScrollProgress((scrollTop / docHeight) * 100);
+        } else {
+          setScrollProgress(0);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('containerScroll', handleContainerScroll, { passive: true });
+    
+    // Initial check
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('containerScroll', handleContainerScroll);
+    };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
@@ -27,16 +62,22 @@ export default function Navbar() {
     [
       'relative text-sm font-medium transition-colors duration-200 whitespace-nowrap',
       'after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full',
-      'after:rounded-full after:transition-transform after:duration-200 after:origin-left',
+      'after:rounded-full after:transition-transform after:duration-300 after:origin-left',
       isActive
-        ? 'text-accent after:bg-accent after:scale-x-100'
-        : 'text-white/70 hover:text-white after:bg-accent after:scale-x-0 hover:after:scale-x-100',
+        ? 'text-[#D4891A] after:bg-[#D4891A] after:scale-x-100'
+        : 'text-white/70 hover:text-[#D4891A] after:bg-[#D4891A] after:scale-x-0 hover:after:scale-x-100',
     ].join(' ');
 
   return (
-    <header
-      id="main-navbar"
-      className="sticky top-0 z-50 w-full transition-all duration-300"
+    <>
+      {/* Scroll Progress Bar */}
+      <div 
+        className="fixed top-0 left-0 h-[2px] z-[60] transition-all duration-100 ease-out" 
+        style={{ width: `${scrollProgress}%`, backgroundColor: '#D4891A' }} 
+      />
+      <header
+        id="main-navbar"
+        className="sticky top-0 z-50 w-full transition-all duration-300"
       style={
         scrolled
           ? {
@@ -188,5 +229,6 @@ export default function Navbar() {
         </nav>
       </div>
     </header>
+    </>
   );
 }

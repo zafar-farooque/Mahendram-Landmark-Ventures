@@ -137,6 +137,30 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  .gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 0%, #D4891A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Hero Grid Background
+───────────────────────────────────────── */
+.hero-grid {
+  position: absolute;
+  inset: -100% -100%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
 }
 
 /* ─────────────────────────────────────────
@@ -154,4 +178,42 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #e09a2a;
+}
+
+/* ─────────────────────────────────────────
+   Glow Ring — Hero Decoration
+───────────────────────────────────────── */
+.glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 137, 26, 0.3);
+  box-shadow: 0 0 80px rgba(212, 137, 26, 0.15), inset 0 0 80px rgba(212, 137, 26, 0.05);
+  animation: ring-pulse 4s ease-in-out infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* ─────────────────────────────────────────
+   Glassmorphism Card
+───────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  background: rgba(212, 137, 26, 0.06);
+  border-color: rgba(212, 137, 26, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(212, 137, 26, 0.1);
 }
