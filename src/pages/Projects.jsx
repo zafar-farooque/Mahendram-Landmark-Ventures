@@ -40,14 +40,14 @@ const FALLBACK_PROJECTS = [
 function PageHero() {
   return (
     <section id="projects-hero" className="relative py-20 md:py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(135deg,#0F1C2E 0%,#1A2B4A 70%,#1e3a5f 100%)' }}>
+      style={{ background: '#050A14' }}>
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
-      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle,#D4891A,transparent 70%)' }} />
+        style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
+      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        style={{ background: 'radial-gradient(circle,rgba(212,137,26,0.15),transparent 70%)' }} />
 
       <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
-        <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#64748B' }}>
+        <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#8A9BB5' }}>
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <span>/</span>
           <span style={{ color: '#D4891A' }}>Projects</span>
@@ -70,7 +70,7 @@ function PageHero() {
           {[['500+', 'Projects'], ['9', 'Categories'], ['Pan India', 'Operations'], ['2010', 'Est. Year']].map(([val, lbl]) => (
             <div key={lbl} className="flex flex-col items-center">
               <span className="text-2xl font-extrabold text-white">{val}</span>
-              <span className="text-xs" style={{ color: '#64748B' }}>{lbl}</span>
+              <span className="text-xs" style={{ color: '#8A9BB5' }}>{lbl}</span>
             </div>
           ))}
         </div>
@@ -87,7 +87,8 @@ function ProjectCard({ project }) {
 
   return (
     <article id={`project-${project._id}`}
-      className="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      className="group flex flex-col rounded-2xl border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+      style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
 
       {/* Cover */}
       <div className="relative h-48 overflow-hidden flex items-center justify-center"
@@ -116,9 +117,9 @@ function ProjectCard({ project }) {
 
       {/* Body */}
       <div className="flex flex-col gap-3 p-5 flex-grow">
-        <h2 className="font-extrabold text-sm leading-snug" style={{ color: '#1A2B4A' }}>{project.title}</h2>
+        <h2 className="font-extrabold text-sm leading-snug text-white">{project.title}</h2>
 
-        <div className="flex flex-wrap gap-3 text-xs" style={{ color: '#6B7280' }}>
+        <div className="flex flex-wrap gap-3 text-xs" style={{ color: '#8A9BB5' }}>
           <span className="flex items-center gap-1">📍 {project.location}</span>
           {project.clientName && <span className="flex items-center gap-1">🏢 {project.clientName}</span>}
           {project.projectValue && <span className="flex items-center gap-1">💰 {project.projectValue}</span>}
@@ -132,7 +133,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-3.5 border-t flex items-center justify-between" style={{ borderColor: '#F3F4F6' }}>
+      <div className="px-5 py-3.5 border-t flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         <Link to={`/projects/${project.slug || project._id}`}
           className="flex items-center gap-1.5 text-sm font-semibold group/link w-fit"
           style={{ color: '#D4891A' }}>
@@ -140,7 +141,7 @@ function ProjectCard({ project }) {
           <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
         </Link>
         <span className="text-xs px-2.5 py-1 rounded-full font-medium"
-          style={{ background: 'rgba(26,43,74,0.06)', color: '#1A2B4A' }}>
+          style={{ background: 'rgba(255,255,255,0.06)', color: '#8A9BB5' }}>
           {catLabel}
         </span>
       </div>
@@ -151,16 +152,16 @@ function ProjectCard({ project }) {
 /* ── Skeleton ───────────────────────────────── */
 function Skeleton() {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden animate-pulse">
-      <div className="h-48 bg-gray-100" />
+    <div className="rounded-2xl border overflow-hidden animate-pulse" style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
+      <div className="h-48" style={{ background: 'rgba(255,255,255,0.04)' }} />
       <div className="p-5 flex flex-col gap-3">
-        <div className="h-4 bg-gray-100 rounded w-3/4" />
-        <div className="h-3 bg-gray-100 rounded w-1/2" />
-        <div className="h-3 bg-gray-100 rounded" />
-        <div className="h-3 bg-gray-100 rounded w-5/6" />
+        <div className="h-4 rounded w-3/4" style={{ background: 'rgba(255,255,255,0.06)' }} />
+        <div className="h-3 rounded w-1/2" style={{ background: 'rgba(255,255,255,0.04)' }} />
+        <div className="h-3 rounded" style={{ background: 'rgba(255,255,255,0.04)' }} />
+        <div className="h-3 rounded w-5/6" style={{ background: 'rgba(255,255,255,0.04)' }} />
       </div>
-      <div className="px-5 py-3.5 border-t border-gray-100">
-        <div className="h-4 bg-gray-100 rounded w-1/4" />
+      <div className="px-5 py-3.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="h-4 rounded w-1/4" style={{ background: 'rgba(255,255,255,0.04)' }} />
       </div>
     </div>
   );
@@ -199,27 +200,29 @@ export default function Projects() {
         <meta property="og:url" content="https://www.mahendramlandmark.com/projects" />
       </Helmet>
       <PageHero />
-      <section id="projects-content" className="section-padding" style={{ backgroundColor: '#F7F8FA' }}>
+      <section id="projects-content" className="section-padding" style={{ background: '#050A14' }}>
         <div className="container-xl">
 
           {/* Search + filters */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             {/* Search */}
             <div className="relative w-full sm:max-w-sm flex-shrink-0">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center">
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="6.5" cy="6.5" r="5" stroke="#9CA3AF" strokeWidth="1.5"/>
-                  <line x1="10.354" y1="10.646" x2="13.5" y2="13.793" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </span>
+              <svg
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                width="15" height="15" viewBox="0 0 15 15" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+              >
+                <circle cx="6.5" cy="6.5" r="5" stroke="#9CA3AF" strokeWidth="1.5"/>
+                <line x1="10.354" y1="10.646" x2="13.5" y2="13.793" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
               <input id="projects-search" type="text" placeholder="Search by name or location…" value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm bg-white focus:outline-none focus:ring-2"
-                style={{ borderColor: '#E5E7EB', color: '#1C1C2E' }} />
+                className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2"
+                style={{ borderColor: 'rgba(255,255,255,0.1)', background: '#0D1B2E', color: '#FFFFFF' }} />
               {search && (
                 <button onClick={() => setSearch('')} aria-label="Clear search"
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold"
-                  style={{ color: '#9CA3AF' }}>✕</button>
+                  style={{ color: '#8A9BB5' }}>✕</button>
               )}
             </div>
 
@@ -234,7 +237,7 @@ export default function Projects() {
                       className="px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
                       style={active
                         ? { background: '#1A2B4A', color: '#fff' }
-                        : { background: '#fff', color: '#6B7280', border: '1px solid #E5E7EB' }}>
+                        : { background: '#0D1B2E', color: '#FFFFFF' }}>
                       {cat.label}
                     </button>
                   );
@@ -254,8 +257,8 @@ export default function Projects() {
 
           {/* Count */}
           {!loading && (
-            <p className="text-xs font-medium mb-6" style={{ color: '#6B7280' }}>
-              Showing <strong style={{ color: '#1A2B4A' }}>{filtered.length}</strong> project{filtered.length !== 1 ? 's' : ''}
+            <p className="text-xs font-medium mb-6" style={{ color: '#8A9BB5' }}>
+              Showing <strong className="text-white">{filtered.length}</strong> project{filtered.length !== 1 ? 's' : ''}
               {activeCat !== 'all' ? ` in "${CAT_LABEL[activeCat]}"` : ''}
               {search ? ` matching "${search}"` : ''}
             </p>
@@ -270,7 +273,7 @@ export default function Projects() {
               : (
                 <div className="col-span-full flex flex-col items-center py-16 gap-3">
                   <span className="text-4xl">📭</span>
-                  <p className="text-sm font-medium" style={{ color: '#6B7280' }}>No projects found.</p>
+                  <p className="text-sm font-medium text-white">No projects found.</p>
                   <button onClick={() => { setActiveCat('all'); setSearch(''); }}
                     className="text-sm font-semibold underline" style={{ color: '#D4891A' }}>
                     Clear filters
@@ -282,9 +285,9 @@ export default function Projects() {
           {/* CTA */}
           {!loading && filtered.length > 0 && (
             <div className="mt-14 rounded-2xl p-10 text-center"
-              style={{ background: 'linear-gradient(135deg,#1A2B4A,#0F1C2E)' }}>
+              style={{ background: 'linear-gradient(135deg,#0D1B2E,#050A14)', border: '1px solid rgba(255,255,255,0.08)' }}>
               <h2 className="text-2xl font-extrabold text-white mb-2">Have a Project in Mind?</h2>
-              <p className="text-sm mb-6" style={{ color: '#94A3B8' }}>
+              <p className="text-sm mb-6" style={{ color: '#8A9BB5' }}>
                 Share your requirements and our team will get back to you within 24 hours.
               </p>
               <Link to="/contact" id="projects-cta"

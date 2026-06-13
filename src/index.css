@@ -11,15 +11,16 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────
-   Design Tokens (CSS Custom Properties)
+   Design Tokens (Dark Premium System)
 ───────────────────────────────────────── */
 :root {
-  --color-primary:  #1A2B4A;   /* navy */
+  --color-bg:       #050A14;   /* near-black background */
+  --color-card:     #0D1B2E;   /* surface / card */
+  --color-border:   rgba(255, 255, 255, 0.08);
+  --color-primary:  #FFFFFF;   /* primary text */
   --color-accent:   #D4891A;   /* amber */
-  --color-surface:  #F7F8FA;   /* light background */
-  --color-dark:     #0F1C2E;   /* deep dark */
-  --color-text:     #1C1C2E;   /* main body text */
-  --color-muted:    #6B7280;   /* secondary / placeholder text */
+  --color-glow:     rgba(212, 137, 26, 0.15);
+  --color-muted:    #8A9BB5;   /* secondary text */
 }
 
 /* ─────────────────────────────────────────
@@ -38,16 +39,20 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
+    background-color: var(--color-bg);
   }
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--color-surface);
-    color: var(--color-text);
+    background-color: var(--color-bg);
+    color: var(--color-primary);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    /* Subtle noise grain texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -109,23 +114,23 @@
     }
   }
 
-  /* Gradients */
-  .bg-gradient-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #1e6fa8 100%);
+  /* Dark card surface */
+  .card-dark {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
   }
 
+  /* Amber glow effects */
+  .glow-accent {
+    box-shadow: 0 0 40px var(--color-glow);
+  }
+
+  /* Gradients */
   .bg-gradient-dark {
-    background: linear-gradient(180deg, var(--color-dark) 0%, var(--color-primary) 100%);
+    background: linear-gradient(135deg, #050A14 0%, #0D1B2E 100%);
   }
 
   /* Text Gradients */
-  .text-gradient-navy {
-    background: linear-gradient(135deg, var(--color-primary), #1e6fa8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   .text-gradient-amber {
     background: linear-gradient(135deg, var(--color-accent), #f5c842);
     -webkit-background-clip: text;
@@ -141,7 +146,7 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-dark);
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-accent);

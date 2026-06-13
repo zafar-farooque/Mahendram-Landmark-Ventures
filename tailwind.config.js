@@ -4,12 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary:  '#1A2B4A',
+        primary:  '#FFFFFF',
         accent:   '#D4891A',
-        surface:  '#F7F8FA',
-        dark:     '#0F1C2E',
-        textMain: '#1C1C2E',
-        muted:    '#6B7280',
+        surface:  '#050A14',
+        dark:     '#050A14',
+        card:     '#0D1B2E',
+        textMain: '#FFFFFF',
+        muted:    '#8A9BB5',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -27,4 +28,3 @@ export default {
   },
   plugins: [],
 }
-

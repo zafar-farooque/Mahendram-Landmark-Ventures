@@ -64,7 +64,7 @@ function PageHero() {
         <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
           Knowledge Center
         </h1>
-        <p className="text-base max-w-xl leading-relaxed" style={{ color: '#94A3B8' }}>
+        <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8A9BB5' }}>
           Engineering insights, industry guides and infrastructure knowledge across 10+ categories.
         </p>
       </div>
@@ -80,7 +80,8 @@ function ArticleCard({ post }) {
 
   return (
     <article id={`post-${post._id}`}
-      className="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      className="group flex flex-col rounded-2xl border hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+      style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
       {/* Image / placeholder */}
       <div className="relative h-44 flex items-center justify-center overflow-hidden"
         style={{ background: `${catColor}18` }}>
@@ -102,7 +103,7 @@ function ArticleCard({ post }) {
           <span>{formatDate(post.publishedAt)}</span>
           {post.readTime && <span>📖 {post.readTime} min read</span>}
         </div>
-        <h2 className="font-extrabold text-sm leading-snug" style={{ color: '#1A2B4A' }}>
+        <h2 className="font-extrabold text-sm leading-snug text-white">
           {post.title}
         </h2>
         {post.excerpt && (
@@ -114,7 +115,7 @@ function ArticleCard({ post }) {
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-3.5 border-t" style={{ borderColor: '#F3F4F6' }}>
+      <div className="px-5 py-3.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         <Link to={`/knowledge-center/${post.slug || post._id}`}
           className="flex items-center gap-1.5 text-sm font-semibold group/link w-fit"
           style={{ color: '#D4891A' }}>
@@ -129,16 +130,16 @@ function ArticleCard({ post }) {
 /* ── Skeleton ───────────────────────────────── */
 function Skeleton() {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden animate-pulse">
-      <div className="h-44 bg-gray-100" />
+    <div className="rounded-2xl border overflow-hidden animate-pulse" style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
+      <div className="h-44" style={{ background: 'rgba(255,255,255,0.04)' }} />
       <div className="p-5 flex flex-col gap-3">
-        <div className="h-3 bg-gray-100 rounded w-1/3" />
-        <div className="h-4 bg-gray-100 rounded w-3/4" />
-        <div className="h-3 bg-gray-100 rounded" />
-        <div className="h-3 bg-gray-100 rounded w-5/6" />
+        <div className="h-3 rounded w-1/3" style={{ background: 'rgba(255,255,255,0.06)' }} />
+        <div className="h-4 rounded w-3/4" style={{ background: 'rgba(255,255,255,0.06)' }} />
+        <div className="h-3 rounded" style={{ background: 'rgba(255,255,255,0.04)' }} />
+        <div className="h-3 rounded w-5/6" style={{ background: 'rgba(255,255,255,0.04)' }} />
       </div>
-      <div className="px-5 py-3.5 border-t border-gray-100">
-        <div className="h-4 bg-gray-100 rounded w-1/4" />
+      <div className="px-5 py-3.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="h-4 rounded w-1/4" style={{ background: 'rgba(255,255,255,0.04)' }} />
       </div>
     </div>
   );
@@ -176,27 +177,29 @@ export default function KnowledgeCenter() {
         <meta property="og:url" content="https://www.mahendramlandmark.com/knowledge-center" />
       </Helmet>
       <PageHero />
-      <section id="kc-content" className="section-padding" style={{ backgroundColor: '#F7F8FA' }}>
+      <section id="kc-content" className="section-padding" style={{ background: '#050A14' }}>
         <div className="container-xl">
 
           {/* Search + filters */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             {/* Search */}
             <div className="relative w-full sm:max-w-sm flex-shrink-0">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center">
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="6.5" cy="6.5" r="5" stroke="#9CA3AF" strokeWidth="1.5"/>
-                  <line x1="10.354" y1="10.646" x2="13.5" y2="13.793" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </span>
+              <svg
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                width="15" height="15" viewBox="0 0 15 15" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+              >
+                <circle cx="6.5" cy="6.5" r="5" stroke="#9CA3AF" strokeWidth="1.5"/>
+                <line x1="10.354" y1="10.646" x2="13.5" y2="13.793" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
               <input
                 id="kc-search"
                 type="text"
                 placeholder="Search articles…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent bg-white"
-                style={{ borderColor: '#E5E7EB', color: '#1C1C2E' }}
+                className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
+                style={{ borderColor: 'rgba(255,255,255,0.1)', background: '#0D1B2E', color: '#FFFFFF' }}
               />
               {search && (
                 <button
@@ -223,7 +226,7 @@ export default function KnowledgeCenter() {
                       style={
                         active
                           ? { background: '#1A2B4A', color: '#fff' }
-                          : { background: '#fff', color: '#6B7280', border: '1px solid #E5E7EB' }
+                          : { background: '#0D1B2E', color: '#8A9BB5', border: '1px solid rgba(255,255,255,0.08)' }
                       }
                     >
                       {cat.label}
@@ -245,8 +248,8 @@ export default function KnowledgeCenter() {
 
           {/* Count */}
           {!loading && (
-            <p className="text-xs font-medium mb-6" style={{ color: '#6B7280' }}>
-              Showing <strong style={{ color: '#1A2B4A' }}>{filtered.length}</strong> article{filtered.length !== 1 ? 's' : ''}
+            <p className="text-xs font-medium mb-6" style={{ color: '#8A9BB5' }}>
+              Showing <strong className="text-white">{filtered.length}</strong> article{filtered.length !== 1 ? 's' : ''}
               {activeCat !== 'all' ? ` in "${CAT_LABEL[activeCat]}"` : ''}
               {search ? ` matching "${search}"` : ''}
             </p>
