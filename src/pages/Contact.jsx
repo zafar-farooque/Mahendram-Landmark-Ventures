@@ -5,18 +5,18 @@ import { Helmet } from 'react-helmet-async';
 /* ─────────────────────────────────────────
    Config
 ───────────────────────────────────────── */
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_ID';
-const WHATSAPP_NUMBER    = '919999999999';
-const WHATSAPP_MSG       = encodeURIComponent('Hello, I would like to get in touch with Mahendram Landmark Ventures Pvt Ltd.');
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjgdpebq';
+const WHATSAPP_NUMBER = '918210146579';
+const WHATSAPP_MSG = encodeURIComponent('Hello, I would like to get in touch with Mahendram Landmark Ventures Pvt Ltd.');
 
 /* ─────────────────────────────────────────
    Tab definitions
 ───────────────────────────────────────── */
 const TABS = [
-  { id: 'enquiry',  label: 'Business Enquiry'    },
-  { id: 'tender',   label: 'Tender Submission'   },
-  { id: 'vendor',   label: 'Vendor Registration' },
-  { id: 'career',   label: 'Career Application'  },
+  { id: 'enquiry', label: 'Business Enquiry' },
+  { id: 'tender', label: 'Tender Submission' },
+  { id: 'vendor', label: 'Vendor Registration' },
+  { id: 'career', label: 'Career Application' },
 ];
 
 /* ─────────────────────────────────────────
@@ -40,54 +40,54 @@ const DEPARTMENT_OPTIONS = [
 
 const FORMS = {
   enquiry: {
-    title:  'Business Enquiry',
+    title: 'Business Enquiry',
     hidden: 'Business Enquiry',
     fields: [
-      { name: 'name',     label: 'Full Name',       type: 'text',   placeholder: 'Your full name',             required: true  },
-      { name: 'company',  label: 'Company Name',    type: 'text',   placeholder: 'Your company / organisation', required: false },
-      { name: 'email',    label: 'Email Address',   type: 'email',  placeholder: 'your@email.com',             required: true  },
-      { name: 'phone',    label: 'Phone Number',    type: 'tel',    placeholder: '+91 XXXXX XXXXX',            required: true  },
+      { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Your full name', required: true },
+      { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Your company / organisation', required: false },
+      { name: 'email', label: 'Email Address', type: 'email', placeholder: 'your@email.com', required: true },
+      { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 XXXXX XXXXX', required: true },
       {
         name: 'service', label: 'Service Required', type: 'select',
         options: SERVICE_OPTIONS, required: true,
       },
-      { name: 'message',  label: 'Project Details', type: 'textarea', placeholder: 'Describe your project, location, timeline and budget...', required: true },
+      { name: 'message', label: 'Project Details', type: 'textarea', placeholder: 'Describe your project, location, timeline and budget...', required: true },
     ],
   },
   tender: {
-    title:  'Tender Submission',
+    title: 'Tender Submission',
     hidden: 'Tender Submission',
     fields: [
-      { name: 'company',   label: 'Company Name',  type: 'text',     placeholder: 'Registered company name',  required: true  },
-      { name: 'gst',       label: 'GST Number',    type: 'text',     placeholder: 'GSTIN (e.g. 22AAAAA0000A1Z5)', required: false },
-      { name: 'work_type', label: 'Work Type',     type: 'text',     placeholder: 'e.g. Civil, MEP, Interior…',  required: true  },
-      { name: 'location',  label: 'Project Location', type: 'text', placeholder: 'City / State',               required: true  },
-      { name: 'message',   label: 'Tender Details', type: 'textarea', placeholder: 'Tender reference, scope of work, submission deadline...', required: true },
+      { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Registered company name', required: true },
+      { name: 'gst', label: 'GST Number', type: 'text', placeholder: 'GSTIN (e.g. 22AAAAA0000A1Z5)', required: false },
+      { name: 'work_type', label: 'Work Type', type: 'text', placeholder: 'e.g. Civil, MEP, Interior…', required: true },
+      { name: 'location', label: 'Project Location', type: 'text', placeholder: 'City / State', required: true },
+      { name: 'message', label: 'Tender Details', type: 'textarea', placeholder: 'Tender reference, scope of work, submission deadline...', required: true },
     ],
   },
   vendor: {
-    title:  'Vendor Registration',
+    title: 'Vendor Registration',
     hidden: 'Vendor Registration',
     fields: [
-      { name: 'company',  label: 'Company Name',      type: 'text',     placeholder: 'Your company name',           required: true  },
-      { name: 'contact',  label: 'Contact Person',    type: 'text',     placeholder: 'Name of authorised contact',   required: true  },
-      { name: 'services', label: 'Services Offered',  type: 'text',     placeholder: 'e.g. Steel Fabrication, MEP…', required: true  },
-      { name: 'location', label: 'Location / Region', type: 'text',     placeholder: 'City, State',                  required: true  },
-      { name: 'message',  label: 'Additional Details', type: 'textarea', placeholder: 'Years of experience, certifications, past projects...', required: false },
+      { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Your company name', required: true },
+      { name: 'contact', label: 'Contact Person', type: 'text', placeholder: 'Name of authorised contact', required: true },
+      { name: 'services', label: 'Services Offered', type: 'text', placeholder: 'e.g. Steel Fabrication, MEP…', required: true },
+      { name: 'location', label: 'Location / Region', type: 'text', placeholder: 'City, State', required: true },
+      { name: 'message', label: 'Additional Details', type: 'textarea', placeholder: 'Years of experience, certifications, past projects...', required: false },
     ],
   },
   career: {
-    title:  'Career Application',
+    title: 'Career Application',
     hidden: 'Career Application',
     fields: [
-      { name: 'name',       label: 'Full Name',      type: 'text',   placeholder: 'Your full name',          required: true  },
-      { name: 'email',      label: 'Email Address',  type: 'email',  placeholder: 'your@email.com',          required: true  },
-      { name: 'phone',      label: 'Phone Number',   type: 'tel',    placeholder: '+91 XXXXX XXXXX',         required: true  },
+      { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Your full name', required: true },
+      { name: 'email', label: 'Email Address', type: 'email', placeholder: 'your@email.com', required: true },
+      { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 XXXXX XXXXX', required: true },
       {
-        name: 'department', label: 'Department',     type: 'select',
-        options: DEPARTMENT_OPTIONS,                                  required: true,
+        name: 'department', label: 'Department', type: 'select',
+        options: DEPARTMENT_OPTIONS, required: true,
       },
-      { name: 'message',    label: 'About Yourself', type: 'textarea', placeholder: 'Your experience, skills, current role and what you bring to the team...', required: true },
+      { name: 'message', label: 'About Yourself', type: 'textarea', placeholder: 'Your experience, skills, current role and what you bring to the team...', required: true },
     ],
   },
 };
@@ -97,30 +97,30 @@ const FORMS = {
 ───────────────────────────────────────── */
 const OFFICES = [
   {
-    id:    'corporate',
-    type:  'Corporate Office',
-    name:  'Mahendram Landmark Ventures Pvt Ltd',
-    addr:  'Corporate Office Address, City, State – PIN Code, India',
+    id: 'corporate',
+    type: 'Corporate Office',
+    name: 'Mahendram Landmark Ventures Pvt Ltd',
+    addr: 'Corporate Office Address, City, State – PIN Code, India',
     phone: '+91 XXXXX XXXXX',
     email: 'info@mahendramlandmark.com',
     hours: 'Mon – Sat: 9:00 AM – 6:00 PM',
     badge: 'HQ',
   },
   {
-    id:    'regional-1',
-    type:  'Regional Office',
-    name:  'Regional Office — North India',
-    addr:  'Regional Office Address, Delhi NCR – PIN Code, India',
+    id: 'regional-1',
+    type: 'Regional Office',
+    name: 'Regional Office — North India',
+    addr: 'Regional Office Address, Delhi NCR – PIN Code, India',
     phone: '+91 XXXXX XXXXX',
     email: 'north@mahendramlandmark.com',
     hours: 'Mon – Sat: 9:00 AM – 6:00 PM',
     badge: 'North',
   },
   {
-    id:    'regional-2',
-    type:  'Regional Office',
-    name:  'Regional Office — South India',
-    addr:  'Regional Office Address, Hyderabad / Chennai – India',
+    id: 'regional-2',
+    type: 'Regional Office',
+    name: 'Regional Office — South India',
+    addr: 'Regional Office Address, Hyderabad / Chennai – India',
     phone: '+91 XXXXX XXXXX',
     email: 'south@mahendramlandmark.com',
     hours: 'Mon – Sat: 9:00 AM – 6:00 PM',
@@ -138,14 +138,14 @@ function Field({ field, value, onChange }) {
     'transition-colors duration-150 bg-white';
 
   const sharedProps = {
-    id:          `field-${field.name}`,
-    name:        field.name,
-    value:       value,
-    onChange:    (e) => onChange(field.name, e.target.value),
-    required:    field.required,
+    id: `field-${field.name}`,
+    name: field.name,
+    value: value,
+    onChange: (e) => onChange(field.name, e.target.value),
+    required: field.required,
     placeholder: field.placeholder,
-    className:   base,
-    style:       { borderColor: '#E5E7EB' },
+    className: base,
+    style: { borderColor: '#E5E7EB' },
   };
 
   return (
@@ -189,9 +189,9 @@ function ContactForm({ formKey }) {
   const emptyState = () =>
     Object.fromEntries(formDef.fields.map((f) => [f.name, '']));
 
-  const [values,  setValues]  = useState(emptyState);
-  const [status,  setStatus]  = useState('idle'); // idle | submitting | success | error
-  const [errMsg,  setErrMsg]  = useState('');
+  const [values, setValues] = useState(emptyState);
+  const [status, setStatus] = useState('idle'); // idle | submitting | success | error
+  const [errMsg, setErrMsg] = useState('');
 
   const handleChange = (name, val) => setValues((prev) => ({ ...prev, [name]: val }));
 
@@ -202,9 +202,9 @@ function ContactForm({ formKey }) {
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body:    JSON.stringify({ _form_name: formDef.hidden, ...values }),
+        body: JSON.stringify({ _form_name: formDef.hidden, ...values }),
       });
 
       if (res.ok) {
