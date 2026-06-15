@@ -1,44 +1,51 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useInView, useMotionValue, useSpring } from 'framer-motion';
 
-export default function CountUp({ target, suffix = '', duration = 2000 }) {
-  const [count, setCount] = useState(0);
+export default function CountUp({ end, duration = 2, suffix = '', prefix = '' }) {
   const ref = useRef(null);
-  const started = useRef(false);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const [displayValue, setDisplayValue] = useState(0);
+  
+  const numVal = typeof end === 'string' ? parseFloat(end.replace(/[^0-9.]/g, '')) : end;
+  const isNumber = !isNaN(numVal);
+  
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, {
+    damping: 60,
+    stiffness: 100,
+    duration: duration * 1000,
+  });
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (isInView && isNumber) {
+      motionValue.set(numVal);
+    }
+  }, [isInView, motionValue, numVal, isNumber]);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const startTime = performance.now();
+  useEffect(() => {
+    if (!isNumber) return;
+    return springValue.onChange((latest) => {
+      setDisplayValue(Math.floor(latest));
+    });
+  }, [springValue, isNumber]);
 
-          const tick = (now) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // easeOut cubic
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(eased * target));
-            if (progress < 1) requestAnimationFrame(tick);
-            else setCount(target);
-          };
+  if (!isNumber) return <span ref={ref}>{end}</span>;
 
-          requestAnimationFrame(tick);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [target, duration]);
+  let actualSuffix = suffix;
+  let actualPrefix = prefix;
+  if (typeof end === 'string') {
+    const match = end.match(/^([^0-9.-]*)([0-9.]+)(.*)$/);
+    if (match) {
+      if (!prefix) actualPrefix = match[1];
+      if (!suffix) actualSuffix = match[3];
+    }
+  }
 
   return (
     <span ref={ref}>
-      {count}{suffix}
+      {actualPrefix}
+      {displayValue}
+      {actualSuffix}
     </span>
   );
 }

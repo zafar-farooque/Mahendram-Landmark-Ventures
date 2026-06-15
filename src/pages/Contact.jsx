@@ -70,7 +70,7 @@ const OFFICES = [
 
 function FieldInput({ field, value, onChange }) {
   const base = 'w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 transition-colors duration-150';
-  const darkStyle = { borderColor: BORDER, background: '#050A14', color: '#FFFFFF' };
+  const darkStyle = { borderColor: BORDER, background: 'var(--color-bg)', color: 'var(--color-primary)' };
   const sharedProps = {
     id: `field-${field.name}`, name: field.name, value, onChange: (e) => onChange(field.name, e.target.value),
     required: field.required, placeholder: field.placeholder, className: base, style: darkStyle,
@@ -79,8 +79,8 @@ function FieldInput({ field, value, onChange }) {
   if (field.type === 'select')
     return (
       <select {...sharedProps} className={`${base} cursor-pointer`} style={darkStyle}>
-        <option value="" style={{ background: '#0D1B2E' }}>Select {field.label}</option>
-        {field.options.map((o) => <option key={o} value={o} style={{ background: '#0D1B2E' }}>{o}</option>)}
+        <option value="" style={{ background: 'var(--color-card)' }}>Select {field.label}</option>
+        {field.options.map((o) => <option key={o} value={o} style={{ background: 'var(--color-card)' }}>{o}</option>)}
       </select>
     );
   return <input {...sharedProps} type={field.type} />;
@@ -111,11 +111,11 @@ function ContactForm({ tabId }) {
 
   if (status === 'success')
     return (
-      <div className="flex flex-col items-center justify-center py-16 gap-4 text-center">
-        <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl" style={{ background: 'rgba(212,137,26,0.15)' }}>✅</div>
+      <div className="flex flex-col items-center justify-center py-8 md:py-10 gap-4 text-center">
+        <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl" style={{ background: 'rgba(41, 171, 226, 0.1)' }}>✅</div>
         <h3 className="text-xl font-extrabold text-white">Thank you!</h3>
-        <p className="text-sm max-w-sm" style={{ color: '#8A9BB5' }}>We'll get back to you within 24 hours.</p>
-        <button onClick={() => setStatus('idle')} className="mt-2 text-sm font-semibold underline" style={{ color: '#D4891A' }}>Submit another</button>
+        <p className="text-sm max-w-sm" style={{ color: 'var(--color-muted)' }}>We'll get back to you within 24 hours.</p>
+        <button onClick={() => setStatus('idle')} className="mt-2 text-sm font-semibold underline" style={{ color: 'var(--color-accent)' }}>Submit another</button>
       </div>
     );
 
@@ -124,8 +124,8 @@ function ContactForm({ tabId }) {
       <div className="grid sm:grid-cols-2 gap-5">
         {formDef.fields.map((field) => (
           <div key={field.name} className={field.type === 'textarea' ? 'sm:col-span-2' : ''}>
-            <label htmlFor={`field-${field.name}`} className="block text-xs font-semibold mb-1.5" style={{ color: '#8A9BB5' }}>
-              {field.label}{field.required && <span style={{ color: '#D4891A' }}> *</span>}
+            <label htmlFor={`field-${field.name}`} className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--color-muted)' }}>
+              {field.label}{field.required && <span style={{ color: 'var(--color-accent)' }}> *</span>}
             </label>
             <FieldInput field={field} value={values[field.name]} onChange={handleChange} />
           </div>
@@ -134,7 +134,7 @@ function ContactForm({ tabId }) {
       {status === 'error' && <p className="text-xs font-medium rounded-lg px-4 py-2" style={{ color: '#FCA5A5', background: 'rgba(239,68,68,0.1)' }}>{errMsg}</p>}
       <button type="submit" disabled={status === 'submitting'}
         className="w-full sm:w-auto self-start px-8 py-3.5 rounded-sm text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
-        style={{ background: 'linear-gradient(135deg,#D4891A,#b87315)', boxShadow: '0 4px 20px rgba(212,137,26,0.35)' }}>
+        style={{ background: 'linear-gradient(135deg,var(--color-accent),var(--color-accent-2))', boxShadow: '0 4px 20px rgba(41, 171, 226, 0.1)' }}>
         {status === 'submitting' ? 'Submitting…' : `Submit ${formDef.title}`}
       </button>
     </form>
@@ -143,18 +143,26 @@ function ContactForm({ tabId }) {
 
 function PageHero() {
   return (
-    <section id="contact-hero" className="relative py-20 md:py-24 overflow-hidden" style={{ background: '#050A14' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+    <section id="contact-hero" className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden" style={{ background: 'var(--color-bg)' }}>
+      {/* Background image overlay */}
+      <img
+        src="/contact_hero.png"
+        alt="Contact Hero"
+        aria-hidden="true"
+        className="section-img-overlay ken-burns-bg"
+        style={{ opacity: 0.25, objectFit: 'cover', position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+      />
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
-      <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background:'radial-gradient(circle,rgba(212,137,26,0.15),transparent 70%)', filter:'blur(60px)' }} />
+      <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background:'radial-gradient(circle, rgba(41, 171, 226, 0.2), transparent 70%)', filter:'blur(60px)' }} />
       <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
-        <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#8A9BB5' }}>
-          <Link to="/" className="hover:text-white transition-colors">Home</Link>
+        <div className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-muted)' }}>
+          <Link to="/" className="hover:text-[var(--color-primary)] transition-colors">Home</Link>
           <span>/</span>
-          <span style={{ color: '#D4891A' }}>Contact</span>
+          <span style={{ color: 'var(--color-accent)' }}>Contact</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold gradient-text leading-tight tracking-tight">Get in Touch</h1>
-        <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8A9BB5' }}>
+        <p className="text-base max-w-xl leading-relaxed" style={{ color: 'var(--color-muted)' }}>
           Business enquiries, tender submissions, vendor registrations and career applications — all in one place.
         </p>
         <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`} target="_blank" rel="noopener noreferrer" id="contact-whatsapp-hero"
@@ -183,21 +191,21 @@ export default function Contact() {
       <PageHero />
 
       {/* Forms + offices */}
-      <section id="contact-forms" className="section-padding relative overflow-hidden" style={{ background: '#050A14' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+      <section id="contact-forms" className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg)' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
         <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-[1fr_360px] gap-10">
             {/* Left: tab forms */}
             <div>
               {/* Tabs */}
-              <div className="flex overflow-x-auto scrollbar-none rounded-xl p-1 mb-8 gap-1" style={{ background: '#0D1B2E' }} role="tablist" aria-label="Contact form tabs">
+              <div className="flex overflow-x-auto scrollbar-none rounded-xl p-1 mb-8 gap-1" style={{ background: 'var(--color-card)' }} role="tablist" aria-label="Contact form tabs">
                 {TABS.map((tab) => {
                   const isActive = activeTab === tab.id;
                   return (
                     <button key={tab.id} id={`tab-${tab.id}`} role="tab" aria-selected={isActive} aria-controls={`panel-${tab.id}`}
                       onClick={() => setActiveTab(tab.id)}
                       className="flex-1 min-w-[5.5rem] px-3 py-2.5 rounded-lg text-[11px] sm:text-xs font-semibold whitespace-nowrap transition-all duration-200"
-                      style={isActive ? { background: '#D4891A', color: '#ffffff', boxShadow: '0 2px 8px rgba(212,137,26,0.4)' } : { background: 'transparent', color: '#8A9BB5' }}>
+                      style={isActive ? { background: 'var(--color-accent)', color: '#ffffff', boxShadow: '0 2px 8px rgba(41, 171, 226, 0.1)' } : { background: 'transparent', color: 'var(--color-muted)' }}>
                       {tab.label}
                     </button>
                   );
@@ -206,10 +214,10 @@ export default function Contact() {
 
               {/* Form panel */}
               <div id={`panel-${activeTab}`} role="tabpanel" aria-labelledby={`tab-${activeTab}`}
-                className="p-8 rounded-2xl border" style={{ background: '#0D1B2E', borderColor: BORDER }}>
+                className="p-8 rounded-2xl border" style={{ background: 'var(--color-card)', borderColor: BORDER }}>
                 <h2 className="text-xl font-extrabold gradient-text mb-1">{FORMS[activeTab].title}</h2>
-                <p className="text-xs mb-6" style={{ color: '#8A9BB5' }}>
-                  Fields marked <span style={{ color: '#D4891A' }}>*</span> are required.
+                <p className="text-xs mb-6" style={{ color: 'var(--color-muted)' }}>
+                  Fields marked <span style={{ color: 'var(--color-accent)' }}>*</span> are required.
                 </p>
                 <ContactForm key={activeTab} tabId={activeTab} />
               </div>
@@ -220,20 +228,20 @@ export default function Contact() {
               <h2 className="text-lg font-extrabold gradient-text">Our Offices</h2>
               {OFFICES.map((office) => (
                 <div key={office.id} id={`office-${office.id}`}
-                  className="p-6 rounded-2xl border flex flex-col gap-4" style={{ background: '#0D1B2E', borderColor: BORDER }}>
+                  className="p-6 rounded-2xl border flex flex-col gap-4" style={{ background: 'var(--color-card)', borderColor: BORDER }}>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style={{ background: 'rgba(212,137,26,0.12)', color: '#D4891A' }}>{office.type}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style={{ background: 'rgba(41, 171, 226, 0.1)', color: 'var(--color-accent)' }}>{office.type}</span>
                     <h3 className="font-bold text-sm text-white mt-2 leading-snug">{office.name}</h3>
                   </div>
-                  <ul className="flex flex-col gap-2.5 text-xs" style={{ color: '#8A9BB5' }}>
-                    <li className="flex items-start gap-2"><span>📍</span><span>{office.addr}</span></li>
-                    <li className="flex items-center gap-2"><span>📞</span>
+                  <ul className="flex flex-col gap-2.5 text-xs" style={{ color: 'var(--color-muted)' }}>
+                    <li className="flex items-start gap-2"><span className="flex-shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>{office.addr}</span></li>
+                    <li className="flex items-center gap-2"><span className="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 14.92z"/></svg></span>
                       <a href={`tel:${office.phone}`} className="hover:text-white transition-colors">{office.phone}</a>
                     </li>
-                    <li className="flex items-center gap-2"><span>✉️</span>
+                    <li className="flex items-center gap-2"><span className="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
                       <a href={`mailto:${office.email}`} className="hover:text-white transition-colors break-all">{office.email}</a>
                     </li>
-                    <li className="flex items-center gap-2"><span>🕘</span><span>{office.hours}</span></li>
+                    <li className="flex items-center gap-2"><span className="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span>{office.hours}</span></li>
                   </ul>
                 </div>
               ))}
@@ -246,7 +254,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-bold" style={{ color: '#25D366' }}>Quick Response on WhatsApp</p>
-                  <p className="text-xs" style={{ color: '#8A9BB5' }}>Typically replies within 1 hour</p>
+                  <p className="text-xs" style={{ color: 'var(--color-muted)' }}>Typically replies within 1 hour</p>
                 </div>
               </a>
             </div>

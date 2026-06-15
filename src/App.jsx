@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -27,7 +27,7 @@ function PageLoader() {
         {/* Spinner */}
         <div
           className="w-10 h-10 rounded-full border-4 border-t-transparent animate-spin"
-          style={{ borderColor: '#E5E7EB', borderTopColor: '#D4891A' }}
+          style={{ borderColor: '#E5E7EB', borderTopColor: 'var(--color-accent)' }}
         />
         <p className="text-sm font-medium" style={{ color: '#6B7280' }}>
           Loading…
@@ -70,6 +70,10 @@ function AnimatedRoutes() {
 
 function AppContent() {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="flex flex-col min-h-screen">

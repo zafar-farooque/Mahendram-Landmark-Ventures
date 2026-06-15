@@ -23,19 +23,19 @@ const CAT_LABEL = Object.fromEntries(
 );
 
 const CAT_COLOR = {
-  construction: '#1A2B4A', infrastructure: '#0369A1', warehousing: '#7C3AED',
+  construction: 'var(--color-primary)', infrastructure: '#0369A1', warehousing: '#7C3AED',
   'facility-management': '#065F46', peb: '#92400E', mep: '#B45309',
   'fire-protection': '#B91C1C', interiors: '#BE185D',
   manufacturing: '#1D4ED8', 'government-projects': '#374151',
 };
 
 const FALLBACK_POSTS = [
-  { _id: 'f1', title: 'Top Trends in Commercial Construction 2025',              category: 'construction',        publishedAt: '2025-06-01', excerpt: 'Exploring the major shifts shaping commercial construction across India in 2025.', readTime: 6, author: 'Editorial Team' },
-  { _id: 'f2', title: 'Why Pre-Engineered Buildings Are the Future of Warehousing', category: 'peb',             publishedAt: '2025-05-15', excerpt: 'PEB structures are transforming how India builds warehouses — faster, cheaper and stronger.', readTime: 5, author: 'Editorial Team' },
-  { _id: 'f3', title: 'MEP Planning for Large Industrial Facilities',             category: 'mep',                publishedAt: '2025-05-01', excerpt: 'A deep dive into coordinated MEP design for manufacturing plants and industrial complexes.', readTime: 7, author: 'Editorial Team' },
-  { _id: 'f4', title: 'Integrated Facility Management: Reducing Operational Costs', category: 'facility-management', publishedAt: '2025-04-20', excerpt: 'How integrated FM models reduce operational expenditure while improving occupant experience.', readTime: 5, author: 'Editorial Team' },
-  { _id: 'f5', title: 'Smart Infrastructure Development Trends in India',          category: 'infrastructure',     publishedAt: '2025-04-05', excerpt: 'Government and private-led smart infrastructure projects are accelerating across urban India.', readTime: 6, author: 'Editorial Team' },
-  { _id: 'f6', title: 'Workplace Design Trends for Modern Corporate Offices',      category: 'interiors',          publishedAt: '2025-03-18', excerpt: 'Post-pandemic workplace design is evolving — here is what leading corporates are prioritising.', readTime: 4, author: 'Editorial Team' },
+  { _id: 'f1', title: 'Top Trends in Commercial Construction 2025',              category: 'construction',        publishedAt: '2025-06-01', excerpt: 'Exploring the major shifts shaping commercial construction across India in 2025.', readTime: 6, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-1' } }, fallbackUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f2', title: 'Why Pre-Engineered Buildings Are the Future of Warehousing', category: 'peb',             publishedAt: '2025-05-15', excerpt: 'PEB structures are transforming how India builds warehouses — faster, cheaper and stronger.', readTime: 5, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-2' } }, fallbackUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f3', title: 'MEP Planning for Large Industrial Facilities',             category: 'mep',                publishedAt: '2025-05-01', excerpt: 'A deep dive into coordinated MEP design for manufacturing plants and industrial complexes.', readTime: 7, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-3' } }, fallbackUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f4', title: 'Integrated Facility Management: Reducing Operational Costs', category: 'facility-management', publishedAt: '2025-04-20', excerpt: 'How integrated FM models reduce operational expenditure while improving occupant experience.', readTime: 5, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-4' } }, fallbackUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f5', title: 'Smart Infrastructure Development Trends in India',          category: 'infrastructure',     publishedAt: '2025-04-05', excerpt: 'Government and private-led smart infrastructure projects are accelerating across urban India.', readTime: 6, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-5' } }, fallbackUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f6', title: 'Workplace Design Trends for Modern Corporate Offices',      category: 'interiors',          publishedAt: '2025-03-18', excerpt: 'Post-pandemic workplace design is evolving — here is what leading corporates are prioritising.', readTime: 4, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-6' } }, fallbackUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
 ];
 
 function formatDate(iso) {
@@ -46,26 +46,34 @@ function formatDate(iso) {
 /* ── Hero ──────────────────────────────────── */
 function PageHero() {
   return (
-    <section id="kc-hero" className="relative py-20 md:py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(135deg,#0F1C2E 0%,#1A2B4A 70%,#1e3a5f 100%)' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+    <section id="kc-hero" className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden"
+      style={{ background: 'var(--color-bg)' }}>
+      {/* Background image overlay */}
+      <img
+        src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1920&q=80"
+        alt=""
+        aria-hidden="true"
+        className="section-img-overlay ken-burns-bg"
+        style={{ opacity: 0.15, objectFit: 'cover', position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+      />
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
         <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#64748B' }}>
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <span>/</span>
-          <span style={{ color: '#D4891A' }}>Knowledge Center</span>
+          <span style={{ color: 'var(--color-accent)' }}>Knowledge Center</span>
         </div>
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border"
-          style={{ color: '#D4891A', borderColor: 'rgba(212,137,26,0.4)', background: 'rgba(212,137,26,0.1)' }}>
+          style={{ color: 'var(--color-accent)', borderColor: 'rgba(41, 171, 226, 0.2)', background: 'rgba(41, 171, 226, 0.05)' }}>
           <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
           4–8 Articles Published Monthly
         </span>
         <h1 className="text-4xl md:text-5xl font-extrabold gradient-text leading-tight tracking-tight">
           Knowledge Center
         </h1>
-        <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8A9BB5' }}>
+        <p className="text-base max-w-xl leading-relaxed" style={{ color: 'var(--color-muted)' }}>
           Engineering insights, industry guides and infrastructure knowledge across 10+ categories.
         </p>
       </div>
@@ -75,8 +83,8 @@ function PageHero() {
 
 /* ── Article Card ───────────────────────────── */
 function ArticleCard({ post }) {
-  const img      = imageUrl(post.coverImage);
-  const catColor = CAT_COLOR[post.category] || '#1A2B4A';
+  const img      = imageUrl(post.coverImage) || post.fallbackUrl;
+  const catColor = CAT_COLOR[post.category] || 'var(--color-primary)';
   const catLabel = CAT_LABEL[post.category]  || post.category;
 
   return (
@@ -88,12 +96,19 @@ function ArticleCard({ post }) {
         {img
           ? <img src={img} alt={post.coverImage?.alt || post.title} loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          : <span className="text-5xl opacity-30">📰</span>}
+          : (
+            <div className="flex flex-col items-center gap-1 opacity-30 text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+            </div>
+          )}
         <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full text-white"
           style={{ backgroundColor: catColor }}>{catLabel}</span>
         {post.featured && (
-          <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
-            style={{ background: '#D4891A' }}>⭐ Featured</span>
+          <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white flex items-center gap-1"
+            style={{ background: 'var(--color-accent)' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Featured
+          </span>
         )}
       </div>
 
@@ -101,7 +116,10 @@ function ArticleCard({ post }) {
       <div className="flex flex-col gap-3 p-5 flex-grow">
         <div className="flex items-center justify-between text-xs" style={{ color: '#9CA3AF' }}>
           <span>{formatDate(post.publishedAt)}</span>
-          {post.readTime && <span>📖 {post.readTime} min read</span>}
+          {post.readTime && <span className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {post.readTime} min read
+          </span>}
         </div>
         <h2 className="font-extrabold text-sm leading-snug gradient-text">
           {post.title}
@@ -118,7 +136,7 @@ function ArticleCard({ post }) {
       <div className="px-5 py-3.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         <Link to={`/knowledge-center/${post.slug || post._id}`}
           className="flex items-center gap-1.5 text-sm font-semibold group/link w-fit"
-          style={{ color: '#D4891A' }}>
+          style={{ color: 'var(--color-accent)' }}>
           Read Article
           <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
         </Link>
@@ -130,7 +148,7 @@ function ArticleCard({ post }) {
 /* ── Skeleton ───────────────────────────────── */
 function Skeleton() {
   return (
-    <div className="rounded-2xl border overflow-hidden animate-pulse" style={{ background: '#0D1B2E', borderColor: 'rgba(255,255,255,0.08)' }}>
+    <div className="rounded-2xl border overflow-hidden animate-pulse" style={{ background: 'var(--color-card)', borderColor: 'rgba(0,63,135,0.1)' }}>
       <div className="h-44" style={{ background: 'rgba(255,255,255,0.04)' }} />
       <div className="p-5 flex flex-col gap-3">
         <div className="h-3 rounded w-1/3" style={{ background: 'rgba(255,255,255,0.06)' }} />
@@ -177,8 +195,8 @@ export default function KnowledgeCenter() {
         <meta property="og:url" content="https://www.mahendramlandmark.com/knowledge-center" />
       </Helmet>
       <PageHero />
-      <section id="kc-content" className="section-padding relative overflow-hidden" style={{ background: '#050A14' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(212,137,26,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
+      <section id="kc-content" className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg)' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
         <div className="container-xl relative z-10">
 
           {/* Search + filters */}
@@ -200,7 +218,7 @@ export default function KnowledgeCenter() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
-                style={{ borderColor: 'rgba(255,255,255,0.1)', background: '#0D1B2E', color: '#FFFFFF' }}
+                style={{ borderColor: 'rgba(0,63,135,0.1)', background: 'var(--color-card)', color: 'var(--color-primary)' }}
               />
               {search && (
                 <button
@@ -226,8 +244,8 @@ export default function KnowledgeCenter() {
                       className="px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
                       style={
                         active
-                          ? { background: '#1A2B4A', color: '#fff' }
-                          : { background: '#0D1B2E', color: '#8A9BB5', border: '1px solid rgba(255,255,255,0.08)' }
+                          ? { background: 'var(--color-primary)', color: '#fff' }
+                          : { background: 'var(--color-card)', color: 'var(--color-muted)', border: '1px solid rgba(0,63,135,0.1)' }
                       }
                     >
                       {cat.label}
@@ -241,7 +259,7 @@ export default function KnowledgeCenter() {
           {/* CMS config notice */}
           {error && (
             <div className="mb-8 px-5 py-3.5 rounded-xl text-xs font-medium flex items-start gap-2"
-              style={{ background: 'rgba(212,137,26,0.08)', color: '#92400E', border: '1px solid rgba(212,137,26,0.2)' }}>
+              style={{ background: 'rgba(41, 171, 226, 0.1)', color: '#92400E', border: '1px solid rgba(41, 171, 226, 0.1)' }}>
               ⚠️ {error} Replace <code className="font-mono bg-white/60 px-1 rounded mx-1">REPLACE</code>
               in <code className="font-mono bg-white/60 px-1 rounded mx-1">src/lib/sanityClient.js</code> with your Sanity project ID.
             </div>
@@ -249,8 +267,8 @@ export default function KnowledgeCenter() {
 
           {/* Count */}
           {!loading && (
-            <p className="text-xs font-medium mb-6" style={{ color: '#8A9BB5' }}>
-              Showing <strong className="text-white">{filtered.length}</strong> article{filtered.length !== 1 ? 's' : ''}
+            <p className="text-xs font-medium mb-6" style={{ color: 'var(--color-muted)' }}>
+              Showing <strong className="text-[var(--color-primary)]">{filtered.length}</strong> article{filtered.length !== 1 ? 's' : ''}
               {activeCat !== 'all' ? ` in "${CAT_LABEL[activeCat]}"` : ''}
               {search ? ` matching "${search}"` : ''}
             </p>
@@ -263,11 +281,11 @@ export default function KnowledgeCenter() {
               : filtered.length > 0
               ? filtered.map((p) => <ArticleCard key={p._id} post={p} />)
               : (
-                <div className="col-span-full flex flex-col items-center py-16 gap-3">
+                <div className="col-span-full flex flex-col items-center py-8 md:py-10 gap-3">
                   <span className="text-4xl">📭</span>
                   <p className="text-sm font-medium" style={{ color: '#6B7280' }}>No articles found.</p>
                   <button onClick={() => { setActiveCat('all'); setSearch(''); }}
-                    className="text-sm font-semibold underline" style={{ color: '#D4891A' }}>
+                    className="text-sm font-semibold underline" style={{ color: 'var(--color-accent)' }}>
                     Clear filters
                   </button>
                 </div>
@@ -282,7 +300,7 @@ export default function KnowledgeCenter() {
               </p>
               <Link to="/contact" id="kc-cta"
                 className="inline-block px-8 py-3.5 rounded-sm text-sm font-bold text-white hover:opacity-90 transition-opacity"
-                style={{ background: '#D4891A' }}>
+                style={{ background: 'var(--color-accent)' }}>
                 Subscribe to Updates →
               </Link>
             </div>
