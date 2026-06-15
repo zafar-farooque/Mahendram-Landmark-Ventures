@@ -66,7 +66,7 @@ export default function Navbar() {
         className={`z-50 transition-all duration-500 ease-in-out ${
           scrolled
             ? 'fixed top-0 left-0 right-0 bg-white shadow-md'
-            : 'absolute top-6 left-4 right-4 md:left-8 md:right-8 bg-white rounded-full shadow-lg border border-gray-100'
+            : 'absolute top-6 left-4 right-4 md:left-8 md:right-8 bg-white shadow-lg border border-gray-100 rounded-[24px] md:rounded-full'
         }`}
       >
         <div className={`flex items-center justify-between mx-auto ${scrolled ? 'container-xl h-16' : 'px-4 md:px-6 h-14 md:h-16'}`}>

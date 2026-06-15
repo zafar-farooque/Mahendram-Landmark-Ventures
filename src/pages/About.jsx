@@ -221,7 +221,8 @@ function Timeline() {
           <h2 className="text-3xl md:text-4xl font-extrabold gradient-text">Milestones Over the Years</h2>
         </div>
         <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px hidden md:block" style={{ background: BORDER }} />
+          {/* Mobile line (left-2) and Desktop line (left-1/2) */}
+          <div className="absolute left-2 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px" style={{ background: BORDER }} />
           <div className="flex flex-col gap-8 md:gap-12 relative">
             {TIMELINE.map((item, idx) => {
               const isLeft = idx % 2 === 0;
