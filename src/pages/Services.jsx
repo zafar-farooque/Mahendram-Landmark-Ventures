@@ -163,7 +163,7 @@ function ProcessStrip() {
           {/* Continuous Line underneath */}
           <div className="hidden lg:block absolute top-[28px] left-[5%] right-[5%] h-0.5 bg-gradient-to-r from-transparent via-[#29ABE2]/30 to-transparent z-0" />
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4">
             {steps.map((step, idx) => (
               <FadeIn key={step.n} delay={idx * 0.1}>
                 <div className="flex flex-col items-center gap-5 relative z-10 group cursor-default">

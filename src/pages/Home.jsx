@@ -99,13 +99,13 @@ function Hero() {
         {/* Center content */}
         <div className="relative z-10 flex flex-col items-center text-center w-full px-4">
           <FadeIn delay={0}>
-            <h1 className="text-white font-normal leading-none tracking-tight" style={{ fontSize: 'clamp(3rem, 12vw, 12rem)', fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="text-white font-extrabold leading-none tracking-tight" style={{ fontSize: 'clamp(2.5rem, 10vw, 12rem)' }}>
               MAHENDRAM
             </h1>
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <p className="text-sm md:text-xl text-white mt-4 md:mt-2 font-medium tracking-wide drop-shadow-md max-w-3xl">
+            <p className="text-sm md:text-xl text-white mt-4 md:mt-2 font-medium tracking-wide max-w-3xl leading-relaxed" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}>
               Building Infrastructure. Creating Workspaces. Managing Assets.
             </p>
           </FadeIn>
