@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import FadeIn from '../components/FadeIn';
 import { getAllPosts, imageUrl } from '../lib/sanityClient';
 
 /* ── Constants ─────────────────────────────── */
@@ -23,19 +24,19 @@ const CAT_LABEL = Object.fromEntries(
 );
 
 const CAT_COLOR = {
-  construction: 'var(--color-primary)', infrastructure: '#0369A1', warehousing: '#7C3AED',
+  construction: '#29ABE2', infrastructure: '#0369A1', warehousing: '#7C3AED',
   'facility-management': '#065F46', peb: '#92400E', mep: '#B45309',
   'fire-protection': '#B91C1C', interiors: '#BE185D',
   manufacturing: '#1D4ED8', 'government-projects': '#374151',
 };
 
 const FALLBACK_POSTS = [
-  { _id: 'f1', title: 'Top Trends in Commercial Construction 2025',              category: 'construction',        publishedAt: '2025-06-01', excerpt: 'Exploring the major shifts shaping commercial construction across India in 2025.', readTime: 6, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-1' } }, fallbackUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'f2', title: 'Why Pre-Engineered Buildings Are the Future of Warehousing', category: 'peb',             publishedAt: '2025-05-15', excerpt: 'PEB structures are transforming how India builds warehouses — faster, cheaper and stronger.', readTime: 5, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-2' } }, fallbackUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'f3', title: 'MEP Planning for Large Industrial Facilities',             category: 'mep',                publishedAt: '2025-05-01', excerpt: 'A deep dive into coordinated MEP design for manufacturing plants and industrial complexes.', readTime: 7, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-3' } }, fallbackUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'f4', title: 'Integrated Facility Management: Reducing Operational Costs', category: 'facility-management', publishedAt: '2025-04-20', excerpt: 'How integrated FM models reduce operational expenditure while improving occupant experience.', readTime: 5, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-4' } }, fallbackUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'f5', title: 'Smart Infrastructure Development Trends in India',          category: 'infrastructure',     publishedAt: '2025-04-05', excerpt: 'Government and private-led smart infrastructure projects are accelerating across urban India.', readTime: 6, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-5' } }, fallbackUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'f6', title: 'Workplace Design Trends for Modern Corporate Offices',      category: 'interiors',          publishedAt: '2025-03-18', excerpt: 'Post-pandemic workplace design is evolving — here is what leading corporates are prioritising.', readTime: 4, author: 'Editorial Team', coverImage: { _type: 'image', asset: { _ref: 'post-6' } }, fallbackUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f1', title: 'Top Trends in Commercial Construction 2025',              category: 'construction',        publishedAt: '2025-06-01', excerpt: 'Exploring the major shifts shaping commercial construction across India in 2025.', readTime: 6, author: 'Editorial Team', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f2', title: 'Why Pre-Engineered Buildings Are the Future of Warehousing', category: 'peb',             publishedAt: '2025-05-15', excerpt: 'PEB structures are transforming how India builds warehouses — faster, cheaper and stronger.', readTime: 5, author: 'Editorial Team', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f3', title: 'MEP Planning for Large Industrial Facilities',             category: 'mep',                publishedAt: '2025-05-01', excerpt: 'A deep dive into coordinated MEP design for manufacturing plants and industrial complexes.', readTime: 7, author: 'Editorial Team', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f4', title: 'Integrated Facility Management: Reducing Operational Costs', category: 'facility-management', publishedAt: '2025-04-20', excerpt: 'How integrated FM models reduce operational expenditure while improving occupant experience.', readTime: 5, author: 'Editorial Team', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f5', title: 'Smart Infrastructure Development Trends in India',          category: 'infrastructure',     publishedAt: '2025-04-05', excerpt: 'Government and private-led smart infrastructure projects are accelerating across urban India.', readTime: 6, author: 'Editorial Team', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80' },
+  { _id: 'f6', title: 'Workplace Design Trends for Modern Corporate Offices',      category: 'interiors',          publishedAt: '2025-03-18', excerpt: 'Post-pandemic workplace design is evolving — here is what leading corporates are prioritising.', readTime: 4, author: 'Editorial Team', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
 ];
 
 function formatDate(iso) {
@@ -46,36 +47,42 @@ function formatDate(iso) {
 /* ── Hero ──────────────────────────────────── */
 function PageHero() {
   return (
-    <section id="kc-hero" className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden"
-      style={{ background: 'var(--color-bg)' }}>
-      {/* Background image overlay */}
+    <section id="kc-hero" className="relative py-28 md:py-32 overflow-hidden bg-gray-900">
       <img
         src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1920&q=80"
-        alt=""
+        alt="Knowledge Center"
         aria-hidden="true"
-        className="section-img-overlay ken-burns-bg"
-        style={{ opacity: 0.15, objectFit: 'cover', position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+        className="absolute inset-0 w-full h-full object-cover opacity-60 ken-burns-bg"
       />
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
-      <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
-        <div className="flex items-center gap-2 text-xs font-medium" style={{ color: '#64748B' }}>
-          <Link to="/" className="hover:text-white transition-colors">Home</Link>
-          <span>/</span>
-          <span style={{ color: 'var(--color-accent)' }}>Knowledge Center</span>
-        </div>
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border"
-          style={{ color: 'var(--color-accent)', borderColor: 'rgba(41, 171, 226, 0.2)', background: 'rgba(41, 171, 226, 0.05)' }}>
-          <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-          4–8 Articles Published Monthly
-        </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold gradient-text leading-tight tracking-tight">
-          Knowledge Center
-        </h1>
-        <p className="text-base max-w-xl leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-          Engineering insights, industry guides and infrastructure knowledge across 10+ categories.
-        </p>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/60" />
+      
+      <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5 px-4">
+        <FadeIn delay={0}>
+          <div className="flex items-center gap-2 text-xs font-bold text-white/70 tracking-widest uppercase mb-4">
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[#29ABE2]">Knowledge Center</span>
+          </div>
+        </FadeIn>
+        
+        <FadeIn delay={0.1}>
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold border border-white/20 bg-black/30 backdrop-blur-md text-white mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
+            4–8 Articles Published Monthly
+          </span>
+        </FadeIn>
+        
+        <FadeIn delay={0.2}>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight drop-shadow-2xl max-w-4xl leading-[1.1]">
+            Knowledge Center
+          </h1>
+        </FadeIn>
+        
+        <FadeIn delay={0.3}>
+          <p className="text-base md:text-lg max-w-2xl text-white/90 mt-6 drop-shadow-md font-medium leading-relaxed">
+            Engineering insights, industry guides and infrastructure knowledge across 10+ categories.
+          </p>
+        </FadeIn>
       </div>
     </section>
   );
@@ -84,62 +91,64 @@ function PageHero() {
 /* ── Article Card ───────────────────────────── */
 function ArticleCard({ post }) {
   const img      = imageUrl(post.coverImage) || post.fallbackUrl;
-  const catColor = CAT_COLOR[post.category] || 'var(--color-primary)';
+  const catColor = CAT_COLOR[post.category] || '#29ABE2';
   const catLabel = CAT_LABEL[post.category]  || post.category;
 
   return (
-    <article id={`post-${post._id}`}
-      className="glass-card group flex flex-col overflow-hidden">
-      {/* Image / placeholder */}
-      <div className="relative h-44 flex items-center justify-center overflow-hidden"
-        style={{ background: `${catColor}18` }}>
-        {img
-          ? <img src={img} alt={post.coverImage?.alt || post.title} loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          : (
-            <div className="flex flex-col items-center gap-1 opacity-30 text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
-            </div>
+    <article className="bg-white rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+      
+      {/* Cover */}
+      <div className="relative h-56 w-full flex-shrink-0 overflow-hidden bg-gray-100 p-2">
+        <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
+          {img
+            ? <img src={img} alt={post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" />
+            : (
+              <div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+              </div>
+            )
+          }
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          <span className="absolute top-4 left-4 text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full text-white shadow-md"
+            style={{ backgroundColor: catColor }}>{catLabel}</span>
+            
+          {post.featured && (
+            <span className="absolute top-4 right-4 text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full text-white bg-black/50 backdrop-blur-sm shadow-md flex items-center gap-1.5">
+              ⭐ Featured
+            </span>
           )}
-        <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full text-white"
-          style={{ backgroundColor: catColor }}>{catLabel}</span>
-        {post.featured && (
-          <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white flex items-center gap-1"
-            style={{ background: 'var(--color-accent)' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            Featured
-          </span>
-        )}
+        </div>
       </div>
 
       {/* Body */}
-      <div className="flex flex-col gap-3 p-5 flex-grow">
-        <div className="flex items-center justify-between text-xs" style={{ color: '#9CA3AF' }}>
+      <div className="flex flex-col gap-4 p-6 pt-4 flex-grow relative z-10">
+        <div className="flex items-center justify-between text-xs font-bold text-gray-400 tracking-wider">
           <span>{formatDate(post.publishedAt)}</span>
-          {post.readTime && <span className="flex items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          {post.readTime && <span className="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#29ABE2]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             {post.readTime} min read
           </span>}
         </div>
-        <h2 className="font-extrabold text-sm leading-snug gradient-text">
+        
+        <h2 className="font-extrabold text-xl text-gray-900 leading-snug group-hover:text-[#29ABE2] transition-colors">
           {post.title}
         </h2>
+        
         {post.excerpt && (
-          <p className="text-xs leading-relaxed line-clamp-3" style={{ color: '#6B7280' }}>{post.excerpt}</p>
-        )}
-        {post.author && (
-          <p className="text-xs font-medium" style={{ color: '#9CA3AF' }}>By {post.author}</p>
+          <p className="text-sm leading-relaxed text-gray-600 font-medium line-clamp-3">{post.excerpt}</p>
         )}
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-3.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-        <Link to={`/knowledge-center/${post.slug || post._id}`}
-          className="flex items-center gap-1.5 text-sm font-semibold group/link w-fit"
-          style={{ color: 'var(--color-accent)' }}>
+      <div className="px-6 py-5 border-t border-gray-100 flex items-center justify-between mt-auto">
+        <Link to={`/knowledge-center/${post.slug || post._id}`} className="flex items-center gap-1.5 text-sm font-bold text-[#29ABE2] group/link">
           Read Article
           <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
         </Link>
+        {post.author && (
+          <span className="text-xs font-bold text-gray-500">By {post.author}</span>
+        )}
       </div>
     </article>
   );
@@ -148,18 +157,43 @@ function ArticleCard({ post }) {
 /* ── Skeleton ───────────────────────────────── */
 function Skeleton() {
   return (
-    <div className="rounded-2xl border overflow-hidden animate-pulse" style={{ background: 'var(--color-card)', borderColor: 'rgba(0,63,135,0.1)' }}>
-      <div className="h-44" style={{ background: 'rgba(255,255,255,0.04)' }} />
-      <div className="p-5 flex flex-col gap-3">
-        <div className="h-3 rounded w-1/3" style={{ background: 'rgba(255,255,255,0.06)' }} />
-        <div className="h-4 rounded w-3/4" style={{ background: 'rgba(255,255,255,0.06)' }} />
-        <div className="h-3 rounded" style={{ background: 'rgba(255,255,255,0.04)' }} />
-        <div className="h-3 rounded w-5/6" style={{ background: 'rgba(255,255,255,0.04)' }} />
+    <div className="rounded-[2rem] bg-white border border-gray-100 overflow-hidden animate-pulse shadow-sm">
+      <div className="h-56 bg-gray-200 p-2">
+        <div className="w-full h-full bg-gray-300 rounded-[1.5rem]"></div>
       </div>
-      <div className="px-5 py-3.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-        <div className="h-4 rounded w-1/4" style={{ background: 'rgba(255,255,255,0.04)' }} />
+      <div className="p-6 flex flex-col gap-4">
+        <div className="h-4 rounded bg-gray-200 w-1/3"></div>
+        <div className="h-6 rounded bg-gray-200 w-3/4"></div>
+        <div className="h-4 rounded bg-gray-200"></div>
+        <div className="h-4 rounded bg-gray-200 w-5/6"></div>
+      </div>
+      <div className="px-6 py-5 border-t border-gray-100">
+        <div className="h-4 rounded bg-gray-200 w-1/4"></div>
       </div>
     </div>
+  );
+}
+
+function CTABanner() {
+  return (
+    <section id="kc-cta" className="py-12 md:py-14 relative overflow-hidden bg-gray-900 rounded-t-[2.5rem] shadow-2xl mt-10">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1920&q=80')] opacity-10 object-cover mix-blend-overlay pointer-events-none ken-burns-bg" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#29ABE2]/20 to-transparent pointer-events-none" />
+      
+      <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">Stay Updated</h2>
+          <p className="mt-4 text-base max-w-xl leading-relaxed text-white/80 font-medium">
+            Join our mailing list to receive 4–8 expert engineering and infrastructure insights directly in your inbox every month.
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+          <Link to="/contact" className="px-10 py-4 rounded-full text-sm font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-[0_10px_25px_rgba(41,171,226,0.3)] bg-[#29ABE2]">
+            Subscribe to Updates
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -186,68 +220,38 @@ export default function KnowledgeCenter() {
   });
 
   return (
-    <>
+    <div className="bg-[#f8f9fa] min-h-screen flex flex-col">
       <Helmet>
-        <title>Knowledge Center — Engineering & Infrastructure Insights | Mahendram Landmark</title>
+        <title>Knowledge Center | Mahendram Landmark</title>
         <meta name="description" content="Engineering insights, construction guides, PEB, MEP, facility management articles and infrastructure knowledge published monthly by Mahendram Landmark Ventures." />
-        <meta property="og:title" content="Knowledge Center — Mahendram Landmark Ventures" />
-        <meta property="og:description" content="4–8 expert articles monthly across Construction, Infrastructure, PEB, MEP, Interiors, Facility Management and more." />
-        <meta property="og:url" content="https://www.mahendramlandmark.com/knowledge-center" />
       </Helmet>
+      
       <PageHero />
-      <section id="kc-content" className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg)' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        <div className="container-xl relative z-10">
+      
+      <section id="kc-content" className="section-padding relative overflow-hidden flex-grow">
+        <div className="container-xl relative z-10 pt-10">
 
           {/* Search + filters */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+          <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between">
             {/* Search */}
-            <div className="relative w-full sm:max-w-sm flex-shrink-0">
-              <svg
-                className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
-                width="15" height="15" viewBox="0 0 15 15" fill="none"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-              >
-                <circle cx="6.5" cy="6.5" r="5" stroke="#9CA3AF" strokeWidth="1.5"/>
-                <line x1="10.354" y1="10.646" x2="13.5" y2="13.793" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-              <input
-                id="kc-search"
-                type="text"
-                placeholder="Search articles…"
-                value={search}
+            <div className="relative w-full md:max-w-sm flex-shrink-0">
+              <svg className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" placeholder="Search articles..." value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
-                style={{ borderColor: 'rgba(0,63,135,0.1)', background: 'var(--color-card)', color: 'var(--color-primary)' }}
-              />
+                className="w-full pl-12 pr-10 py-3.5 rounded-full border border-gray-200 text-sm font-medium text-gray-900 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#29ABE2]/30 focus:border-[#29ABE2] transition-all" />
               {search && (
-                <button
-                  onClick={() => setSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold"
-                  style={{ color: '#9CA3AF' }}
-                  aria-label="Clear search"
-                >✕</button>
+                <button onClick={() => setSearch('')} aria-label="Clear search" className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition-colors text-xs font-bold">✕</button>
               )}
             </div>
 
-            {/* Category pills — horizontal scroll on mobile */}
-            <div className="overflow-x-auto -mx-4 px-4 pb-1 sm:mx-0 sm:px-0">
-              <div className="flex gap-2 min-w-max sm:flex-wrap sm:min-w-0" role="group" aria-label="Filter by category">
+            {/* Category pills */}
+            <div className="overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+              <div className="flex gap-2 min-w-max" role="group">
                 {CATEGORIES.map((cat) => {
                   const active = activeCat === cat.value;
                   return (
-                    <button
-                      key={cat.value}
-                      id={`kc-filter-${cat.value}`}
-                      aria-pressed={active}
-                      onClick={() => setActiveCat(cat.value)}
-                      className="px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
-                      style={
-                        active
-                          ? { background: 'var(--color-primary)', color: '#fff' }
-                          : { background: 'var(--color-card)', color: 'var(--color-muted)', border: '1px solid rgba(0,63,135,0.1)' }
-                      }
-                    >
+                    <button key={cat.value} aria-pressed={active} onClick={() => setActiveCat(cat.value)}
+                      className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 whitespace-nowrap border ${active ? 'bg-[#29ABE2] text-white border-[#29ABE2] shadow-[0_5px_15px_rgba(41,171,226,0.3)] scale-105' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900 shadow-sm'}`}>
                       {cat.label}
                     </button>
                   );
@@ -258,55 +262,46 @@ export default function KnowledgeCenter() {
 
           {/* CMS config notice */}
           {error && (
-            <div className="mb-8 px-5 py-3.5 rounded-xl text-xs font-medium flex items-start gap-2"
-              style={{ background: 'rgba(41, 171, 226, 0.1)', color: '#92400E', border: '1px solid rgba(41, 171, 226, 0.1)' }}>
-              ⚠️ {error} Replace <code className="font-mono bg-white/60 px-1 rounded mx-1">REPLACE</code>
-              in <code className="font-mono bg-white/60 px-1 rounded mx-1">src/lib/sanityClient.js</code> with your Sanity project ID.
+            <div className="mb-10 px-6 py-4 rounded-[1.5rem] text-sm font-bold flex items-center gap-3 bg-red-50 border border-red-100 text-red-600 shadow-sm">
+              <span className="text-xl">⚠️</span>
+              <p>{error} Replace <code className="font-mono bg-white px-1.5 py-0.5 rounded shadow-sm mx-1 text-xs">REPLACE</code> in <code className="font-mono bg-white px-1.5 py-0.5 rounded shadow-sm mx-1 text-xs">src/lib/sanityClient.js</code> with your Sanity ID.</p>
             </div>
           )}
 
           {/* Count */}
           {!loading && (
-            <p className="text-xs font-medium mb-6" style={{ color: 'var(--color-muted)' }}>
-              Showing <strong className="text-[var(--color-primary)]">{filtered.length}</strong> article{filtered.length !== 1 ? 's' : ''}
-              {activeCat !== 'all' ? ` in "${CAT_LABEL[activeCat]}"` : ''}
-              {search ? ` matching "${search}"` : ''}
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-8">
+              Showing <span className="text-[#29ABE2]">{filtered.length}</span> article{filtered.length !== 1 ? 's' : ''}
+              {activeCat !== 'all' && <span> in {CAT_LABEL[activeCat]}</span>}
             </p>
           )}
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
             {loading
               ? Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} />)
               : filtered.length > 0
-              ? filtered.map((p) => <ArticleCard key={p._id} post={p} />)
+              ? filtered.map((p, i) => (
+                  <FadeIn key={p._id} delay={(i % 10) * 0.1}>
+                    <ArticleCard post={p} />
+                  </FadeIn>
+                ))
               : (
-                <div className="col-span-full flex flex-col items-center py-8 md:py-10 gap-3">
-                  <span className="text-4xl">📭</span>
-                  <p className="text-sm font-medium" style={{ color: '#6B7280' }}>No articles found.</p>
-                  <button onClick={() => { setActiveCat('all'); setSearch(''); }}
-                    className="text-sm font-semibold underline" style={{ color: 'var(--color-accent)' }}>
-                    Clear filters
+                <div className="col-span-full flex flex-col items-center justify-center py-20 gap-4 bg-white rounded-[2rem] border border-gray-100 shadow-sm">
+                  <span className="text-6xl mb-2">📭</span>
+                  <p className="text-lg font-extrabold text-gray-900">No articles found.</p>
+                  <p className="text-sm font-medium text-gray-500 text-center max-w-sm mb-4">We couldn't find any articles matching your current filters and search criteria.</p>
+                  <button onClick={() => { setActiveCat('all'); setSearch(''); }} className="px-6 py-2.5 rounded-full bg-[#f8f9fa] border border-gray-200 text-gray-700 font-bold text-sm hover:bg-gray-100 transition-colors">
+                    Clear all filters
                   </button>
                 </div>
               )}
           </div>
 
-          {/* Bottom CTA */}
-          {!loading && filtered.length > 0 && (
-            <div className="text-center mt-14">
-              <p className="text-sm mb-4" style={{ color: '#6B7280' }}>
-                Stay updated with engineering insights published 4–8 times monthly.
-              </p>
-              <Link to="/contact" id="kc-cta"
-                className="inline-block px-8 py-3.5 rounded-sm text-sm font-bold text-white hover:opacity-90 transition-opacity"
-                style={{ background: 'var(--color-accent)' }}>
-                Subscribe to Updates →
-              </Link>
-            </div>
-          )}
         </div>
       </section>
-    </>
+
+      <CTABanner />
+    </div>
   );
 }

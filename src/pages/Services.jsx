@@ -4,9 +4,6 @@ import FadeIn from '../components/FadeIn';
 import {
   Building2, HardHat, Factory, Zap, Flame, Sofa, ClipboardCheck, Cog
 } from 'lucide-react';
-import TiltCard from '../components/TiltCard';
-
-const BORDER = 'rgba(255,255,255,0.08)';
 
 const SERVICES = [
   { id:'infrastructure', bgImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80', Icon: HardHat, title:'Infrastructure Development', tagline:'Roads, Bridges & Public Infrastructure',        desc:'Delivering large-scale infrastructure projects including roads, bridges, utility networks, smart infrastructure and industrial-grade civil works across India.',  points:['Roads & Highways','Bridges & Flyovers','Utility Networks','Smart Infrastructure'] },
@@ -19,96 +16,112 @@ const SERVICES = [
   { id:'industrial',     bgImage: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80', Icon: Cog,      title:'Industrial Solutions',        tagline:'Factory Setup & Plant Infrastructure',            desc:'Specialized industrial infrastructure including manufacturing plant setup, factory expansion, utility infrastructure and industrial modernization projects.',        points:['Manufacturing Plants','Factory Expansion','Plant Infrastructure','Industrial Modernization'] },
 ];
 
-
 function PageHero() {
   return (
-    <section id="services-hero" className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden" style={{ background: 'var(--color-bg)' }}>
-      {/* Services hero - construction/engineering */}
+    <section id="services-hero" className="relative py-28 md:py-32 overflow-hidden bg-gray-900">
+      {/* High-res architectural background */}
       <img
-        src="/services_hero.png"
-        alt="Engineering Services Hero"
+        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80"
+        alt="Engineering Services"
         aria-hidden="true"
-        className="ken-burns-bg"
-        style={{ opacity: 0.25, objectFit: 'cover', position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+        className="absolute inset-0 w-full h-full object-cover opacity-60 ken-burns-bg"
       />
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px)', backgroundSize:'60px 60px' }} />
-      <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full pointer-events-none" style={{ background:'radial-gradient(circle, rgba(41, 171, 226, 0.2), transparent 70%)', filter:'blur(60px)' }} />
-      <div className="container-xl relative z-10 flex flex-col items-center text-center gap-5">
-        <div className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-muted)' }}>
-          <Link to="/" className="hover:text-white transition-colors">Home</Link>
-          <span>/</span>
-          <span style={{ color:'var(--color-accent)' }}>Services</span>
-        </div>
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border" style={{ color:'var(--color-accent)', borderColor:'rgba(41, 171, 226, 0.2)', background:'rgba(41, 171, 226, 0.05)' }}>
-          <span className="w-1.5 h-1.5 rounded-full bg-current" />
-          14 Specialized Service Lines
-        </span>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text leading-tight tracking-tight max-w-3xl">Our Services</h1>
-        <p className="text-base md:text-lg max-w-2xl leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-          From concept to completion and beyond — Mahendram Landmark Ventures delivers engineering, construction, interiors and facility management under one roof.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3 mt-2">
-          {['500+ Projects','Pan India Operations','Single Point Accountability','End-to-End Delivery'].map((s) => (
-            <span key={s} className="px-4 py-1.5 rounded-full text-xs font-semibold" style={{ background:'rgba(0,63,135,0.05)', color:'var(--color-muted)', border:`1px solid ${BORDER}` }}>{s}</span>
-          ))}
-        </div>
+      
+      {/* Dark gradient to make text pop and keep the bottom edge sharp */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/60" />
+      
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+        <FadeIn delay={0}>
+          <div className="flex items-center gap-2 text-xs font-bold text-white/70 tracking-widest uppercase mb-4">
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[#29ABE2]">Services</span>
+          </div>
+        </FadeIn>
+        
+        <FadeIn delay={0.1}>
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold border border-white/20 bg-black/30 backdrop-blur-md text-white mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
+            14 Specialized Service Lines
+          </span>
+        </FadeIn>
+        
+        <FadeIn delay={0.2}>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight drop-shadow-2xl max-w-4xl leading-[1.1]">
+            Our Services
+          </h1>
+        </FadeIn>
+        
+        <FadeIn delay={0.3}>
+          <p className="text-base md:text-lg max-w-2xl text-white/90 mt-6 drop-shadow-md font-medium leading-relaxed">
+            From concept to completion and beyond — Mahendram Landmark Ventures delivers engineering, construction, interiors and facility management under one roof.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.4}>
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            {['500+ Projects','Pan India Operations','Single Point Accountability','End-to-End Delivery'].map((s) => (
+              <span key={s} className="px-5 py-2 rounded-full text-xs font-bold bg-white/10 backdrop-blur-sm text-white border border-white/20 shadow-lg">{s}</span>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
 
-function ServiceCard({ service, index }) {
-  const isOffset = typeof index === 'number' && index % 2 !== 0;
+function ServiceCard({ service }) {
   return (
-    <TiltCard as="article" id={`service-card-${service.id}`}
-      className={`glass-card group relative flex flex-col overflow-hidden h-full block ${isOffset ? 'lg:translate-y-8' : ''}`}
-      style={{ borderRadius: '16px' }}>
-      <div className="relative h-48 w-full flex-shrink-0 overflow-hidden">
+    <div className="bg-white rounded-[2rem] p-6 pb-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-300">
+      <div className="relative h-48 w-full flex-shrink-0 overflow-hidden rounded-2xl mb-6 shadow-sm">
         <img src={service.bgImage} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      <div className="flex flex-col gap-4 p-7 pt-8 flex-grow relative z-10">
-        <div className="absolute -top-6 left-6 w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-[var(--color-bg)] z-20" style={{ background: 'linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%)', color: '#ffffff' }}>
-          <service.Icon size={22} strokeWidth={2} />
+      
+      <div className="flex flex-col gap-4 flex-grow relative z-10 px-2">
+        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg bg-[#F0F7FF] text-[#29ABE2] -mt-14 relative z-20 border-4 border-white mb-2">
+          <service.Icon size={26} strokeWidth={2} />
         </div>
+        
         <div>
-          <h2 className="text-base font-extrabold gradient-text leading-snug">{service.title}</h2>
-          <p className="text-xs font-semibold uppercase tracking-wide mt-0.5" style={{ color:'var(--color-accent)' }}>{service.tagline}</p>
+          <h2 className="text-xl font-extrabold text-gray-900 leading-snug">{service.title}</h2>
+          <p className="text-xs font-bold uppercase tracking-wider mt-1.5 text-[#29ABE2]">{service.tagline}</p>
         </div>
-        <p className="text-sm leading-relaxed flex-grow" style={{ color: 'var(--color-muted)' }}>{service.desc}</p>
-        <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5">
+        
+        <p className="text-sm leading-relaxed flex-grow text-gray-600 font-medium">{service.desc}</p>
+        
+        <ul className="grid grid-cols-1 gap-x-3 gap-y-2 mt-4">
           {service.points.map((pt) => (
-            <li key={pt} className="flex items-center gap-1.5 text-xs font-medium" style={{ color: 'var(--color-muted)' }}>
-              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor:'var(--color-accent)' }} />{pt}
+            <li key={pt} className="flex items-center gap-2 text-xs font-bold text-gray-700">
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-[#29ABE2]" />{pt}
             </li>
           ))}
         </ul>
       </div>
-      <div className="px-7 py-4 border-t flex items-center justify-between mt-auto" style={{ borderColor:BORDER }}>
-        <Link to="/contact" id={`service-learn-${service.id}`}
-          className="flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 group/link" style={{ color:'var(--color-accent)' }}>
+      
+      <div className="px-2 pt-6 flex items-center justify-between mt-6 border-t border-gray-100">
+        <Link to="/contact" className="flex items-center gap-1.5 text-sm font-bold text-[#29ABE2] transition-all duration-200 group/link hover:text-blue-600">
           Learn More <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
         </Link>
-        <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background:'rgba(255,255,255,0.05)', color:'#7A9BBF' }}>View Details</span>
+        <span className="text-xs px-3 py-1.5 rounded-full font-bold bg-[#F0F7FF] text-[#29ABE2]">View Details</span>
       </div>
-    </TiltCard>
+    </div>
   );
 }
 
 function ServicesGrid() {
   return (
-    <section id="services-grid" className="section-padding relative overflow-hidden" style={{ background:'var(--color-card)' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        <div className="container-xl relative z-10">
-        <div className="text-center mb-12">
-          <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color:'var(--color-accent)' }}>What We Offer</p></FadeIn>
-          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold gradient-text">End-to-End Engineering Solutions</h2></FadeIn>
-          <FadeIn delay={0.2}><p className="mt-3 text-sm md:text-base max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+    <section id="services-grid" className="section-padding relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="text-center mb-16">
+          <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">What We Offer</p></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">End-to-End Engineering Solutions</h2></FadeIn>
+          <FadeIn delay={0.2}><p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-600 font-medium">
             Eight core service verticals, delivered by qualified professionals with deep domain expertise across commercial, industrial and institutional sectors.
           </p></FadeIn>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10">
           {SERVICES.map((svc, i) => (
             <FadeIn key={svc.id} delay={i * 0.1}>
               <ServiceCard service={svc} index={i} />
@@ -122,43 +135,63 @@ function ServicesGrid() {
 
 function ProcessStrip() {
   const steps = [
-    { n:'01', label:'Enquiry & Scope' }, { n:'02', label:'Design & Planning' },
-    { n:'03', label:'Procurement' }, { n:'04', label:'Execution' },
-    { n:'05', label:'Quality Check' }, { n:'06', label:'Handover & Support' },
+    { n:'01', label:'Enquiry & Scope', desc: 'Understanding requirements', bgImage: 'https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=400&q=80' }, 
+    { n:'02', label:'Design & Planning', desc: 'Detailed blueprints', bgImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=400&q=80' },
+    { n:'03', label:'Procurement', desc: 'Sourcing materials', bgImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80' }, 
+    { n:'04', label:'Execution', desc: 'On-site deployment', bgImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=400&q=80' },
+    { n:'05', label:'Quality Check', desc: 'Rigorous testing', bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80' }, 
+    { n:'06', label:'Handover', desc: 'Final delivery', bgImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80' },
   ];
   return (
-    <section id="delivery-process" className="py-8 md:py-10 relative overflow-hidden" style={{ background:'var(--color-bg)' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        <div className="container-xl relative z-10">
-        <div className="text-center mb-10">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2" style={{ color:'var(--color-accent)' }}>How We Work</p>
-          <h2 className="text-2xl md:text-3xl font-extrabold gradient-text">Our Delivery Process</h2>
+    <section id="delivery-process" className="py-20 relative overflow-hidden mb-10">
+      <div className="container-xl relative z-10">
+        <div className="text-center mb-16">
+          <FadeIn delay={0}>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">How We Work</p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">Our Delivery Process</h2>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-600 font-medium">
+              A systematic, six-step approach to ensure maximum efficiency, safety, and quality across all our engineering projects.
+            </p>
+          </FadeIn>
         </div>
-        <div className="overflow-x-auto pb-2 -mx-4 px-4">
-          <div className="flex items-start justify-start md:justify-center gap-0 min-w-max md:min-w-0">
+        
+        <div className="relative px-4 lg:px-8">
+          {/* Continuous Line underneath */}
+          <div className="hidden lg:block absolute top-[28px] left-[5%] right-[5%] h-0.5 bg-gradient-to-r from-transparent via-[#29ABE2]/30 to-transparent z-0" />
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4">
             {steps.map((step, idx) => (
-              <div key={step.n} className="flex items-center gap-0">
-                <div className="flex flex-col items-center gap-2 px-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-extrabold text-white flex-shrink-0" style={{ background:'linear-gradient(135deg,var(--color-accent),var(--color-accent-2))' }}>
+              <FadeIn key={step.n} delay={idx * 0.1}>
+                <div className="flex flex-col items-center gap-5 relative z-10 group cursor-default">
+                  
+                  {/* Floating Glassmorphism Image Popup */}
+                  <div className="absolute bottom-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-48 h-32 opacity-0 pointer-events-none origin-bottom scale-50 translate-y-6 group-hover:scale-100 group-hover:-translate-y-2 group-hover:opacity-100 transition-all duration-500 ease-out z-50">
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-gray-900 [transform:translateZ(0)]">
+                      <img src={step.bgImage} className="absolute inset-0 w-full h-full object-cover scale-125 group-hover:scale-100 transition-transform duration-700 ease-out" alt={step.label} />
+                      <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px] z-10 group-hover:backdrop-blur-0 transition-all duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent z-20" />
+                      <div className="absolute bottom-3 left-0 right-0 text-center z-30 px-2">
+                        <span className="text-[10px] font-black text-white uppercase tracking-widest drop-shadow-md">{step.label}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-extrabold text-[#29ABE2] bg-white shadow-[0_10px_30px_rgba(41,171,226,0.15)] border border-gray-100 group-hover:scale-110 group-hover:-translate-y-1 group-hover:bg-[#29ABE2] group-hover:text-white group-hover:shadow-[0_15px_35px_rgba(41,171,226,0.4)] transition-all duration-300 relative z-40">
                     {step.n}
                   </div>
-                  <span className="text-xs font-semibold text-center w-20 text-[var(--color-primary)]">{step.label}</span>
+                  <div className="text-center relative z-40">
+                    <h3 className="text-sm font-extrabold text-gray-900 mb-1">{step.label}</h3>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{step.desc}</p>
+                  </div>
                 </div>
-                {idx < steps.length - 1 && (
-                  <span className="text-lg font-bold mb-4 flex-shrink-0" style={{ color:'var(--color-accent)' }}>→</span>
-                )}
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
-        
-        {/* Decorative dots pattern */}
-        <svg className="absolute bottom-0 left-0 w-64 h-64 text-[var(--color-accent)] opacity-[0.08] pointer-events-none z-0" viewBox="0 0 100 100" fill="currentColor">
-          <pattern id="dots-pattern-services" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.5" />
-          </pattern>
-          <rect x="0" y="0" width="100" height="100" fill="url(#dots-pattern-services)" />
-        </svg>
       </div>
     </section>
   );
@@ -166,22 +199,22 @@ function ProcessStrip() {
 
 function CTABanner() {
   return (
-    <section id="services-cta" className="py-10 md:py-14 relative overflow-hidden" style={{ background: 'var(--color-card)' }}>
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none ken-burns-bg" />
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at center, rgba(41, 171, 226, 0.05) 0%, transparent 70%)' }} />
+    <section id="services-cta" className="py-12 md:py-14 relative overflow-hidden bg-gray-900 rounded-t-[2.5rem] shadow-2xl mt-10">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80')] opacity-10 object-cover mix-blend-overlay pointer-events-none ken-burns-bg" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#29ABE2]/20 to-transparent pointer-events-none" />
+      
       <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div>
-          <h2 className="text-2xl md:text-3xl font-extrabold gradient-text">Need a Custom Engineering Solution?</h2>
-          <p className="mt-2 text-sm md:text-base max-w-lg leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">Need a Custom Engineering Solution?</h2>
+          <p className="mt-4 text-base max-w-xl leading-relaxed text-white/80 font-medium">
             Tell us your project requirements and our team will prepare a detailed scope and proposal tailored to your needs.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-          <Link to="/contact" id="services-cta-btn" className="px-8 py-4 rounded-sm text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95" style={{ background:'linear-gradient(135deg,var(--color-accent),var(--color-accent-2))', boxShadow:'0 4px 24px rgba(41, 171, 226, 0.3)' }}>
-            Request Proposal →
+          <Link to="/contact" className="px-10 py-4 rounded-full text-sm font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-[0_10px_25px_rgba(41,171,226,0.3)] bg-[#29ABE2]">
+            Request Proposal
           </Link>
-          <Link to="/contact" id="services-consult-btn" className="px-8 py-4 rounded-sm text-sm font-bold text-[var(--color-primary)] border transition-all hover:bg-[var(--color-primary)] hover:text-white active:scale-95" style={{ borderColor:'rgba(0,63,135,0.2)' }}>
+          <Link to="/contact" className="px-10 py-4 rounded-full text-sm font-bold text-white border-2 border-white/20 hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
             Schedule Consultation
           </Link>
         </div>
@@ -192,18 +225,19 @@ function CTABanner() {
 
 export default function Services() {
   return (
-    <>
+    <div className="bg-[#f8f9fa] min-h-screen">
       <Helmet>
-        <title>Our Services — Engineering, Construction, PEB, MEP, Fire Protection | Mahendram Landmark</title>
+        <title>Our Services | Mahendram Landmark</title>
         <meta name="description" content="14 specialized engineering services: Infrastructure, Construction, PEB, MEP, Fire Protection, Interior Fit-Out, Facility Management and Industrial Solutions across India." />
         <meta property="og:title" content="Engineering & Infrastructure Services — Mahendram Landmark Ventures" />
         <meta property="og:description" content="End-to-end engineering solutions from concept to operations. 8 core service verticals delivered across India." />
         <meta property="og:url" content="https://www.mahendramlandmark.com/services" />
       </Helmet>
+      
       <PageHero />
       <ServicesGrid />
       <ProcessStrip />
       <CTABanner />
-    </>
+    </div>
   );
 }

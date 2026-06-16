@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────
    Google Fonts — Inter
 ───────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ─────────────────────────────────────────
    Tailwind Directives
@@ -46,7 +46,6 @@
   }
 
   body {
-    font-family: 'Inter', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-primary);
     line-height: 1.65;
@@ -58,10 +57,8 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
     font-weight: 700;
     line-height: 1.2;
-    color: var(--color-primary);
   }
 
   img, video {

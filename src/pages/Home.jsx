@@ -319,25 +319,28 @@ function WhyUs() {
 
 function CTABanner() {
   return (
-    <section id="cta-banner" className="py-14 relative overflow-hidden bg-gradient-dark">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(41, 171, 226, 0.1) 0%,transparent 70%)' }} />
-      <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left w-full">
+    <section id="cta-banner" className="py-12 md:py-14 relative overflow-hidden bg-gray-900 rounded-t-[2.5rem] shadow-2xl mt-10">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541888081622-1cb42c75a40a?auto=format&fit=crop&w=1920&q=80')] opacity-10 object-cover mix-blend-overlay pointer-events-none ken-burns-bg" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#29ABE2]/20 to-transparent pointer-events-none" />
+      
+      <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <FadeIn delay={0}>
-          <div className="flex flex-col gap-3">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight text-white">
+          <div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
               Let's Build Something<br className="hidden md:block" /> Exceptional Together
             </h2>
-            <p className="max-w-lg text-base leading-relaxed text-white/80">
+            <p className="mt-4 text-base max-w-xl leading-relaxed text-white/80 font-medium">
               Request a consultation today. Our engineering team will assess your project requirements and deliver a tailored proposal within 48 hours.
             </p>
           </div>
         </FadeIn>
+        
         <FadeIn delay={0.1}>
           <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-            <Link to="/contact" id="cta-banner-primary" className="px-8 py-4 rounded-sm text-sm font-bold text-white transition-all duration-200 hover:opacity-90 active:scale-95" style={{ background: 'linear-gradient(135deg,var(--color-accent),var(--color-accent-2))', boxShadow: '0 4px 24px rgba(41, 171, 226, 0.2)' }}>
-              Get in Touch →
+            <Link to="/contact" className="px-10 py-4 rounded-full text-sm font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-[0_10px_25px_rgba(41,171,226,0.3)] bg-[#29ABE2]">
+              Get in Touch
             </Link>
-            <Link to="/services" id="cta-banner-secondary" className="px-8 py-4 rounded-sm text-sm font-bold text-white border transition-all duration-200 hover:bg-white/10 active:scale-95" style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
+            <Link to="/services" className="px-10 py-4 rounded-full text-sm font-bold text-white border-2 border-white/20 hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
               Explore Services
             </Link>
           </div>

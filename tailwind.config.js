@@ -13,7 +13,7 @@ export default {
         muted:    '#8A9BB5',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       keyframes: {
         marquee: {
