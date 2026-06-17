@@ -34,7 +34,7 @@ const TIMELINE = [
 
 function PageHero() {
   return (
-    <section id="about-hero" className="relative py-28 md:py-32 overflow-hidden bg-gray-900">
+    <section id="about-hero" className="relative pt-36 pb-28 md:pt-40 md:pb-32 overflow-hidden bg-gray-900">
       {/* High-res architectural background */}
       <img
         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
@@ -64,13 +64,13 @@ function PageHero() {
         </FadeIn>
         
         <FadeIn delay={0.2}>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight drop-shadow-2xl max-w-4xl leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight max-w-4xl leading-[1.1]">
             About Mahendram Landmark
           </h1>
         </FadeIn>
         
         <FadeIn delay={0.3}>
-          <p className="text-base md:text-lg max-w-2xl text-white/90 mt-6 drop-shadow-md font-medium leading-relaxed">
+          <p className="text-base md:text-lg max-w-2xl text-white/90 mt-6 font-medium leading-relaxed">
             An integrated engineering, infrastructure, contracting and asset management company delivering comprehensive solutions across India.
           </p>
         </FadeIn>

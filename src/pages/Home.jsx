@@ -43,99 +43,111 @@ const WHY_US = [
 
 function Hero() {
   return (
-    <div style={{ background: 'var(--color-bg)' }}>
-      <section id="hero" className="relative overflow-hidden flex flex-col items-center justify-center pt-32 pb-14 md:pt-40 md:pb-20"
-        style={{ minHeight: '100vh' }}>
+    <section id="hero" className="relative w-full pt-28 pb-20 md:pt-32 lg:pt-24 md:pb-32 lg:pb-0 lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
+      
+
+
+      <div className="w-full max-w-[1750px] px-6 lg:px-12 xl:px-16 mx-auto relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-16 items-center pt-10 lg:pt-0">
         
-        {/* Three-part split interactive background */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden z-0 flex flex-col md:flex-row">
-          <div className="flex-1 hover:flex-[1.3] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] relative h-full group overflow-hidden border-r border-white/5 cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80" alt="Infrastructure" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/60 transition-colors duration-700 group-hover:bg-black/20" />
-            <div className="absolute bottom-10 left-10 opacity-0 transform translate-y-4 transition-all duration-700 delay-100 group-hover:opacity-100 group-hover:translate-y-0 z-10 hidden md:block">
-               <h3 className="text-white text-3xl font-extrabold tracking-tight">Infrastructure</h3>
-               <p className="text-white/90 font-medium tracking-wide mt-1">Engineering & Construction</p>
-            </div>
-          </div>
-          <div className="flex-1 hover:flex-[1.3] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] relative h-full group overflow-hidden border-r border-white/5 cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Interiors" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/50 transition-colors duration-700 group-hover:bg-black/20" />
-            <div className="absolute bottom-10 left-10 opacity-0 transform translate-y-4 transition-all duration-700 delay-100 group-hover:opacity-100 group-hover:translate-y-0 z-10 hidden md:block">
-               <h3 className="text-white text-3xl font-extrabold tracking-tight">Interiors</h3>
-               <p className="text-white/90 font-medium tracking-wide mt-1">Premium Fit-Out Solutions</p>
-            </div>
-          </div>
-          <div className="flex-1 hover:flex-[1.3] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] relative h-full group overflow-hidden cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Software" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" />
-            <div className="absolute inset-0 bg-[var(--color-primary)]/80 transition-colors duration-700 group-hover:bg-[var(--color-primary)]/40" />
-            <div className="absolute bottom-10 left-10 opacity-0 transform translate-y-4 transition-all duration-700 delay-100 group-hover:opacity-100 group-hover:translate-y-0 z-10 hidden md:block">
-               <h3 className="text-white text-3xl font-extrabold tracking-tight">Software & IT</h3>
-               <p className="text-white/90 font-medium tracking-wide mt-1">Custom Digital Transformation</p>
-            </div>
-          </div>
-        </div>
-        {/* Subtle overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/20 z-0 pointer-events-none" />
-
-        {/* Top-left small uppercase caption */}
-        <div className="absolute top-28 left-8 md:top-36 md:left-12 z-10">
-          <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase text-white drop-shadow-sm">
-            SINCE EST. 2005 · ENGINEERING & INFRASTRUCTURE
-          </p>
-        </div>
-
-        {/* Floating stat badge cards on the right side */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20 hidden lg:flex">
-          <TiltCard className="bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl p-5 w-48 shadow-2xl">
-            <h3 className="text-3xl font-extrabold text-white mb-1"><CountUp end="500+" /></h3>
-            <p className="text-xs text-white/80 font-medium tracking-wide">Projects Delivered</p>
-          </TiltCard>
-          <TiltCard className="bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl p-5 w-48 shadow-2xl">
-            <h3 className="text-3xl font-extrabold text-white mb-1"><CountUp end="20+" /></h3>
-            <p className="text-xs text-white/80 font-medium tracking-wide">Years Combined Expertise</p>
-          </TiltCard>
-        </div>
-
-        {/* Center content */}
-        <div className="relative z-10 flex flex-col items-center text-center w-full px-4">
+        {/* Text Content */}
+        <div className="flex flex-col gap-6 text-center lg:text-left lg:col-span-5">
           <FadeIn delay={0}>
-            <h1 className="text-white font-extrabold leading-none tracking-tight" style={{ fontSize: 'clamp(2.5rem, 10vw, 12rem)' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-gray-100 mb-4 mx-auto lg:mx-0 w-max">
+              <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
+              <span className="text-xs font-bold text-gray-600 tracking-widest uppercase">Shaping the Future</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl lg:text-[4.2rem] xl:text-[5rem] font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500">
               MAHENDRAM
             </h1>
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <p className="text-sm md:text-xl text-white mt-4 md:mt-2 font-medium tracking-wide max-w-3xl leading-relaxed" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}>
-              Building Infrastructure. Creating Workspaces. Managing Assets.
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 font-medium tracking-tight max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Building robust <span className="text-[#0A4D8C] font-bold">Infrastructure</span>.<br/>
+              Creating dynamic <span className="text-[#29ABE2] font-bold">Workspaces</span>.<br/>
+              Managing core <span className="text-gray-900 font-bold">Assets</span>.
             </p>
           </FadeIn>
-        </div>
 
-        {/* Bottom-center pill button with 3D floating badge */}
-        <div className="absolute bottom-20 md:bottom-28 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
           <FadeIn delay={0.4}>
-            <Link to="/about" className="group flex items-center gap-3 bg-[#1E2329] hover:bg-black transition-colors rounded-full pl-6 pr-2 py-2 shadow-xl">
-              <span className="text-xs font-bold text-white tracking-widest uppercase">Discover More</span>
-              <span className="w-8 h-8 rounded-full flex items-center justify-center bg-white text-[#1E2329] group-hover:scale-105 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-              </span>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
+              <Link to="/services" className="px-8 py-4 rounded-full bg-gradient-to-r from-[#0A4D8C] to-[#29ABE2] text-white font-bold text-base hover:shadow-[0_10px_30px_rgba(41,171,226,0.3)] hover:scale-105 transition-all flex items-center justify-center gap-2 group">
+                Explore More
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </Link>
+              <Link to="/contact" className="px-8 py-4 rounded-full bg-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center">
+                Contact Us
+              </Link>
+            </div>
           </FadeIn>
           
+          {/* Quick stats below text */}
           <FadeIn delay={0.6}>
-            <div className="floating-3d-wrapper hidden sm:block">
-              <div className="floating-3d-badge">
-                <div className="floating-3d-badge-layer2"></div>
-                <div className="floating-3d-badge-layer1"></div>
-                <div className="floating-3d-badge-icon">
-                  <Zap size={20} strokeWidth={2} />
-                </div>
+            <div className="flex items-center gap-8 mt-10 justify-center lg:justify-start pt-8 border-t border-gray-200/60">
+              <div>
+                <h4 className="text-3xl font-black text-gray-900">500+</h4>
+                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Projects</p>
+              </div>
+              <div className="w-px h-10 bg-gray-200"></div>
+              <div>
+                <h4 className="text-3xl font-black text-gray-900">20+</h4>
+                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Years Exp</p>
               </div>
             </div>
           </FadeIn>
         </div>
-      </section>
-    </div>
+
+        {/* Right Side Image Composition */}
+        <div className="relative w-full h-[450px] md:h-[600px] lg:h-[600px] xl:h-[700px] z-10 lg:col-span-7 lg:mt-0 mt-8">
+          <FadeIn delay={0.3} className="w-full h-full relative">
+            
+            {/* Main Video Card */}
+            <div className="w-full h-full rounded-[2.5rem] xl:rounded-[4rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-[6px] border-white relative z-10 group bg-white">
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                poster="/@fs/home/zafar-farooque/.gemini/antigravity/brain/15140b34-30d2-4d7a-b767-a7deb8004a91/hero_infrastructure_1781678147300.png"
+                className="w-full h-full object-cover object-center scale-[1.15] md:scale-[1.2] transition-transform duration-[1.5s] group-hover:scale-[1.25]"
+              >
+                <source src="/hero_vid_v2.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A4D8C]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            </div>
+
+            {/* Floating Element 1 (Value) */}
+            <div className="absolute -left-8 lg:-left-12 bottom-[10%] xl:bottom-[15%] bg-white/95 backdrop-blur-xl border border-white p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(41,171,226,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '4s' }}>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-gradient-to-br from-[#29ABE2]/20 to-[#0A4D8C]/10 flex items-center justify-center text-[#29ABE2]">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div>
+                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 uppercase tracking-widest">Portfolio Value</p>
+                  <p className="text-xl xl:text-2xl font-black text-gray-900">₹2500 Cr+</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Element 2 (Team) */}
+            <div className="absolute -right-4 lg:-right-10 top-[10%] xl:top-[12%] bg-white/95 backdrop-blur-xl border border-white p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(10,77,140,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '5s', animationDelay: '1s' }}>
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3 xl:-space-x-4">
+                  <img className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Engineer" />
+                  <img className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Architect" />
+                  <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white bg-[#0A4D8C] flex items-center justify-center text-white text-xs xl:text-sm font-bold shadow-inner z-10">+50</div>
+                </div>
+                <div>
+                  <p className="text-sm xl:text-base font-black text-gray-900">Expert Team</p>
+                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 uppercase">Engineers & Archs</p>
+                </div>
+              </div>
+            </div>
+
+          </FadeIn>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -359,7 +371,7 @@ function CTABanner() {
 
 export default function Home() {
   return (
-    <div className="bg-[#f8f9fa] min-h-screen relative overflow-hidden">
+    <div className="bg-[#fafcff] min-h-screen relative overflow-hidden">
       <Helmet>
         <title>Mahendram Landmark Ventures Pvt Ltd — Integrated Engineering & Infrastructure India</title>
         <meta name="description" content="Mahendram Landmark Ventures delivers Engineering, Construction, PEB, MEP, Fire Protection, Interiors and Facility Management across India. 500+ projects. Pan India." />
@@ -368,9 +380,12 @@ export default function Home() {
         <meta property="og:url" content="https://www.mahendramlandmark.com/" />
       </Helmet>
       
-      {/* Seamless sweeping background gradient connecting the whole page */}
-      <div className="absolute top-0 right-0 w-full h-[200vh] bg-gradient-to-b from-transparent via-[#29ABE2]/[0.03] to-transparent pointer-events-none z-0 transform -skew-y-12" />
-      <div className="absolute top-[150vh] left-0 w-full h-[200vh] bg-gradient-to-b from-transparent via-[#0A4D8C]/[0.02] to-transparent pointer-events-none z-0 transform skew-y-12" />
+      {/* Massive seamless background elements connecting the entire page */}
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-[#29ABE2]/10 to-transparent blur-[120px]" />
+        <div className="absolute top-[40%] right-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tl from-[#0A4D8C]/5 to-transparent blur-[150px]" />
+        <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-gradient-to-t from-[#29ABE2]/10 to-transparent blur-[150px]" />
+      </div>
 
       <div id="home-scroll-container" className="relative z-10">
         <Hero />

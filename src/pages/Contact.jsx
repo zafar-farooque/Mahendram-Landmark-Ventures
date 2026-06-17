@@ -137,7 +137,7 @@ function ContactForm({ tabId }) {
 
 function PageHero() {
   return (
-    <section id="contact-hero" className="relative h-[45vh] min-h-[350px] overflow-hidden bg-gray-900">
+    <section id="contact-hero" className="relative h-[45vh] min-h-[400px] overflow-hidden bg-gray-900">
       <img
         src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1920&q=80"
         alt="Contact Hero"
@@ -145,11 +145,11 @@ function PageHero() {
         className="absolute inset-0 w-full h-full object-cover opacity-60"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#f8f9fa]" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pb-20">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-32 pb-32">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
           Get in Touch
         </h1>
-        <p className="text-base max-w-xl text-white/90 mt-4 drop-shadow-md font-medium">
+        <p className="text-base max-w-xl text-white/90 mt-4 font-medium">
           Business enquiries, tender submissions, vendor registrations and career applications — all in one place.
         </p>
       </div>
