@@ -232,26 +232,26 @@ export default function KnowledgeCenter() {
         <div className="container-xl relative z-10 pt-10">
 
           {/* Search + filters */}
-          <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between">
+          <div className="flex flex-col gap-8 mb-12 items-center">
             {/* Search */}
-            <div className="relative w-full md:max-w-sm flex-shrink-0">
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <div className="relative w-full max-w-2xl mx-auto flex-shrink-0">
+              <svg className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               <input type="text" placeholder="Search articles..." value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-12 pr-10 py-3.5 rounded-full border border-gray-200 text-sm font-medium text-gray-900 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#29ABE2]/30 focus:border-[#29ABE2] transition-all" />
+                className="w-full pl-14 pr-12 py-4 rounded-full border border-gray-200 text-base font-medium text-gray-900 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-4 focus:ring-[#29ABE2]/20 focus:border-[#29ABE2] transition-all" />
               {search && (
-                <button onClick={() => setSearch('')} aria-label="Clear search" className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition-colors text-xs font-bold">✕</button>
+                <button onClick={() => setSearch('')} aria-label="Clear search" className="absolute right-5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition-colors text-sm font-bold">✕</button>
               )}
             </div>
 
             {/* Category pills */}
-            <div className="overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-              <div className="flex gap-2 min-w-max" role="group">
+            <div className="w-full flex justify-center">
+              <div className="flex flex-wrap justify-center gap-3">
                 {CATEGORIES.map((cat) => {
                   const active = activeCat === cat.value;
                   return (
                     <button key={cat.value} aria-pressed={active} onClick={() => setActiveCat(cat.value)}
-                      className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 whitespace-nowrap border ${active ? 'bg-[#29ABE2] text-white border-[#29ABE2] shadow-[0_5px_15px_rgba(41,171,226,0.3)] scale-105' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900 shadow-sm'}`}>
+                      className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${active ? 'bg-gray-900 text-white shadow-md scale-105 border border-gray-900' : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:text-gray-900 hover:bg-gray-50 shadow-sm'}`}>
                       {cat.label}
                     </button>
                   );
