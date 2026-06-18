@@ -90,7 +90,7 @@ export default function Navbar() {
           {/* Center: Desktop Nav (Pills) */}
           <nav
             id="desktop-nav"
-            className="hidden lg:flex items-center gap-1 bg-black/5 dark:bg-white/5 px-2 py-1 rounded-full border border-black/5 dark:border-white/10"
+            className="hidden xl:flex items-center gap-1 bg-black/5 dark:bg-white/5 px-2 py-1 rounded-full border border-black/5 dark:border-white/10"
             aria-label="Primary navigation"
           >
             {NAV_LINKS.map((link) => (
@@ -143,7 +143,7 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
               id="navbar-hamburger"
-              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none"
+              className="xl:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none"
               onClick={() => setMenuOpen((prev) => !prev)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}

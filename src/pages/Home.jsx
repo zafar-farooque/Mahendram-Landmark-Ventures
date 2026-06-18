@@ -43,7 +43,7 @@ const WHY_US = [
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full pt-20 md:pt-32 lg:pt-24 pb-12 md:pb-32 lg:pb-16 lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
+    <section id="hero" className="relative w-full pt-20 md:pt-32 lg:pt-28 pb-12 md:pb-32 lg:pb-24 lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
       
 
 
@@ -56,7 +56,7 @@ function Hero() {
               <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
               <span className="text-xs font-bold text-gray-600 dark:text-gray-300 tracking-widest uppercase">Shaping the Future</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[4.2rem] xl:text-[5rem] font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
               MAHENDRAM
             </h1>
           </FadeIn>
@@ -100,7 +100,7 @@ function Hero() {
         </div>
 
         {/* Right Side Image Composition */}
-        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[600px] lg:h-[600px] xl:h-[700px] z-10 lg:col-span-7 lg:mt-0 mt-6">
+        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[500px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px] max-h-[50vh] lg:max-h-[60vh] xl:max-h-[70vh] z-10 lg:col-span-7 lg:mt-0 mt-6">
           <FadeIn delay={0.3} className="w-full h-full relative">
             
             {/* Main Video Card */}
@@ -111,7 +111,7 @@ function Hero() {
                 muted 
                 playsInline
                 poster="/@fs/home/zafar-farooque/.gemini/antigravity/brain/15140b34-30d2-4d7a-b767-a7deb8004a91/hero_infrastructure_1781678147300.png"
-                className="w-full h-full object-cover object-center scale-[1.15] md:scale-[1.2] transition-transform duration-[1.5s] group-hover:scale-[1.25]"
+                className="w-full h-full object-cover object-center scale-[1.3] md:scale-[1.35] transition-transform duration-[1.5s] group-hover:scale-[1.4]"
               >
                 <source src="/lv_0_20260618184154.mp4" type="video/mp4" />
               </video>
