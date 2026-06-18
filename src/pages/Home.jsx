@@ -52,20 +52,20 @@ function Hero() {
         {/* Text Content */}
         <div className="flex flex-col gap-6 text-center lg:text-left lg:col-span-5">
           <FadeIn delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-gray-100 mb-4 mx-auto lg:mx-0 w-max">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/10 dark:border-white/10 shadow-sm border border-gray-100 mb-4 mx-auto lg:mx-0 w-max">
               <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
-              <span className="text-xs font-bold text-gray-600 tracking-widest uppercase">Shaping the Future</span>
+              <span className="text-xs font-bold text-gray-600 dark:text-gray-300 tracking-widest uppercase">Shaping the Future</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-[4.2rem] xl:text-[5rem] font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500">
+            <h1 className="text-5xl md:text-7xl lg:text-[4.2rem] xl:text-[5rem] font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
               MAHENDRAM
             </h1>
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 font-medium tracking-tight max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium tracking-tight max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Building robust <span className="text-[#0A4D8C] font-bold">Infrastructure</span>.<br/>
               Creating dynamic <span className="text-[#29ABE2] font-bold">Workspaces</span>.<br/>
-              Managing core <span className="text-gray-900 font-bold">Assets</span>.
+              Managing core <span className="text-gray-900 dark:text-white font-bold">Assets</span>.
             </p>
           </FadeIn>
 
@@ -75,7 +75,7 @@ function Hero() {
                 Explore More
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </Link>
-              <Link to="/contact" className="px-8 py-4 rounded-full bg-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center">
+              <Link to="/contact" className="px-8 py-4 rounded-full bg-white dark:bg-white/10 dark:border-white/20 dark:text-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center">
                 Contact Us
               </Link>
             </div>
@@ -83,15 +83,15 @@ function Hero() {
           
           {/* Quick stats below text */}
           <FadeIn delay={0.6}>
-            <div className="flex items-center gap-8 mt-10 justify-center lg:justify-start pt-8 border-t border-gray-200/60">
+            <div className="flex items-center gap-8 mt-10 justify-center lg:justify-start pt-8 border-t border-gray-200/60 dark:border-white/10">
               <div>
-                <h4 className="text-3xl font-black text-gray-900">500+</h4>
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Projects</p>
+                <h4 className="text-3xl font-black text-gray-900 dark:text-white">500+</h4>
+                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Projects</p>
               </div>
-              <div className="w-px h-10 bg-gray-200"></div>
+              <div className="w-px h-10 bg-gray-200 dark:bg-white/20"></div>
               <div>
-                <h4 className="text-3xl font-black text-gray-900">20+</h4>
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Years Exp</p>
+                <h4 className="text-3xl font-black text-gray-900 dark:text-white">20+</h4>
+                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Years Exp</p>
               </div>
             </div>
           </FadeIn>
@@ -117,20 +117,20 @@ function Hero() {
             </div>
 
             {/* Floating Element 1 (Value) */}
-            <div className="absolute -left-8 lg:-left-12 bottom-[10%] xl:bottom-[15%] bg-white/95 backdrop-blur-xl border border-white p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(41,171,226,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '4s' }}>
+            <div className="absolute -left-8 lg:-left-12 bottom-[10%] xl:bottom-[15%] bg-white/95 dark:bg-[#111827]/95 backdrop-blur-xl border border-white dark:border-white/10 p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(41,171,226,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '4s' }}>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-gradient-to-br from-[#29ABE2]/20 to-[#0A4D8C]/10 flex items-center justify-center text-[#29ABE2]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
                 <div>
-                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 uppercase tracking-widest">Portfolio Value</p>
-                  <p className="text-xl xl:text-2xl font-black text-gray-900">₹2500 Cr+</p>
+                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Portfolio Value</p>
+                  <p className="text-xl xl:text-2xl font-black text-gray-900 dark:text-white">₹2500 Cr+</p>
                 </div>
               </div>
             </div>
 
             {/* Floating Element 2 (Team) */}
-            <div className="absolute -right-4 lg:-right-10 top-[10%] xl:top-[12%] bg-white/95 backdrop-blur-xl border border-white p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(10,77,140,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '5s', animationDelay: '1s' }}>
+            <div className="absolute -right-4 lg:-right-10 top-[10%] xl:top-[12%] bg-white/95 dark:bg-[#111827]/95 backdrop-blur-xl border border-white dark:border-white/10 p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(10,77,140,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '5s', animationDelay: '1s' }}>
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3 xl:-space-x-4">
                   <img className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Engineer" />
@@ -138,8 +138,8 @@ function Hero() {
                   <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white bg-[#0A4D8C] flex items-center justify-center text-white text-xs xl:text-sm font-bold shadow-inner z-10">+50</div>
                 </div>
                 <div>
-                  <p className="text-sm xl:text-base font-black text-gray-900">Expert Team</p>
-                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 uppercase">Engineers & Archs</p>
+                  <p className="text-sm xl:text-base font-black text-gray-900 dark:text-white">Expert Team</p>
+                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 dark:text-gray-400 uppercase">Engineers & Archs</p>
                 </div>
               </div>
             </div>
@@ -155,14 +155,14 @@ function StatsBar() {
   return (
     <div className="relative z-20 -mt-16 mb-16 px-4">
       <div className="container-xl max-w-5xl mx-auto">
-        <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-around gap-6 p-8 md:p-10 rounded-[2.5rem] bg-white/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-white">
+        <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-around gap-6 p-8 md:p-10 rounded-[2.5rem] bg-white/90 dark:bg-[#111827]/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-white dark:border-white/10">
           {STATS.map((s, i) => (
             <FadeIn key={s.label} delay={i * 0.1}>
               <div className="flex flex-col items-center gap-1">
                 <span className="text-3xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-br from-[#29ABE2] to-[#0A4D8C]">
                   <CountUp end={s.value} />
                 </span>
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-500 mt-1">{s.label}</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-1">{s.label}</span>
               </div>
             </FadeIn>
           ))}
@@ -179,7 +179,7 @@ function GroupStructure() {
         <FadeIn delay={0}>
           <div className="mb-16 text-center relative z-10">
             <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Group Structure</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 relative inline-block">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white relative inline-block">
               Three Specialized Divisions
             </h2>
           </div>
@@ -228,19 +228,19 @@ function SolutionsGrid() {
         <FadeIn delay={0}>
           <div className="mb-16 text-center">
             <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">What We Do</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">Integrated Engineering Solutions</h2>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white">Integrated Engineering Solutions</h2>
           </div>
         </FadeIn>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
           {SOLUTIONS.map((s, i) => (
             <FadeIn key={s.title} delay={i * 0.1}>
-              <div className="group block h-full bg-white rounded-[2rem] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-gray-100 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden">
+              <div className="group block h-full bg-white dark:bg-[#111827] rounded-[2rem] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#29ABE2]/10 to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm mb-6 bg-[#F0F7FF] text-[#29ABE2] group-hover:scale-110 group-hover:bg-[#29ABE2] group-hover:text-white transition-all duration-500 border border-[#29ABE2]/10">
                   <s.Icon size={24} strokeWidth={2} />
                 </div>
-                <h3 className="font-extrabold text-xl text-gray-900 mb-2">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500 font-medium">{s.desc}</p>
+                <h3 className="font-extrabold text-xl text-gray-900 dark:text-white mb-2">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400 font-medium">{s.desc}</p>
               </div>
             </FadeIn>
           ))}
@@ -258,11 +258,11 @@ function IndustriesStrip() {
         <p className="text-center text-xs font-bold tracking-[0.2em] uppercase mb-8 text-[#29ABE2]">Industries We Serve</p>
       </FadeIn>
       <div className="relative flex w-full">
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-gradient-to-r from-[#f8f9fa] to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-gradient-to-l from-[#f8f9fa] to-transparent" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-gradient-to-r from-[#f8f9fa] dark:from-[#0A0F1A] to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-gradient-to-l from-[#f8f9fa] dark:from-[#0A0F1A] to-transparent" />
         <div className="flex animate-marquee whitespace-nowrap">
           {items.map((ind, i) => (
-            <span key={`${ind}-${i}`} className="inline-flex items-center gap-3 mx-8 text-sm md:text-base font-extrabold text-gray-400 select-none hover:text-[#29ABE2] transition-colors cursor-default">
+            <span key={`${ind}-${i}`} className="inline-flex items-center gap-3 mx-8 text-sm md:text-base font-extrabold text-gray-400 dark:text-gray-500 select-none hover:text-[#29ABE2] transition-colors cursor-default">
               <span className="w-2 h-2 rounded-full bg-[#29ABE2]/50" />{ind}
             </span>
           ))}
@@ -287,14 +287,14 @@ function WhyUs() {
               </div>
               
               {/* Floating Glassmorphism Badge */}
-              <div className="absolute -bottom-8 -right-4 md:-right-8 bg-white/90 backdrop-blur-xl border border-white p-6 rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.08)] max-w-[240px] hidden sm:block animate-bounce" style={{ animationDuration: '4s' }}>
+              <div className="absolute -bottom-8 -right-4 md:-right-8 bg-white/90 dark:bg-[#111827]/90 backdrop-blur-xl border border-white dark:border-white/10 p-6 rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.08)] max-w-[240px] hidden sm:block animate-bounce" style={{ animationDuration: '4s' }}>
                 <div className="flex items-center gap-4 mb-2">
                   <div className="w-12 h-12 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
                   </div>
-                  <h4 className="text-3xl font-black text-gray-900">100%</h4>
+                  <h4 className="text-3xl font-black text-gray-900 dark:text-white">100%</h4>
                 </div>
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Commitment to Engineering Excellence</p>
+                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Commitment to Engineering Excellence</p>
               </div>
             </div>
           </FadeIn>
@@ -304,10 +304,10 @@ function WhyUs() {
             <FadeIn delay={0.1}>
               <div className="mb-10 text-center lg:text-left">
                 <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Why Choose Us</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
                   The Mahendram<br /> Advantage
                 </h2>
-                <p className="mt-4 text-base text-gray-500 font-medium max-w-lg mx-auto lg:mx-0">
+                <p className="mt-4 text-base text-gray-500 dark:text-gray-400 font-medium max-w-lg mx-auto lg:mx-0">
                   We blend deep engineering expertise with innovative project management to deliver infrastructure and spaces that stand the test of time.
                 </p>
               </div>
@@ -317,12 +317,12 @@ function WhyUs() {
               {WHY_US.map((w, i) => (
                 <FadeIn key={w.title} delay={0.2 + (i * 0.1)}>
                   <div className="group flex gap-4">
-                    <div className="w-12 h-12 rounded-[1rem] flex items-center justify-center flex-shrink-0 bg-white shadow-sm border border-gray-100 text-[#29ABE2] group-hover:scale-110 group-hover:bg-[#29ABE2] group-hover:text-white transition-all duration-300">
+                    <div className="w-12 h-12 rounded-[1rem] flex items-center justify-center flex-shrink-0 bg-white dark:bg-white/10 shadow-sm border border-gray-100 dark:border-white/10 text-[#29ABE2] group-hover:scale-110 group-hover:bg-[#29ABE2] group-hover:text-white transition-all duration-300">
                       <w.Icon size={20} strokeWidth={2.5} />
                     </div>
                     <div className="pt-1">
-                      <h3 className="font-bold text-sm mb-1.5 text-gray-900">{w.title}</h3>
-                      <p className="text-xs leading-relaxed text-gray-500 font-medium">{w.desc}</p>
+                      <h3 className="font-bold text-sm mb-1.5 text-gray-900 dark:text-white">{w.title}</h3>
+                      <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400 font-medium">{w.desc}</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -371,7 +371,7 @@ function CTABanner() {
 
 export default function Home() {
   return (
-    <div className="bg-[#fafcff] min-h-screen relative overflow-hidden">
+    <div className="bg-[#fafcff] dark:bg-[#0A0F1A] min-h-screen relative overflow-hidden transition-colors duration-300">
       <Helmet>
         <title>Mahendram Landmark Ventures Pvt Ltd — Integrated Engineering & Infrastructure India</title>
         <meta name="description" content="Mahendram Landmark Ventures delivers Engineering, Construction, PEB, MEP, Fire Protection, Interiors and Facility Management across India. 500+ projects. Pan India." />

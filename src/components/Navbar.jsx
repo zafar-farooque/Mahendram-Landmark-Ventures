@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const NAV_LINKS = [
   { label: 'Home',             to: '/'                },
@@ -19,13 +21,12 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      // Scrolled past hero approx
       setScrolled(scrollTop > window.innerHeight - 100);
-      
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight > 0) {
         setScrollProgress((scrollTop / docHeight) * 100);
@@ -33,15 +34,9 @@ export default function Navbar() {
         setScrollProgress(0);
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Initial check
     handleScroll();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => { window.removeEventListener('scroll', handleScroll); };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
@@ -51,44 +46,51 @@ export default function Navbar() {
       'px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 whitespace-nowrap',
       isActive
         ? 'bg-[var(--color-accent)] text-white shadow-md'
-        : 'text-[var(--color-primary)] hover:bg-black/5',
+        : 'text-[var(--color-primary)] hover:bg-black/5 dark:hover:bg-white/10',
     ].join(' ');
 
   return (
     <>
       {/* Scroll Progress Bar */}
-      <div 
-        className="fixed top-0 left-0 h-[2px] z-[60] transition-all duration-100 ease-out" 
-        style={{ width: `${scrollProgress}%`, backgroundColor: 'var(--color-accent)' }} 
+      <div
+        className="fixed top-0 left-0 h-[2px] z-[60] transition-all duration-100 ease-out"
+        style={{ width: `${scrollProgress}%`, backgroundColor: 'var(--color-accent)' }}
       />
       <header
         id="main-navbar"
         className={`z-50 transition-all duration-500 ease-in-out ${
           scrolled
-            ? 'fixed top-0 left-0 right-0 bg-white shadow-md'
-            : 'absolute top-6 left-4 right-4 md:left-8 md:right-8 bg-white shadow-lg border border-gray-100 rounded-[24px] md:rounded-full'
+            ? 'fixed top-0 left-0 right-0 bg-white dark:bg-[#0D1424] shadow-md dark:shadow-black/30'
+            : 'absolute top-6 left-4 right-4 md:left-8 md:right-8 bg-white dark:bg-[#0D1424] shadow-lg border border-gray-100 dark:border-white/10 rounded-[24px] md:rounded-full'
         }`}
       >
-        <div className={`flex items-center justify-between mx-auto ${scrolled ? 'container-xl h-16' : 'px-4 md:px-6 h-14 md:h-16'}`}>
+        <div className={`flex items-center justify-between mx-auto ${scrolled ? 'container-xl h-[70px] md:h-[84px]' : 'px-4 md:px-6 h-[70px] md:h-[84px]'}`}>
 
-          {/* Logo */}
+          {/* Logo — light mode shows color logo, dark mode shows white logo */}
           <Link
             to="/"
             onClick={closeMenu}
             id="navbar-logo"
-            className="flex items-center select-none flex-shrink-0"
+            className="relative flex items-center select-none flex-shrink-0"
           >
+            {/* The light logo sets the physical size of the container, preventing layout shifts */}
             <img
-              src="/logo.jpeg"
+              src="/final_logo.png"
               alt="Mahendram Landmark Ventures"
-              className="h-8 md:h-10 w-auto object-contain"
+              className="h-12 md:h-[60px] lg:h-[70px] w-auto object-contain transition-opacity duration-300 dark:opacity-0"
+            />
+            {/* The dark logo overlays exactly on top, perfectly matching size/position */}
+            <img
+              src="/logo_dark_mode.png"
+              alt="Mahendram Landmark Ventures"
+              className="absolute inset-0 w-full h-full object-contain object-left transition-opacity duration-300 opacity-0 dark:opacity-100 pointer-events-none"
             />
           </Link>
 
           {/* Center: Desktop Nav (Pills) */}
           <nav
             id="desktop-nav"
-            className="hidden lg:flex items-center gap-1 bg-black/5 px-2 py-1 rounded-full border border-black/5"
+            className="hidden lg:flex items-center gap-1 bg-black/5 dark:bg-white/5 px-2 py-1 rounded-full border border-black/5 dark:border-white/10"
             aria-label="Primary navigation"
           >
             {NAV_LINKS.map((link) => (
@@ -97,15 +99,15 @@ export default function Navbar() {
                 to={link.to}
                 end={link.to === '/'}
                 className={linkClass}
-                id={`nav-${link.label.toLowerCase().replace(/\\s+/g, '-')}`}
+                id={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {link.label}
               </NavLink>
             ))}
           </nav>
 
-          {/* Right: Social + Phone + Hamburger */}
-          <div className="flex items-center gap-4 flex-shrink-0">
+          {/* Right: Social + Phone + Theme Toggle + Hamburger */}
+          <div className="flex items-center gap-3 flex-shrink-0">
             {/* Social Icons (Hidden on small mobile) */}
             <div className="hidden md:flex items-center gap-3 text-[var(--color-primary)]/70">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[var(--color-accent)] transition-colors"><LinkedinIcon /></a>
@@ -114,10 +116,28 @@ export default function Navbar() {
             </div>
 
             {/* Phone Badge */}
-            <a href="tel:+919876543210" className="hidden sm:flex items-center gap-2 bg-[#1E2329] text-white px-4 py-1.5 rounded-full hover:bg-black transition-colors shadow-sm">
+            <a href="tel:+919876543210" className="hidden sm:flex items-center gap-2 bg-[#1E2329] dark:bg-white/10 dark:border dark:border-white/10 text-white px-4 py-1.5 rounded-full hover:bg-black dark:hover:bg-white/20 transition-colors shadow-sm">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 14.92z"/></svg>
               <span className="text-xs font-semibold tracking-wide">+91 98765 43210</span>
             </a>
+
+            {/* Dark Mode Toggle */}
+            <button
+              id="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/20 transition-all duration-300"
+            >
+              <span
+                className="transition-all duration-300"
+                style={{
+                  transform: theme === 'dark' ? 'rotate(0deg)' : 'rotate(180deg)',
+                  opacity: 1,
+                }}
+              >
+                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              </span>
+            </button>
 
             {/* Hamburger */}
             <button
@@ -160,7 +180,7 @@ export default function Navbar() {
           style={{
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            background: 'rgba(255, 255, 255, 0.98)',
+            background: theme === 'dark' ? 'rgba(13, 20, 36, 0.98)' : 'rgba(255, 255, 255, 0.98)',
             borderTop: '1px solid rgba(0, 63, 135, 0.05)',
           }}
           aria-hidden={!menuOpen}
@@ -172,21 +192,30 @@ export default function Navbar() {
                 to={link.to}
                 end={link.to === '/'}
                 onClick={closeMenu}
-                id={`mobile-nav-${link.label.toLowerCase().replace(/\\s+/g, '-')}`}
+                id={`mobile-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                 className={({ isActive }) =>
                   [
                     'px-4 py-3 rounded-xl text-sm font-semibold transition-colors duration-150',
                     isActive
                       ? 'bg-[var(--color-accent)] text-white shadow-sm'
-                      : 'text-[var(--color-primary)] hover:bg-black/5',
+                      : 'text-[var(--color-primary)] hover:bg-black/5 dark:hover:bg-white/10',
                   ].join(' ')
                 }
               >
                 {link.label}
               </NavLink>
             ))}
-            
-            <div className="mt-4 pt-4 border-t border-black/5 flex items-center justify-center gap-6">
+
+            {/* Dark mode toggle in mobile menu too */}
+            <button
+              onClick={toggleTheme}
+              className="mt-2 flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-[var(--color-primary)] hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-150"
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            </button>
+
+            <div className="mt-4 pt-4 border-t border-black/5 dark:border-white/10 flex items-center justify-center gap-6">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-[var(--color-primary)]/70 hover:text-[var(--color-accent)]"><LinkedinIcon /></a>
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-[var(--color-primary)]/70 hover:text-[var(--color-accent)]"><InstagramIcon /></a>
               <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-[var(--color-primary)]/70 hover:text-[var(--color-accent)]"><XIcon /></a>

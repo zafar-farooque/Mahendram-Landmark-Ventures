@@ -103,7 +103,7 @@ function ProjectCard({ project }) {
   const catLabel = CAT_LABEL[project.category]  || project.category;
 
   return (
-    <div className="bg-white rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+    <div className="bg-white dark:bg-[#111827] rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
 
       {/* Cover */}
       <div className="relative h-56 w-full flex-shrink-0 overflow-hidden bg-gray-100 p-2">
@@ -138,9 +138,9 @@ function ProjectCard({ project }) {
 
       {/* Body */}
       <div className="flex flex-col gap-4 p-6 pt-4 flex-grow relative z-10">
-        <h2 className="font-extrabold text-xl text-gray-900 leading-snug group-hover:text-[#29ABE2] transition-colors">{project.title}</h2>
+        <h2 className="font-extrabold text-xl text-gray-900 dark:text-white leading-snug group-hover:text-[#29ABE2] transition-colors">{project.title}</h2>
 
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs font-bold text-gray-500">
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs font-bold text-gray-500 dark:text-gray-400">
           <span className="flex items-center gap-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#29ABE2]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             {project.location}
@@ -152,14 +152,14 @@ function ProjectCard({ project }) {
         </div>
 
         {project.scopeOfWork && (
-          <p className="text-sm leading-relaxed text-gray-600 font-medium line-clamp-3">
+          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 font-medium line-clamp-3">
             {project.scopeOfWork}
           </p>
         )}
       </div>
 
       {/* Footer */}
-      <div className="px-6 py-5 border-t border-gray-100 flex items-center justify-between mt-auto">
+      <div className="px-6 py-5 border-t border-gray-100 dark:border-white/10 flex items-center justify-between mt-auto">
         <Link to={`/projects/${project.slug || project._id}`} className="flex items-center gap-1.5 text-sm font-bold text-[#29ABE2] group/link">
           View Project Details
           <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
@@ -172,7 +172,7 @@ function ProjectCard({ project }) {
 /* ── Skeleton ───────────────────────────────── */
 function Skeleton() {
   return (
-    <div className="rounded-[2rem] bg-white border border-gray-100 overflow-hidden animate-pulse shadow-sm">
+    <div className="rounded-[2rem] bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 overflow-hidden animate-pulse shadow-sm">
       <div className="h-56 bg-gray-200 p-2">
         <div className="w-full h-full bg-gray-300 rounded-[1.5rem]"></div>
       </div>
@@ -237,7 +237,7 @@ export default function Projects() {
   });
 
   return (
-    <div className="bg-[#f8f9fa] min-h-screen flex flex-col">
+    <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen flex flex-col transition-colors duration-300">
       <Helmet>
         <title>Projects Portfolio | Mahendram Landmark</title>
         <meta name="description" content="Browse 500+ projects by Mahendram Landmark Ventures: Infrastructure, Construction, Industrial, Warehousing, PEB, MEP, Fire Protection, Interiors and Facility Management across India." />
@@ -255,7 +255,7 @@ export default function Projects() {
               <svg className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               <input type="text" placeholder="Search projects by name or location..." value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-14 pr-12 py-4 rounded-full border border-gray-200 text-base font-medium text-gray-900 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-4 focus:ring-[#29ABE2]/20 focus:border-[#29ABE2] transition-all" />
+                className="w-full pl-14 pr-12 py-4 rounded-full border border-gray-200 dark:border-white/10 text-base font-medium text-gray-900 dark:text-white bg-white dark:bg-[#111827] shadow-[0_10px_30px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-4 focus:ring-[#29ABE2]/20 focus:border-[#29ABE2] transition-all" />
               {search && (
                 <button onClick={() => setSearch('')} aria-label="Clear search" className="absolute right-5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition-colors text-sm font-bold">✕</button>
               )}
@@ -268,7 +268,7 @@ export default function Projects() {
                   const active = activeCat === cat.value;
                   return (
                     <button key={cat.value} aria-pressed={active} onClick={() => setActiveCat(cat.value)}
-                      className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${active ? 'bg-gray-900 text-white shadow-md scale-105 border border-gray-900' : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:text-gray-900 hover:bg-gray-50 shadow-sm'}`}>
+                      className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${active ? 'bg-gray-900 dark:bg-white dark:text-gray-900 text-white shadow-md scale-105 border border-gray-900' : 'bg-white dark:bg-[#111827] text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/10 hover:border-gray-300 hover:text-gray-900 hover:bg-gray-50 shadow-sm'}`}>
                       {cat.label}
                     </button>
                   );
@@ -287,7 +287,7 @@ export default function Projects() {
 
           {/* Count */}
           {!loading && (
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-8">
               Showing <span className="text-[#29ABE2]">{filtered.length}</span> project{filtered.length !== 1 ? 's' : ''}
               {activeCat !== 'all' && <span> in {CAT_LABEL[activeCat]}</span>}
             </p>
@@ -304,10 +304,10 @@ export default function Projects() {
                   </FadeIn>
                 ))
               : (
-                <div className="col-span-full flex flex-col items-center justify-center py-20 gap-4 bg-white rounded-[2rem] border border-gray-100 shadow-sm">
+                <div className="col-span-full flex flex-col items-center justify-center py-20 gap-4 bg-white dark:bg-[#111827] rounded-[2rem] border border-gray-100 dark:border-white/10 shadow-sm">
                   <span className="text-6xl mb-2">📭</span>
-                  <p className="text-lg font-extrabold text-gray-900">No projects found.</p>
-                  <p className="text-sm font-medium text-gray-500 text-center max-w-sm mb-4">We couldn't find any projects matching your current filters and search criteria.</p>
+                  <p className="text-lg font-extrabold text-gray-900 dark:text-white">No projects found.</p>
+                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400 text-center max-w-sm mb-4">We couldn't find any projects matching your current filters and search criteria.</p>
                   <button onClick={() => { setActiveCat('all'); setSearch(''); }} className="px-6 py-2.5 rounded-full bg-[#f8f9fa] border border-gray-200 text-gray-700 font-bold text-sm hover:bg-gray-100 transition-colors">
                     Clear all filters
                   </button>

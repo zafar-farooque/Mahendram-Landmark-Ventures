@@ -73,7 +73,7 @@ function PageHero() {
 
 function ServiceCard({ service }) {
   return (
-    <div className="bg-white rounded-[2rem] p-6 pb-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-300">
+    <div className="bg-white dark:bg-[#111827] rounded-[2rem] p-6 pb-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-300">
       <div className="relative h-48 w-full flex-shrink-0 overflow-hidden rounded-2xl mb-6 shadow-sm">
         <img src={service.bgImage} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -85,11 +85,11 @@ function ServiceCard({ service }) {
         </div>
         
         <div>
-          <h2 className="text-xl font-extrabold text-gray-900 leading-snug">{service.title}</h2>
+          <h2 className="text-xl font-extrabold text-gray-900 dark:text-white leading-snug">{service.title}</h2>
           <p className="text-xs font-bold uppercase tracking-wider mt-1.5 text-[#29ABE2]">{service.tagline}</p>
         </div>
         
-        <p className="text-sm leading-relaxed flex-grow text-gray-600 font-medium">{service.desc}</p>
+        <p className="text-sm leading-relaxed flex-grow text-gray-600 dark:text-gray-400 font-medium">{service.desc}</p>
         
         <ul className="grid grid-cols-1 gap-x-3 gap-y-2 mt-4">
           {service.points.map((pt) => (
@@ -100,7 +100,7 @@ function ServiceCard({ service }) {
         </ul>
       </div>
       
-      <div className="px-2 pt-6 flex items-center justify-between mt-6 border-t border-gray-100">
+      <div className="px-2 pt-6 flex items-center justify-between mt-6 border-t border-gray-100 dark:border-white/10">
         <Link to="/contact" className="flex items-center gap-1.5 text-sm font-bold text-[#29ABE2] transition-all duration-200 group/link hover:text-blue-600">
           Learn More <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
         </Link>
@@ -116,8 +116,8 @@ function ServicesGrid() {
       <div className="container-xl relative z-10">
         <div className="text-center mb-16">
           <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">What We Offer</p></FadeIn>
-          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">End-to-End Engineering Solutions</h2></FadeIn>
-          <FadeIn delay={0.2}><p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-600 font-medium">
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">End-to-End Engineering Solutions</h2></FadeIn>
+          <FadeIn delay={0.2}><p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-600 dark:text-gray-400 font-medium">
             Eight core service verticals, delivered by qualified professionals with deep domain expertise across commercial, industrial and institutional sectors.
           </p></FadeIn>
         </div>
@@ -150,10 +150,10 @@ function ProcessStrip() {
             <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">How We Work</p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">Our Delivery Process</h2>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white">Our Delivery Process</h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-600 font-medium">
+            <p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-600 dark:text-gray-400 font-medium">
               A systematic, six-step approach to ensure maximum efficiency, safety, and quality across all our engineering projects.
             </p>
           </FadeIn>
@@ -180,12 +180,12 @@ function ProcessStrip() {
                     </div>
                   </div>
 
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-extrabold text-[#29ABE2] bg-white shadow-[0_10px_30px_rgba(41,171,226,0.15)] border border-gray-100 group-hover:scale-110 group-hover:-translate-y-1 group-hover:bg-[#29ABE2] group-hover:text-white group-hover:shadow-[0_15px_35px_rgba(41,171,226,0.4)] transition-all duration-300 relative z-40">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-extrabold text-[#29ABE2] bg-white dark:bg-[#111827] shadow-[0_10px_30px_rgba(41,171,226,0.15)] border border-gray-100 dark:border-white/10 group-hover:scale-110 group-hover:-translate-y-1 group-hover:bg-[#29ABE2] group-hover:text-white group-hover:shadow-[0_15px_35px_rgba(41,171,226,0.4)] transition-all duration-300 relative z-40">
                     {step.n}
                   </div>
                   <div className="text-center relative z-40">
-                    <h3 className="text-sm font-extrabold text-gray-900 mb-1">{step.label}</h3>
-                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{step.desc}</p>
+                    <h3 className="text-sm font-extrabold text-gray-900 dark:text-white mb-1">{step.label}</h3>
+                    <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{step.desc}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -225,7 +225,7 @@ function CTABanner() {
 
 export default function Services() {
   return (
-    <div className="bg-[#f8f9fa] min-h-screen">
+    <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen transition-colors duration-300">
       <Helmet>
         <title>Our Services | Mahendram Landmark</title>
         <meta name="description" content="14 specialized engineering services: Infrastructure, Construction, PEB, MEP, Fire Protection, Interior Fit-Out, Facility Management and Industrial Solutions across India." />

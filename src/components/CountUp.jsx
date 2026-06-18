@@ -24,7 +24,7 @@ export default function CountUp({ end, duration = 2, suffix = '', prefix = '' })
 
   useEffect(() => {
     if (!isNumber) return;
-    return springValue.onChange((latest) => {
+    return springValue.on('change', (latest) => {
       setDisplayValue(Math.floor(latest));
     });
   }, [springValue, isNumber]);

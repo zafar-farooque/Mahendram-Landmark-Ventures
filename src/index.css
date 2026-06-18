@@ -26,6 +26,18 @@
   --color-muted:      #6B7280;
 }
 
+/* Dark mode CSS variable overrides */
+html.dark {
+  --color-bg:         #0A0F1A;
+  --color-card:       #111827;
+  --color-border:     rgba(255, 255, 255, 0.08);
+  --color-primary:    #F1F5F9;
+  --color-accent:     #29ABE2;
+  --color-accent-2:   #5BB8F0;
+  --color-glow:       rgba(41, 171, 226, 0.15);
+  --color-muted:      #9CA3AF;
+}
+
 /* ─────────────────────────────────────────
    Base Reset & Global Styles
 ───────────────────────────────────────── */
@@ -52,6 +64,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
     background-attachment: fixed;
   }

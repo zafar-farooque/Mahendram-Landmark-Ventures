@@ -17,10 +17,10 @@ const INDUSTRIES_DATA = [
   { id:'retail',        Icon: IconShoppingBag, name:'Retail',            desc:'Retail fit-out, shopping complex construction and commercial interiors.', bgImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80' },
   { id:'education',     Icon: IconGraduate,    name:'Education',         desc:'Schools, colleges and campus construction with infrastructure services.', bgImage: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80' },
   { id:'corporate',     Icon: IconBuilding,    name:'Corporate Offices', desc:'Turnkey corporate office construction, interior fit-out and FM services.', bgImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80' },
-  { id:'government',    Icon: IconGovernment,  name:'Government',        desc:'Government building construction, civil works and infrastructure development.', bgImage: 'https://images.unsplash.com/photo-1523292562811-8fa7962ba53a?auto=format&fit=crop&w=600&q=80' },
+  { id:'government',    Icon: IconGovernment,  name:'Government',        desc:'Government building construction, civil works and infrastructure development.', bgImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80' },
   { id:'psu',           Icon: IconPSU,         name:'PSU',               desc:'Public sector undertaking project execution, contracting and maintenance.', bgImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80' },
   { id:'railways',      Icon: IconTrain,       name:'Railways',          desc:'Railway station construction, platform infrastructure and facility management.', bgImage: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80' },
-  { id:'ports',         Icon: IconAnchor,      name:'Ports',             desc:'Port infrastructure, warehouse construction and industrial facility services.', bgImage: 'https://images.unsplash.com/photo-1584824388147-7ce85da42953?auto=format&fit=crop&w=600&q=80' },
+  { id:'ports',         Icon: IconAnchor,      name:'Ports',             desc:'Port infrastructure, warehouse construction and industrial facility services.', bgImage: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=600&q=80' },
   { id:'power',         Icon: IconPower,       name:'Power',             desc:'Power plant infrastructure, substation construction and utility services.', bgImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&q=80' },
   { id:'data-centers',  Icon: IconDataCenter,  name:'Data Centers',      desc:'Data centre construction, precision MEP, cooling systems and facility management.', bgImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80' },
 ];
@@ -97,7 +97,7 @@ function CTABanner() {
 
 export default function Industries() {
   return (
-    <div className="bg-[#f8f9fa] min-h-screen">
+    <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen transition-colors duration-300">
       <Helmet>
         <title>Industries We Serve | Mahendram Landmark</title>
         <meta name="description" content="Mahendram Landmark Ventures serves 15+ industries including Real Estate, Manufacturing, Healthcare, Hospitality, Government, Railways, Power and Data Centers across India." />

@@ -16,7 +16,7 @@ const SERVICE_LINKS = [
   { label: 'MEP Services',               to: '/services' },
   { label: 'Fire Protection Systems',    to: '/services' },
   { label: 'Interior Fit-Out',           to: '/services' },
-  { label: 'Software Solutions & IT',      to: '/services' },
+  { label: 'Software Solutions & IT',    to: '/services' },
 ];
 
 const WHATSAPP_NUMBER = '918210146579';
@@ -30,32 +30,41 @@ export default function Footer() {
     <>
       <footer
         id="main-footer"
-        className="relative overflow-hidden"
-        style={{ backgroundColor: 'var(--color-bg)', borderTop: '1px solid var(--color-border)' }}
+        className="relative overflow-hidden bg-[var(--color-bg)] border-t border-[var(--color-border)] transition-colors duration-300"
       >
         {/* Ambient Glow */}
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)', top: '0%', left: '50%', transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 0 }} />
-        
+        <div className="absolute w-[600px] h-[600px] rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+          style={{ background: 'radial-gradient(circle, rgba(41, 171, 226, 0.1) 0%, transparent 70%)' }}
+        />
+
         {/* Grid */}
         <div className="container-xl py-8 md:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative z-10">
 
           {/* Col 1: Brand */}
           <div className="flex flex-col gap-5">
-            <Link to="/" id="footer-logo" className="flex items-center select-none w-fit">
+            <Link to="/" id="footer-logo" className="relative flex items-center select-none w-fit">
+              {/* Light mode logo sets physical dimensions */}
               <img
-                src="/logo.jpeg"
+                src="/final_logo.png"
                 alt="Mahendram Landmark Ventures"
-                className="h-10 w-auto object-contain"
-                style={{ maxWidth: '200px' }}
+                className="h-16 md:h-20 w-auto object-contain transition-opacity duration-300 dark:opacity-0"
+                style={{ maxWidth: '300px' }}
+              />
+              {/* Dark mode logo perfectly overlays */}
+              <img
+                src="/logo_dark_mode.png"
+                alt="Mahendram Landmark Ventures"
+                className="absolute inset-0 w-full h-full object-contain object-left transition-opacity duration-300 opacity-0 dark:opacity-100 pointer-events-none"
+                style={{ maxWidth: '300px' }}
               />
             </Link>
 
-            <p className="text-xs font-semibold tracking-wide uppercase leading-relaxed" style={{ color: 'var(--color-accent)' }}>
+            <p className="text-xs font-semibold tracking-wide uppercase leading-relaxed text-[var(--color-accent)]">
               Integrated Engineering · Infrastructure<br />
-              Interior &amp; Asset Management
+              Interior & Asset Management
             </p>
 
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+            <p className="text-sm leading-relaxed text-[var(--color-muted)]">
               Delivering end-to-end engineering, construction, interior fit-out
               and facility management solutions across India through three
               specialized business divisions.
@@ -65,8 +74,8 @@ export default function Footer() {
               {['Mahendram Landmark Ventures', 'Inovvio Interior', 'Ortus Apex'].map((d) => (
                 <span
                   key={d}
-                  className="text-xs font-medium px-3 py-1 rounded-full w-fit"
-                  style={{ background: 'rgba(41, 171, 226, 0.1)', color: 'var(--color-accent)', border: '1px solid rgba(41, 171, 226, 0.2)' }}
+                  className="text-xs font-medium px-3 py-1 rounded-full w-fit text-[var(--color-accent)] border border-[var(--color-accent)]/20"
+                  style={{ background: 'rgba(41, 171, 226, 0.1)' }}
                 >
                   {d}
                 </span>
@@ -76,7 +85,7 @@ export default function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h3 className="text-xs font-bold tracking-[0.15em] uppercase mb-5" style={{ color: 'var(--color-accent)' }}>
+            <h3 className="text-xs font-bold tracking-[0.15em] uppercase mb-5 text-[var(--color-accent)]">
               Quick Links
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -85,12 +94,9 @@ export default function Footer() {
                   <Link
                     to={l.to}
                     id={`footer-link-${l.label.toLowerCase()}`}
-                    className="flex items-center gap-2 text-sm transition-colors duration-200"
-                    style={{ color: 'var(--color-muted)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
+                    className="flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors duration-200"
                   >
-                    <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: 'var(--color-accent)' }} />
+                    <span className="w-1 h-1 rounded-full flex-shrink-0 bg-[var(--color-accent)]" />
                     {l.label}
                   </Link>
                 </li>
@@ -100,7 +106,7 @@ export default function Footer() {
 
           {/* Col 3: Services */}
           <div>
-            <h3 className="text-xs font-bold tracking-[0.15em] uppercase mb-5" style={{ color: 'var(--color-accent)' }}>
+            <h3 className="text-xs font-bold tracking-[0.15em] uppercase mb-5 text-[var(--color-accent)]">
               Our Services
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -109,12 +115,9 @@ export default function Footer() {
                   <Link
                     to={s.to}
                     id={`footer-service-${s.label.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="flex items-center gap-2 text-sm transition-colors duration-200"
-                    style={{ color: 'var(--color-muted)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
+                    className="flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors duration-200"
                   >
-                    <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: 'var(--color-accent)' }} />
+                    <span className="w-1 h-1 rounded-full flex-shrink-0 bg-[var(--color-accent)]" />
                     {s.label}
                   </Link>
                 </li>
@@ -124,88 +127,63 @@ export default function Footer() {
 
           {/* Col 4: Contact */}
           <div>
-            <h3 className="text-xs font-bold tracking-[0.15em] uppercase mb-5" style={{ color: 'var(--color-accent)' }}>
+            <h3 className="text-xs font-bold tracking-[0.15em] uppercase mb-5 text-[var(--color-accent)]">
               Get In Touch
             </h3>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <span className="text-base mt-0.5 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span className="text-base mt-0.5 flex-shrink-0 text-[var(--color-accent)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </span>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+                <p className="text-sm leading-relaxed text-[var(--color-muted)]">
                   Corporate Office,<br />
                   Mahendram Landmark Ventures Pvt Ltd,<br />
                   India
                 </p>
               </li>
               <li className="flex items-center gap-3">
-                <span className="text-base flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 14.92z"/></svg>
+                <span className="text-base flex-shrink-0 text-[var(--color-accent)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 14.92z"/></svg>
                 </span>
-                <a
-                  href="tel:+91XXXXXXXXXX"
-                  id="footer-phone"
-                  className="text-sm transition-colors duration-200"
-                  style={{ color: 'var(--color-muted)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
-                >
+                <a href="tel:+91XXXXXXXXXX" id="footer-phone" className="text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors duration-200">
                   +91 XXXXX XXXXX
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <span className="text-base flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span className="text-base flex-shrink-0 text-[var(--color-accent)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </span>
-                <a
-                  href="mailto:info@mahendramlandmark.com"
-                  id="footer-email"
-                  className="text-sm transition-colors duration-200 break-all"
-                  style={{ color: 'var(--color-muted)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-muted)')}
-                >
+                <a href="mailto:info@mahendramlandmark.com" id="footer-email" className="text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors duration-200 break-all">
                   info@mahendramlandmark.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <span className="text-base flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+                <span className="text-base flex-shrink-0" style={{ color: '#25D366' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
                 </span>
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`}
-                  id="footer-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium transition-opacity duration-200"
-                  style={{ color: '#25D366' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-                >
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`} id="footer-whatsapp" target="_blank" rel="noopener noreferrer" className="text-sm font-medium" style={{ color: '#25D366' }}>
                   Chat on WhatsApp
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <span className="text-base flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span className="text-base flex-shrink-0 text-[var(--color-accent)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </span>
-                <p className="text-sm" style={{ color: 'var(--color-muted)' }}>
-                  Mon – Sat: 9:00 AM – 6:00 PM
-                </p>
+                <p className="text-sm text-[var(--color-muted)]">Mon – Sat: 9:00 AM – 6:00 PM</p>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="relative z-10" style={{ borderTop: '1px solid rgba(41, 171, 226, 0.1)' }} />
+        <div className="relative z-10 border-t border-[var(--color-border)]" />
 
         {/* Bottom Bar */}
         <div className="container-xl py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left relative z-10">
-          <p className="text-xs" style={{ color: '#4A5568' }}>
+          <p className="text-xs text-[var(--color-muted)]">
             © {year} Mahendram Landmark Ventures Pvt Ltd. All Rights Reserved.
           </p>
-          <p className="text-xs" style={{ color: '#4A5568' }}>
+          <p className="text-xs text-[var(--color-muted)]">
             Engineering · Infrastructure · Interiors · FM · Pan India
           </p>
         </div>

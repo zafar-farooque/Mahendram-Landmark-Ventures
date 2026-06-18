@@ -61,11 +61,10 @@ const FORMS = {
 };
 
 function FieldInput({ field, value, onChange }) {
-  const base = 'w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-[#29ABE2] transition-colors duration-150 text-gray-900 placeholder-gray-400 font-medium';
-  const lightStyle = { borderColor: '#E5E7EB', background: '#ffffff' };
+  const base = 'w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 text-sm focus:outline-none focus:ring-2 focus:ring-[#29ABE2] transition-colors duration-150 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 font-medium bg-white dark:bg-[#0D1424]';
   const sharedProps = {
     id: `field-${field.name}`, name: field.name, value, onChange: (e) => onChange(field.name, e.target.value),
-    required: field.required, placeholder: field.placeholder, className: base, style: lightStyle,
+    required: field.required, placeholder: field.placeholder, className: base,
   };
   if (field.type === 'textarea') return <textarea {...sharedProps} rows={4} className={`${base} resize-none`} />;
   if (field.type === 'select')
@@ -161,7 +160,7 @@ export default function Contact() {
   const [activeTab, setActiveTab] = useState('enquiry');
 
   return (
-    <div className="bg-[#f8f9fa] min-h-screen">
+    <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen transition-colors duration-300">
       <Helmet>
         <title>Contact Us | Mahendram Landmark</title>
         <meta name="description" content="Contact Mahendram Landmark Ventures." />
@@ -173,17 +172,17 @@ export default function Contact() {
         <div className="container-xl max-w-6xl mx-auto px-4">
           
           {/* Main Floating Form Card */}
-          <div className="bg-white rounded-[2rem] p-6 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)] mb-8 border border-gray-100">
+          <div className="bg-white dark:bg-[#111827] rounded-[2rem] p-6 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)] mb-8 border border-gray-100 dark:border-white/10">
             
             {/* Tabs Header */}
-            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 border-b border-gray-100 pb-6 mb-6" role="tablist">
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 border-b border-gray-100 dark:border-white/10 pb-6 mb-6" role="tablist">
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
                   <button key={tab.id} id={`tab-${tab.id}`} role="tab" aria-selected={isActive}
                     onClick={() => setActiveTab(tab.id)}
                     className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-200 ${
-                      isActive ? 'bg-[#29ABE2] text-white shadow-md transform scale-105' : 'bg-transparent text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                      isActive ? 'bg-[#29ABE2] text-white shadow-md transform scale-105' : 'bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/10'
                     }`}>
                     {tab.label}
                   </button>
@@ -199,7 +198,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Office Info Card */}
-            <div className="bg-[#F0F7FF] rounded-[2rem] p-8 flex flex-col justify-center border border-[#E1EFFE] shadow-sm">
+            <div className="bg-[#F0F7FF] dark:bg-[#111827] rounded-[2rem] p-8 flex flex-col justify-center border border-[#E1EFFE] dark:border-white/10 shadow-sm">
               <h3 className="text-xl font-extrabold text-[#29ABE2] mb-6">Our Offices</h3>
               
               <div className="flex items-start gap-4 mb-5">
@@ -207,8 +206,8 @@ export default function Contact() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-900">Corporate Office</p>
-                  <p className="text-xs text-gray-600 leading-relaxed mt-1 font-medium">Mahendram Landmark Ventures Pvt Ltd,<br/>City, State, PIN Code,<br/>India</p>
+                  <p className="text-sm font-bold text-gray-900 dark:text-white">Corporate Office</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mt-1 font-medium">Mahendram Landmark Ventures Pvt Ltd,<br/>City, State, PIN Code,<br/>India</p>
                 </div>
               </div>
 
@@ -216,21 +215,21 @@ export default function Contact() {
                 <div className="text-[#29ABE2]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 14.92z"/></svg>
                 </div>
-                <a href="tel:+919876543210" className="text-xs font-bold text-gray-900 hover:text-[#29ABE2] transition-colors">+91 98765 43210</a>
+                <a href="tel:+919876543210" className="text-xs font-bold text-gray-900 dark:text-white hover:text-[#29ABE2] transition-colors">+91 98765 43210</a>
               </div>
 
               <div className="flex items-center gap-4 mb-5">
                 <div className="text-[#29ABE2]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
-                <a href="mailto:info@mahendramlandmark.com" className="text-xs font-bold text-gray-900 hover:text-[#29ABE2] transition-colors truncate">info@mahendramlandmark.com</a>
+                <a href="mailto:info@mahendramlandmark.com" className="text-xs font-bold text-gray-900 dark:text-white hover:text-[#29ABE2] transition-colors truncate">info@mahendramlandmark.com</a>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="text-[#29ABE2]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <p className="text-xs font-bold text-gray-900">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                <p className="text-xs font-bold text-gray-900 dark:text-white">Mon - Sat: 9:00 AM - 6:00 PM</p>
               </div>
 
             </div>

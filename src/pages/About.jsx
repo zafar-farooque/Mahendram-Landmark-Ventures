@@ -84,7 +84,7 @@ function FloatingStats() {
     <div className="relative z-20 -mt-16 mb-12 px-4">
       <div className="container-xl max-w-5xl mx-auto">
         <FadeIn delay={0.4}>
-          <div className="flex flex-wrap items-center justify-around gap-6 p-8 rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-gray-100">
+          <div className="flex flex-wrap items-center justify-around gap-6 p-8 rounded-[2rem] bg-white dark:bg-[#111827] shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10">
             {[
               ['500+', 'Projects'],
               ['14', 'Service Lines'],
@@ -93,7 +93,7 @@ function FloatingStats() {
             ].map(([val,lbl]) => (
               <div key={lbl} className="flex flex-col items-center">
                 <span className="text-3xl md:text-4xl font-extrabold text-[#29ABE2]">{val}</span>
-                <span className="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest mt-2">{lbl}</span>
+                <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-2">{lbl}</span>
               </div>
             ))}
           </div>
@@ -121,13 +121,13 @@ function Overview() {
             <FadeIn delay={0}>
               <div>
                 <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Company Overview</p>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                   One Company. Three Divisions.<br />Infinite Possibilities.
                 </h2>
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed font-medium">
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
                 Mahendram Landmark Ventures Pvt Ltd is an integrated engineering, infrastructure, contracting and asset management company delivering comprehensive solutions for commercial, industrial, institutional and infrastructure projects across India.
               </p>
             </FadeIn>
@@ -139,7 +139,7 @@ function Overview() {
             <FadeIn delay={0.3}>
               <div className="grid grid-cols-2 gap-4 mt-4">
                 {['✔ Multi-Disciplinary Engineering','✔ End-to-End Project Delivery','✔ Pan India Operations','✔ Single Point Accountability','✔ Technology Driven Execution','✔ Safety & Compliance Focused'].map((t) => (
-                  <div key={t} className="text-xs md:text-sm font-bold text-gray-800">{t}</div>
+                  <div key={t} className="text-xs md:text-sm font-bold text-gray-800 dark:text-gray-200">{t}</div>
                 ))}
               </div>
             </FadeIn>
@@ -160,22 +160,22 @@ function Overview() {
             </FadeIn>
             
             <FadeIn delay={0.2}>
-              <div className="p-8 rounded-3xl relative z-10 bg-white/80 backdrop-blur-md shadow-xl border border-white">
+              <div className="p-8 rounded-3xl relative z-10 bg-white/80 dark:bg-[#111827]/80 backdrop-blur-md shadow-xl border border-white dark:border-white/10">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#F0F7FF] text-[#29ABE2]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="m15 4.5-3-3-3 3"/></svg>
                 </div>
-                <h3 className="text-xl font-extrabold text-gray-900 mb-3">Our Vision</h3>
-                <p className="text-sm text-gray-600 leading-relaxed font-medium">To become India's most trusted integrated engineering and infrastructure company, delivering excellence at every stage of the project lifecycle.</p>
+                <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3">Our Vision</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">To become India's most trusted integrated engineering and infrastructure company, delivering excellence at every stage of the project lifecycle.</p>
               </div>
             </FadeIn>
             
             <FadeIn delay={0.3}>
-              <div className="p-8 rounded-3xl relative z-10 bg-white/80 backdrop-blur-md shadow-xl border border-white">
+              <div className="p-8 rounded-3xl relative z-10 bg-white/80 dark:bg-[#111827]/80 backdrop-blur-md shadow-xl border border-white dark:border-white/10">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#F0F7FF] text-[#29ABE2]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="m8 14 4-2 4 2"/></svg>
                 </div>
-                <h3 className="text-xl font-extrabold text-gray-900 mb-3">Our Mission</h3>
-                <p className="text-sm text-gray-600 leading-relaxed font-medium">To create long-term value through innovative engineering, quality execution, operational excellence and sustainable infrastructure development across India.</p>
+                <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3">Our Mission</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">To create long-term value through innovative engineering, quality execution, operational excellence and sustainable infrastructure development across India.</p>
               </div>
             </FadeIn>
           </div>
@@ -191,12 +191,12 @@ function Divisions() {
       <div className="container-xl relative z-10">
         <div className="text-center mb-16">
           <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Group Structure</p></FadeIn>
-          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Our Three Business Divisions</h2></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Our Three Business Divisions</h2></FadeIn>
         </div>
         <div className="grid lg:grid-cols-3 gap-8">
           {DIVISIONS.map((d, i) => (
             <FadeIn key={d.name} delay={i * 0.1}>
-              <div className="bg-white rounded-[2rem] p-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+              <div className="bg-white dark:bg-[#111827] rounded-[2rem] p-8 shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
                 <div className="relative overflow-hidden rounded-2xl h-48 mb-6 group cursor-pointer shadow-sm">
                   <img src={d.image} alt={d.name} className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -207,9 +207,9 @@ function Divisions() {
                 </div>
                 
                 <div className="flex-grow">
-                  <h3 className="font-extrabold text-xl text-gray-900 leading-snug">{d.name}</h3>
+                  <h3 className="font-extrabold text-xl text-gray-900 dark:text-white leading-snug">{d.name}</h3>
                   <p className="text-xs font-bold uppercase tracking-wider mt-2" style={{ color: d.color }}>{d.sub}</p>
-                  <p className="text-sm text-gray-600 leading-relaxed mt-4 font-medium">{d.desc}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-4 font-medium">{d.desc}</p>
                 </div>
               </div>
             </FadeIn>
@@ -226,16 +226,16 @@ function CoreValues() {
       <div className="container-xl relative z-10">
         <div className="text-center mb-16">
           <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">What Drives Us</p></FadeIn>
-          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Our Core Values</h2></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Our Core Values</h2></FadeIn>
         </div>
         <div className="flex flex-wrap justify-center gap-6">
           {VALUES.map((v, i) => (
             <FadeIn key={v.label} delay={i * 0.1}>
-              <div className="flex items-center gap-4 px-8 py-5 rounded-full bg-white shadow-md border border-gray-100 hover:scale-105 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center gap-4 px-8 py-5 rounded-full bg-white dark:bg-[#111827] shadow-md border border-gray-100 dark:border-white/10 hover:scale-105 hover:shadow-xl transition-all duration-300">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-[#F0F7FF] text-[#29ABE2]">
                   <v.Icon size={22} strokeWidth={2.5} />
                 </div>
-                <span className="font-extrabold text-base text-gray-900 tracking-wide">{v.label}</span>
+                <span className="font-extrabold text-base text-gray-900 dark:text-white tracking-wide">{v.label}</span>
               </div>
             </FadeIn>
           ))}
@@ -251,7 +251,7 @@ function Timeline() {
       <div className="container-xl relative z-10">
         <div className="text-center mb-16">
           <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Our Journey</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Milestones Over the Years</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Milestones Over the Years</h2>
         </div>
         
         <div className="relative max-w-4xl mx-auto">
@@ -273,7 +273,7 @@ function Timeline() {
                          
                     {/* Timeline Content */}
                     <div className={`w-full md:w-1/2 flex ${isLeft ? 'md:justify-end md:pr-12 lg:pr-20' : 'md:justify-start md:pl-12 lg:pl-20 md:ml-auto'} pl-16 md:pl-0 mt-2 md:mt-0`}>
-                      <div className={`inline-block p-6 rounded-[1.5rem] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-gray-100 w-full sm:w-[90%] md:w-80 lg:w-96 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(0,0,0,0.12)] relative overflow-hidden ${isLeft ? 'text-left md:text-right' : 'text-left'}`}>
+                      <div className={`inline-block p-6 rounded-[1.5rem] bg-white dark:bg-[#111827] shadow-[0_10px_25px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10 w-full sm:w-[90%] md:w-80 lg:w-96 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(0,0,0,0.12)] relative overflow-hidden ${isLeft ? 'text-left md:text-right' : 'text-left'}`}>
                         {/* Decorative side accent */}
                         <div className={`absolute top-0 w-[6px] h-full bg-[#29ABE2] ${isLeft ? 'left-0 md:left-auto md:right-0' : 'left-0'}`} />
                         
@@ -290,7 +290,7 @@ function Timeline() {
                           </div>
                           
                           <p className="text-xs font-black tracking-widest uppercase mb-1 text-[#29ABE2]">{item.year}</p>
-                          <p className="text-lg font-extrabold text-gray-900 leading-snug">{item.event}</p>
+                          <p className="text-lg font-extrabold text-gray-900 dark:text-white leading-snug">{item.event}</p>
                         </div>
                       </div>
                     </div>
@@ -334,7 +334,7 @@ function CTABanner() {
 
 export default function About() {
   return (
-    <div className="bg-[#f8f9fa] min-h-screen">
+    <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen transition-colors duration-300">
       <Helmet>
         <title>About Us | Mahendram Landmark</title>
         <meta name="description" content="Learn about Mahendram Landmark Ventures Pvt Ltd." />

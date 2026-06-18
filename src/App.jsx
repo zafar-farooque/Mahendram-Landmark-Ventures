@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { ThemeProvider } from './context/ThemeContext';
 
 /* ── Lazy-loaded page components ─────────────────────────────────── */
 const Home            = lazy(() => import('./pages/Home'));
@@ -91,10 +92,12 @@ function AppContent() {
 /* ── App ──────────────────────────────────────────────────────────── */
 export default function App() {
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </HelmetProvider>
+    <ThemeProvider>
+      <HelmetProvider>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <AppContent />
+        </BrowserRouter>
+      </HelmetProvider>
+    </ThemeProvider>
   );
 }
