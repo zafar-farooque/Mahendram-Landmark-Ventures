@@ -43,7 +43,7 @@ const WHY_US = [
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full pt-28 pb-20 md:pt-32 lg:pt-24 md:pb-32 lg:pb-0 lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
+    <section id="hero" className="relative w-full pt-20 md:pt-32 lg:pt-24 pb-12 md:pb-32 lg:pb-16 lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
       
 
 
@@ -56,49 +56,51 @@ function Hero() {
               <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
               <span className="text-xs font-bold text-gray-600 dark:text-gray-300 tracking-widest uppercase">Shaping the Future</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-[4.2rem] xl:text-[5rem] font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[4.2rem] xl:text-[5rem] font-black tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
               MAHENDRAM
             </h1>
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium tracking-tight max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium tracking-tight max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Building robust <span className="text-[#0A4D8C] font-bold">Infrastructure</span>.<br/>
               Creating dynamic <span className="text-[#29ABE2] font-bold">Workspaces</span>.<br/>
               Managing core <span className="text-gray-900 dark:text-white font-bold">Assets</span>.
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
-              <Link to="/services" className="px-8 py-4 rounded-full bg-gradient-to-r from-[#0A4D8C] to-[#29ABE2] text-white font-bold text-base hover:shadow-[0_10px_30px_rgba(41,171,226,0.3)] hover:scale-105 transition-all flex items-center justify-center gap-2 group">
-                Explore More
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-              </Link>
-              <Link to="/contact" className="px-8 py-4 rounded-full bg-white dark:bg-white/10 dark:border-white/20 dark:text-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center">
-                Contact Us
-              </Link>
-            </div>
-          </FadeIn>
-          
-          {/* Quick stats below text */}
-          <FadeIn delay={0.6}>
-            <div className="flex items-center gap-8 mt-10 justify-center lg:justify-start pt-8 border-t border-gray-200/60 dark:border-white/10">
-              <div>
-                <h4 className="text-3xl font-black text-gray-900 dark:text-white">500+</h4>
-                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Projects</p>
+          <div className="hidden lg:block">
+            <FadeIn delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-3 mt-4 justify-center lg:justify-start">
+                <Link to="/services" className="px-8 py-4 rounded-full bg-gradient-to-r from-[#0A4D8C] to-[#29ABE2] text-white font-bold text-base hover:shadow-[0_10px_30px_rgba(41,171,226,0.3)] hover:scale-105 transition-all flex items-center justify-center gap-2 group">
+                  Explore More
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </Link>
+                <Link to="/contact" className="px-8 py-4 rounded-full bg-white dark:bg-white/10 dark:border-white/20 dark:text-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center">
+                  Contact Us
+                </Link>
               </div>
-              <div className="w-px h-10 bg-gray-200 dark:bg-white/20"></div>
-              <div>
-                <h4 className="text-3xl font-black text-gray-900 dark:text-white">20+</h4>
-                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Years Exp</p>
+            </FadeIn>
+            
+            {/* Quick stats below text */}
+            <FadeIn delay={0.6}>
+              <div className="flex items-center gap-8 mt-10 justify-center lg:justify-start pt-8 border-t border-gray-200/60 dark:border-white/10">
+                <div>
+                  <h4 className="text-3xl font-black text-gray-900 dark:text-white">500+</h4>
+                  <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Projects</p>
+                </div>
+                <div className="w-px h-10 bg-gray-200 dark:bg-white/20"></div>
+                <div>
+                  <h4 className="text-3xl font-black text-gray-900 dark:text-white">20+</h4>
+                  <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Years Exp</p>
+                </div>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
         </div>
 
         {/* Right Side Image Composition */}
-        <div className="relative w-full h-[450px] md:h-[600px] lg:h-[600px] xl:h-[700px] z-10 lg:col-span-7 lg:mt-0 mt-8">
+        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[600px] lg:h-[600px] xl:h-[700px] z-10 lg:col-span-7 lg:mt-0 mt-6">
           <FadeIn delay={0.3} className="w-full h-full relative">
             
             {/* Main Video Card */}
@@ -111,7 +113,7 @@ function Hero() {
                 poster="/@fs/home/zafar-farooque/.gemini/antigravity/brain/15140b34-30d2-4d7a-b767-a7deb8004a91/hero_infrastructure_1781678147300.png"
                 className="w-full h-full object-cover object-center scale-[1.15] md:scale-[1.2] transition-transform duration-[1.5s] group-hover:scale-[1.25]"
               >
-                <source src="/hero_vid_v2.mp4" type="video/mp4" />
+                <source src="/lv_0_20260618184154.mp4" type="video/mp4" />
               </video>
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A4D8C]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             </div>
@@ -146,6 +148,36 @@ function Hero() {
 
           </FadeIn>
         </div>
+
+        {/* Mobile only buttons & stats (shown below video) */}
+        <div className="lg:hidden flex flex-col gap-6 mt-2 w-full max-w-xl mx-auto relative z-20">
+          <FadeIn delay={0.4}>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/services" className="px-8 py-4 rounded-full bg-gradient-to-r from-[#0A4D8C] to-[#29ABE2] text-white font-bold text-base active:scale-95 transition-all flex items-center justify-center gap-2 group shadow-[0_10px_30px_rgba(41,171,226,0.3)]">
+                Explore More
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </Link>
+              <Link to="/contact" className="px-8 py-4 rounded-full bg-white dark:bg-white/10 dark:border-white/20 dark:text-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:bg-gray-50 active:scale-95 transition-all flex items-center justify-center">
+                Contact Us
+              </Link>
+            </div>
+          </FadeIn>
+          
+          <FadeIn delay={0.6}>
+            <div className="flex items-center gap-8 justify-center pt-8 border-t border-gray-200/60 dark:border-white/10">
+              <div className="text-center">
+                <h4 className="text-3xl font-black text-gray-900 dark:text-white">500+</h4>
+                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Projects</p>
+              </div>
+              <div className="w-px h-10 bg-gray-200 dark:bg-white/20"></div>
+              <div className="text-center">
+                <h4 className="text-3xl font-black text-gray-900 dark:text-white">20+</h4>
+                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Years Exp</p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+
       </div>
     </section>
   );
@@ -153,7 +185,7 @@ function Hero() {
 
 function StatsBar() {
   return (
-    <div className="relative z-20 -mt-16 mb-16 px-4">
+    <div className="relative z-20 -mt-8 md:-mt-16 mb-10 md:mb-16 px-4">
       <div className="container-xl max-w-5xl mx-auto">
         <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-around gap-6 p-8 md:p-10 rounded-[2.5rem] bg-white/90 dark:bg-[#111827]/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-white dark:border-white/10">
           {STATS.map((s, i) => (

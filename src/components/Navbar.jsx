@@ -51,9 +51,9 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
+      {/* Scroll Progress Bar — desktop only */}
       <div
-        className="fixed top-0 left-0 h-[2px] z-[60] transition-all duration-100 ease-out"
+        className="hidden md:block fixed top-0 left-0 h-[2px] z-[60] transition-all duration-100 ease-out"
         style={{ width: `${scrollProgress}%`, backgroundColor: 'var(--color-accent)' }}
       />
       <header
@@ -126,7 +126,8 @@ export default function Navbar() {
               id="theme-toggle"
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/20 transition-all duration-300"
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/20 active:scale-90 transition-all duration-300"
+              style={{ touchAction: 'manipulation' }}
             >
               <span
                 className="transition-all duration-300"

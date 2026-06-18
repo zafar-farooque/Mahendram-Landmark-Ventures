@@ -34,7 +34,7 @@ const TIMELINE = [
 
 function PageHero() {
   return (
-    <section id="about-hero" className="relative pt-36 pb-28 md:pt-40 md:pb-32 overflow-hidden bg-gray-900">
+    <section id="about-hero" className="relative pt-20 pb-16 md:pt-40 md:pb-32 overflow-hidden bg-gray-900">
       {/* High-res architectural background */}
       <img
         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
@@ -64,7 +64,7 @@ function PageHero() {
         </FadeIn>
         
         <FadeIn delay={0.2}>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight max-w-4xl leading-[1.1]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight max-w-4xl leading-[1.1]">
             About Mahendram Landmark
           </h1>
         </FadeIn>

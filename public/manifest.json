@@ -1,0 +1,25 @@
+{
+  "name": "Mahendram Landmark Ventures",
+  "short_name": "Mahendram",
+  "description": "Integrated Engineering, Infrastructure & Facility Management across India",
+  "theme_color": "#0A4D8C",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/final_logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/final_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

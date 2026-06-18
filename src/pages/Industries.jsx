@@ -27,7 +27,7 @@ const INDUSTRIES_DATA = [
 
 function PageHero() {
   return (
-    <section id="industries-hero" className="relative pt-40 pb-28 md:pt-48 md:pb-32 overflow-hidden bg-gray-900">
+    <section id="industries-hero" className="relative pt-20 pb-16 md:pt-48 md:pb-32 overflow-hidden bg-gray-900">
       {/* High-res architectural background */}
       <img
         src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1920&q=80"
@@ -57,7 +57,7 @@ function PageHero() {
         </FadeIn>
         
         <FadeIn delay={0.2}>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight max-w-4xl leading-[1.1]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight max-w-4xl leading-[1.1]">
             Industries We Serve
           </h1>
         </FadeIn>

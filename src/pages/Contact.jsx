@@ -115,7 +115,7 @@ function ContactForm({ tabId }) {
       <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
         {formDef.fields.map((field) => (
           <div key={field.name} className={field.type === 'textarea' ? 'sm:col-span-2' : ''}>
-            <label htmlFor={`field-${field.name}`} className="block text-sm font-bold mb-2 text-gray-800">
+            <label htmlFor={`field-${field.name}`} className="block text-sm font-bold mb-2 text-gray-800 dark:text-gray-200">
               {field.label}{field.required && <span className="text-[#29ABE2]"> *</span>}
             </label>
             <FieldInput field={field} value={values[field.name]} onChange={handleChange} />
@@ -144,8 +144,8 @@ function PageHero() {
         className="absolute inset-0 w-full h-full object-cover opacity-60"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#f8f9fa]" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-32 pb-32">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-16 md:pt-32 pb-32">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
           Get in Touch
         </h1>
         <p className="text-base max-w-xl text-white/90 mt-4 font-medium">
@@ -168,20 +168,20 @@ export default function Contact() {
       
       <PageHero />
 
-      <section id="contact-forms" className="relative z-20 -mt-32 pb-20">
+      <section id="contact-forms" className="relative z-20 -mt-16 md:-mt-32 pb-20">
         <div className="container-xl max-w-6xl mx-auto px-4">
           
           {/* Main Floating Form Card */}
           <div className="bg-white dark:bg-[#111827] rounded-[2rem] p-6 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)] mb-8 border border-gray-100 dark:border-white/10">
             
-            {/* Tabs Header */}
-            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 border-b border-gray-100 dark:border-white/10 pb-6 mb-6" role="tablist">
+            {/* Tabs Header — 2-col grid on mobile, flex on md+ */}
+            <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-2 md:gap-4 border-b border-gray-100 dark:border-white/10 pb-5 mb-6" role="tablist">
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
                   <button key={tab.id} id={`tab-${tab.id}`} role="tab" aria-selected={isActive}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-200 ${
+                    className={`w-full px-4 py-3 rounded-full text-xs md:text-sm font-bold transition-all duration-200 ${
                       isActive ? 'bg-[#29ABE2] text-white shadow-md transform scale-105' : 'bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/10'
                     }`}>
                     {tab.label}

@@ -1,9 +1,12 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import MobileTopBar from './components/MobileTopBar';
+import BottomTabBar from './components/BottomTabBar';
+import MobileMenuSheet from './components/MobileMenuSheet';
 import { ThemeProvider } from './context/ThemeContext';
 
 /* ── Lazy-loaded page components ─────────────────────────────────── */
@@ -71,20 +74,34 @@ function AnimatedRoutes() {
 
 function AppContent() {
   const location = useLocation();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setSheetOpen(false); // close sheet on route change
   }, [location.pathname]);
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      {/* Desktop navbar — hidden on mobile */}
+      <div className="hidden md:block">
+        <Navbar />
+      </div>
+
+      {/* Mobile top bar — hidden on desktop */}
+      <MobileTopBar />
+
       <main className="flex-grow">
         <Suspense fallback={<PageLoader />}>
           <AnimatedRoutes />
         </Suspense>
       </main>
+
       <Footer />
+
+      {/* Mobile bottom tab bar + slide-up sheet */}
+      <BottomTabBar onMenuOpen={() => setSheetOpen(true)} />
+      <MobileMenuSheet isOpen={sheetOpen} onClose={() => setSheetOpen(false)} />
     </div>
   );
 }

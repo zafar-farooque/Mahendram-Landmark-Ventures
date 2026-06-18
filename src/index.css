@@ -297,3 +297,63 @@ html.dark {
   0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(-5deg); }
   50% { transform: translateY(-10px) rotateX(-5deg) rotateY(5deg); }
 }
+
+/* ─────────────────────────────────────────
+   Mobile App-Like Utilities
+───────────────────────────────────────── */
+
+/* Touch interaction — removes 300ms tap delay on all interactive elements */
+button,
+a,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* Suppress text selection on UI chrome */
+button,
+nav,
+header,
+footer,
+[role="navigation"],
+[role="tablist"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Momentum scrolling for native iOS feel */
+.overflow-y-auto,
+.overflow-auto,
+[style*="overflow-y: auto"],
+[style*="overflowY"] {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile body padding — space below tab bar */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+
+  /* Hero sections extra top padding for mobile top bar (56px) */
+  .mobile-hero-padding {
+    padding-top: calc(56px + env(safe-area-inset-top) + 1.5rem);
+  }
+
+  /* Reduce scrollbar width on mobile */
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+}
+
+/* Safe area padding utilities */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
