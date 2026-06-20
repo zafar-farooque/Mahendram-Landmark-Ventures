@@ -175,14 +175,14 @@ export default function Contact() {
           <div className="bg-white dark:bg-[#111827] rounded-[2rem] p-6 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)] mb-8 border border-gray-100 dark:border-white/10">
             
             {/* Tabs Header — 2-col grid on mobile, flex on md+ */}
-            <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-2 md:gap-4 border-b border-gray-100 dark:border-white/10 pb-5 mb-6" role="tablist">
+            <div className="flex flex-wrap items-center justify-center gap-2 bg-gray-100 dark:bg-white/5 p-1.5 rounded-full mx-auto w-fit mb-8" role="tablist">
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
                   <button key={tab.id} id={`tab-${tab.id}`} role="tab" aria-selected={isActive}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`w-full px-4 py-3 rounded-full text-xs md:text-sm font-bold transition-all duration-200 ${
-                      isActive ? 'bg-[#29ABE2] text-white shadow-md transform scale-105' : 'bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/10'
+                    className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-200 whitespace-nowrap ${
+                      isActive ? 'bg-[#29ABE2] text-white shadow-md' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}>
                     {tab.label}
                   </button>

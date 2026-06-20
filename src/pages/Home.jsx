@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import FadeIn from '../components/FadeIn';
 import {
   Building2, PenTool, Settings, HardHat, Wrench, ArrowUpCircle, Package,
-  GraduationCap, Link as LinkIcon, MapPin, BarChart3, CheckCircle2, ShieldCheck, Zap
+  GraduationCap, Link as LinkIcon, MapPin, BarChart3, CheckCircle2, ShieldCheck, Zap,
+  Factory, Landmark, HeartPulse, ShoppingBag, Hotel, GraduationCap as GradCap2, Train, Briefcase
 } from 'lucide-react';
 import TiltCard from '../components/TiltCard';
 import CountUp from '../components/CountUp';
@@ -17,17 +18,24 @@ const STATS = [
 
 const DIVISIONS = [
   { id: 'mlv',     name: 'Mahendram Landmark Ventures', sub: 'Engineering & Infrastructure',   accent: '#60A5FA', to: '/about', bgImage: '/engineering_bg_1781672667460.png'    },
-  { id: 'inovvio', name: 'Inovvio Interior',             sub: 'Design & Interior Solutions',    accent: '#FCD34D', to: '/services', bgImage: '/interior_bg_1781672681086.png' },
-  { id: 'ortus',   name: 'Ortus Apex',                   sub: 'Software Solutions & IT Services',    accent: '#34D399', to: '/services', bgImage: '/software_bg_1781672695199.png' },
+  { id: 'inovvio', name: 'Inovvio Interior',             sub: 'Interior Design & Turnkey Fit-Out',    accent: '#FCD34D', to: '/services', bgImage: '/interior_bg_1781672681086.png' },
+  { id: 'ortus',   name: 'Ortus Apex',                   sub: 'Facility & Asset Management',    accent: '#34D399', to: '/services', bgImage: '/ortus_facility_management.png' },
+];
+
+const PARTNERS = [
+  '/logos/1.png', '/logos/2.png', '/logos/3.png', '/logos/4.png', '/logos/5.png',
+  '/logos/6.png', '/logos/7.png', '/logos/8.png', '/logos/9.png', '/logos/10.png',
+  '/logos/11.png', '/logos/12.png', '/logos/13.png', '/logos/14.png', '/logos/15.png',
+  '/logos/16.png', '/logos/17.png',
 ];
 
 const SOLUTIONS = [
-  { Icon: HardHat,    title: 'Build',   desc: 'Construction, Infrastructure & Industrial Facilities', bgImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80' },
-  { Icon: PenTool,   title: 'Design',  desc: 'Architecture, Interiors & Engineering', bgImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80' },
-  { Icon: Wrench,title: 'Install', desc: 'MEP, Fire Protection & Electrical Systems', bgImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80' },
-  { Icon: Settings,   title: 'Operate', desc: 'Facility Management & Maintenance', bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
-  { Icon: ArrowUpCircle,  title: 'Upgrade', desc: 'Renovation & Modernization', bgImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80' },
-  { Icon: Package,      title: 'Supply',  desc: 'Construction Materials & Industrial Products', bgImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80' },
+  { Icon: HardHat,       title: 'Build New Facilities',           desc: 'Turnkey construction for factories, warehouses, commercial buildings and institutional campuses.', bgImage: '/sol_build.png' },
+  { Icon: Building2,     title: 'Expand Manufacturing Capacity',  desc: 'Plant expansion, production line setup and industrial infrastructure augmentation.', bgImage: '/sol_expand.png' },
+  { Icon: Package,       title: 'Develop Warehousing',            desc: 'Warehouse design, PEB warehousing, logistics parks and cold storage infrastructure.', bgImage: '/sol_warehouse.png' },
+  { Icon: PenTool,       title: 'Create Productive Workspaces',   desc: 'Office interiors, workplace strategy, retail and hospitality fit-out via Inovvio Interior.', bgImage: '/sol_workspace.png' },
+  { Icon: ArrowUpCircle, title: 'Upgrade Existing Facilities',    desc: 'Renovation, modernization, MEP upgrades and fire protection retrofitting.', bgImage: '/sol_upgrade.png' },
+  { Icon: Settings,      title: 'Manage Assets Efficiently',      desc: 'Facility management, AMC, energy management and lifecycle asset support via Ortus Apex.', bgImage: '/sol_manage.png' },
 ];
 
 const INDUSTRIES = ['Real Estate', 'Manufacturing', 'Warehousing', 'Logistics', 'Healthcare', 'Hospitality', 'Retail', 'Education', 'Corporate Offices', 'Government', 'PSU', 'Railways', 'Ports', 'Power', 'Data Centers'];
@@ -63,10 +71,21 @@ function Hero() {
           
           <FadeIn delay={0.2}>
             <p className="text-base md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium tracking-tight max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Building robust <span className="text-[#0A4D8C] font-bold">Infrastructure</span>.<br/>
-              Creating dynamic <span className="text-[#29ABE2] font-bold">Workspaces</span>.<br/>
-              Managing core <span className="text-gray-900 dark:text-white font-bold">Assets</span>.
+              Building <span className="text-[#0A4D8C] font-bold">Infrastructure</span>. Creating <span className="text-[#29ABE2] font-bold">Workspaces</span>. Managing <span className="text-gray-900 dark:text-white font-bold">Assets</span>.
             </p>
+            <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed mt-2">
+              Integrated Engineering, Construction, Interior, Infrastructure & Facility Management Solutions Across India.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.3}>
+            <div className="hidden lg:flex flex-wrap gap-2 mt-2">
+              {['Pan India Operations','End-to-End Solutions','Single Point Accountability','Safety First','Technology Driven'].map(t => (
+                <span key={t} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-[#F0F7FF] dark:bg-white/10 text-[#0A4D8C] dark:text-[#29ABE2] border border-[#29ABE2]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2]" />{t}
+                </span>
+              ))}
+            </div>
           </FadeIn>
 
           <div className="hidden lg:block">
@@ -79,21 +98,6 @@ function Hero() {
                 <Link to="/contact" className="px-8 py-4 rounded-full bg-white dark:bg-white/10 dark:border-white/20 dark:text-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center">
                   Contact Us
                 </Link>
-              </div>
-            </FadeIn>
-            
-            {/* Quick stats below text */}
-            <FadeIn delay={0.6}>
-              <div className="flex items-center gap-8 mt-10 justify-center lg:justify-start pt-8 border-t border-gray-200/60 dark:border-white/10">
-                <div>
-                  <h4 className="text-3xl font-black text-gray-900 dark:text-white">500+</h4>
-                  <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Projects</p>
-                </div>
-                <div className="w-px h-10 bg-gray-200 dark:bg-white/20"></div>
-                <div>
-                  <h4 className="text-3xl font-black text-gray-900 dark:text-white">20+</h4>
-                  <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Years Exp</p>
-                </div>
               </div>
             </FadeIn>
           </div>
@@ -160,20 +164,6 @@ function Hero() {
               <Link to="/contact" className="px-8 py-4 rounded-full bg-white dark:bg-white/10 dark:border-white/20 dark:text-white border-2 border-gray-200 text-gray-700 font-bold text-base hover:bg-gray-50 active:scale-95 transition-all flex items-center justify-center">
                 Contact Us
               </Link>
-            </div>
-          </FadeIn>
-          
-          <FadeIn delay={0.6}>
-            <div className="flex items-center gap-8 justify-center pt-8 border-t border-gray-200/60 dark:border-white/10">
-              <div className="text-center">
-                <h4 className="text-3xl font-black text-gray-900 dark:text-white">500+</h4>
-                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Projects</p>
-              </div>
-              <div className="w-px h-10 bg-gray-200 dark:bg-white/20"></div>
-              <div className="text-center">
-                <h4 className="text-3xl font-black text-gray-900 dark:text-white">20+</h4>
-                <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">Years Exp</p>
-              </div>
             </div>
           </FadeIn>
         </div>
@@ -259,14 +249,28 @@ function SolutionsGrid() {
       <div className="container-xl w-full relative z-10">
         <FadeIn delay={0}>
           <div className="mb-16 text-center">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">What We Do</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white">Integrated Engineering Solutions</h2>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Business Solutions</p>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white">What Can We Do For You?</h2>
+            <p className="mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-gray-500 dark:text-gray-400 font-medium">Clients buy solutions, not services. Tell us your business objective and we'll deliver the right engineering solution.</p>
           </div>
         </FadeIn>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
           {SOLUTIONS.map((s, i) => (
             <FadeIn key={s.title} delay={i * 0.1}>
-              <div className="group block h-full bg-white dark:bg-[#111827] rounded-[2rem] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden">
+              <div className="group block h-full bg-white dark:bg-[#111827] rounded-[2rem] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 relative overflow-visible">
+                
+                {/* Floating Glassmorphism Image Popup */}
+                <div className="absolute bottom-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-56 h-36 opacity-0 pointer-events-none origin-bottom scale-50 translate-y-6 group-hover:scale-100 group-hover:-translate-y-2 group-hover:opacity-100 transition-all duration-500 ease-out z-50">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-gray-900 [transform:translateZ(0)]">
+                    <img src={s.bgImage} className="absolute inset-0 w-full h-full object-cover scale-125 group-hover:scale-100 transition-transform duration-700 ease-out" alt={s.title} />
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px] z-10 group-hover:backdrop-blur-0 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent z-20" />
+                    <div className="absolute bottom-3 left-0 right-0 text-center z-30 px-2">
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest drop-shadow-md">{s.title}</span>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#29ABE2]/10 to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm mb-6 bg-[#F0F7FF] text-[#29ABE2] group-hover:scale-110 group-hover:bg-[#29ABE2] group-hover:text-white transition-all duration-500 border border-[#29ABE2]/10">
                   <s.Icon size={24} strokeWidth={2} />
@@ -289,10 +293,10 @@ function IndustriesStrip() {
       <FadeIn delay={0}>
         <p className="text-center text-xs font-bold tracking-[0.2em] uppercase mb-8 text-[#29ABE2]">Industries We Serve</p>
       </FadeIn>
-      <div className="relative flex w-full">
+      <div className="relative w-full overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-gradient-to-r from-[#f8f9fa] dark:from-[#0A0F1A] to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-gradient-to-l from-[#f8f9fa] dark:from-[#0A0F1A] to-transparent" />
-        <div className="flex animate-marquee whitespace-nowrap">
+        <div className="flex min-w-max animate-marquee">
           {items.map((ind, i) => (
             <span key={`${ind}-${i}`} className="inline-flex items-center gap-3 mx-8 text-sm md:text-base font-extrabold text-gray-400 dark:text-gray-500 select-none hover:text-[#29ABE2] transition-colors cursor-default">
               <span className="w-2 h-2 rounded-full bg-[#29ABE2]/50" />{ind}
@@ -378,24 +382,120 @@ function CTABanner() {
         <FadeIn delay={0}>
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-              Let's Build Something<br className="hidden md:block" /> Exceptional Together
+              Let's Discuss Your<br className="hidden md:block" /> Project
             </h2>
             <p className="mt-4 text-base max-w-xl leading-relaxed text-white/80 font-medium">
-              Request a consultation today. Our engineering team will assess your project requirements and deliver a tailored proposal within 48 hours.
+              Request a proposal today. Our engineering team will assess your project requirements and deliver a tailored scope within 48 hours.
             </p>
           </div>
         </FadeIn>
         
         <FadeIn delay={0.1}>
-          <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-            <Link to="/contact" className="px-10 py-4 rounded-full text-sm font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-[0_10px_25px_rgba(41,171,226,0.3)] bg-[#29ABE2]">
-              Get in Touch
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            <Link to="/contact" className="px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-[0_10px_25px_rgba(41,171,226,0.3)] bg-[#29ABE2]">
+              Request Proposal
             </Link>
-            <Link to="/services" className="px-10 py-4 rounded-full text-sm font-bold text-white border-2 border-white/20 hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
-              Explore Services
+            <Link to="/contact" className="px-8 py-4 rounded-full text-sm font-bold text-white border-2 border-white/20 hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
+              Schedule Consultation
             </Link>
           </div>
         </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+const CLIENTELE = [
+  { Icon: Building2,     sector: 'Real Estate Developers', names: 'Commercial Complexes, Residential Townships, Mixed-Use Developments' },
+  { Icon: Factory,       sector: 'Manufacturing & Industrial', names: 'Automotive Plants, FMCG Factories, Pharmaceutical Units' },
+  { Icon: Landmark,      sector: 'Government & PSU', names: 'Public Infrastructure, Defence Establishments, Municipal Projects' },
+  { Icon: Briefcase,     sector: 'Corporate & IT Parks', names: 'Office Campuses, Tech Parks, Business Centers' },
+  { Icon: HeartPulse,    sector: 'Healthcare', names: 'Hospitals, Clinics, Diagnostic Centers' },
+  { Icon: ShoppingBag,   sector: 'Retail & Commercial', names: 'Malls, Showrooms, Quick Service Restaurants' },
+  { Icon: Hotel,         sector: 'Hospitality', names: 'Hotels, Resorts, Convention Centers' },
+  { Icon: Train,         sector: 'Logistics & Warehousing', names: 'Warehouses, Cold Storage, Distribution Hubs' },
+];
+
+function Clientele() {
+  return (
+    <section id="clientele" className="py-24 relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Image */}
+          <FadeIn delay={0}>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+              <img
+                src="/clientele_people.png"
+                alt="Our team of professionals"
+                className="w-full h-full object-cover"
+                onError={e => { e.target.src = '/clientele_collage.png'; }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-[#29ABE2] flex items-center justify-center shadow-lg">
+                    <Building2 size={22} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white font-extrabold text-lg">People Who Deliver</p>
+                    <p className="text-white/70 text-xs font-bold uppercase tracking-wider">500+ Projects Across India</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Right: Sector Grid */}
+          <div>
+            <FadeIn delay={0.1}>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Our Clientele</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Serving India's Leading Enterprises</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed mb-8 max-w-lg">From Fortune 500 corporations to government institutions, our clientele spans every major sector of the Indian economy.</p>
+            </FadeIn>
+            <div className="grid grid-cols-2 gap-3">
+              {CLIENTELE.map((c, i) => (
+                <FadeIn key={c.sector} delay={0.15 + i * 0.05}>
+                  <div className="group flex items-start gap-3 p-4 rounded-2xl bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#F0F7FF] dark:bg-white/5 text-[#29ABE2] group-hover:bg-[#29ABE2] group-hover:text-white transition-all duration-300">
+                      <c.Icon size={18} strokeWidth={2} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-extrabold text-gray-900 dark:text-white leading-tight">{c.sector}</p>
+                      <p className="text-[10px] text-gray-400 dark:text-gray-500 font-medium mt-0.5 leading-snug">{c.names}</p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+function Partners() {
+  const all = [...PARTNERS, ...PARTNERS];
+  return (
+    <section id="partners" className="py-16 relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <FadeIn delay={0}>
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Our Ecosystem</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Strategic Partners</h2>
+            <p className="mt-3 text-sm text-gray-500 dark:text-gray-400 font-medium max-w-xl mx-auto">Backed by specialized partners across strategy, technology, marketing, communication and talent.</p>
+          </div>
+        </FadeIn>
+        <div className="relative w-full overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-r from-[#fafcff] dark:from-[#0A0F1A] to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none bg-gradient-to-l from-[#fafcff] dark:from-[#0A0F1A] to-transparent" />
+          <div className="flex min-w-max animate-marquee gap-6">
+            {all.map((logo, i) => (
+              <div key={`partner-${i}`} className="flex-shrink-0 flex items-center justify-center bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 rounded-2xl px-10 py-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 w-44 h-24">
+                <img src={logo} alt="Partner" className="h-10 w-auto max-w-[120px] object-contain grayscale hover:grayscale-0 transition-all duration-300" onError={e => { e.target.style.display='none'; }} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -426,6 +526,8 @@ export default function Home() {
         <SolutionsGrid />
         <IndustriesStrip />
         <WhyUs />
+        <Clientele />
+        <Partners />
         <CTABanner />
       </div>
     </div>

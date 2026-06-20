@@ -20,7 +20,7 @@ const VALUES = [
 const DIVISIONS = [
   { name: 'Mahendram Landmark Ventures Pvt Ltd', sub: 'Engineering, Infrastructure & Contracting',   Icon: Building2,   color: '#29ABE2', image: '/group_mlv_construction.png', desc: 'Turnkey engineering, construction, PEB, MEP, fire protection, industrial infrastructure and large-scale project delivery across India.' },
   { name: 'Inovvio Interior',                    sub: 'Design, Interior & Workplace Solutions',      Icon: PenTool, color: '#60A5FA', image: '/group_inovvio_office.png', desc: 'Premium workplace strategy, interior design, office fit-out, retail and hospitality interiors that merge design with business productivity.' },
-  { name: 'Ortus Apex',                          sub: 'Software Solutions & IT Services',     Icon: Settings,    color: '#34D399', image: '/group_ortus_software.png', desc: 'Custom software development, IT infrastructure, cloud solutions, and data analytics to drive digital transformation and operational efficiency.' },
+  { name: 'Ortus Apex',                          sub: 'Facility & Asset Management',     Icon: Settings,    color: '#34D399', image: '/ortus_facility_management.png', desc: 'Comprehensive facility management, technical services, MEP maintenance, soft services, housekeeping, pest control, waste management and full lifecycle asset management for commercial and industrial facilities.' },
 ];
 
 const TIMELINE = [
