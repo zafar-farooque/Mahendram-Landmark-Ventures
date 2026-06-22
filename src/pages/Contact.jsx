@@ -239,10 +239,10 @@ export default function Contact() {
               <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Corporate Office" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
             </div>
             <div className="h-64 lg:h-auto rounded-[2rem] overflow-hidden shadow-sm">
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" alt="Meeting" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+              <img src="/contact_meeting.png" alt="Business Meeting" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
             </div>
             <div className="h-64 lg:h-auto rounded-[2rem] overflow-hidden shadow-sm">
-              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Professionals" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+              <img src="/contact_site_visit.png" alt="Engineers on site" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
             </div>
           </div>
 

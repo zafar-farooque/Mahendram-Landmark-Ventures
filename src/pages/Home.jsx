@@ -1,10 +1,12 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import FadeIn from '../components/FadeIn';
 import {
   Building2, PenTool, Settings, HardHat, Wrench, ArrowUpCircle, Package,
   GraduationCap, Link as LinkIcon, MapPin, BarChart3, CheckCircle2, ShieldCheck, Zap,
-  Factory, Landmark, HeartPulse, ShoppingBag, Hotel, GraduationCap as GradCap2, Train, Briefcase
+  Factory, Landmark, HeartPulse, ShoppingBag, Hotel, GraduationCap as GradCap2, Train, Briefcase,
+  Star, Quote
 } from 'lucide-react';
 import TiltCard from '../components/TiltCard';
 import CountUp from '../components/CountUp';
@@ -103,55 +105,64 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Side Image Composition */}
-        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[500px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px] max-h-[50vh] lg:max-h-[60vh] xl:max-h-[70vh] z-10 lg:col-span-7 lg:mt-0 mt-6">
+        {/* Right Side — 16:9 Video Composition */}
+        <div className="relative w-full aspect-video z-10 lg:col-span-7 lg:mt-0 mt-6 max-h-[70vh]">
           <FadeIn delay={0.3} className="w-full h-full relative">
-            
+
             {/* Main Video Card */}
-            <div className="w-full h-full rounded-[2.5rem] xl:rounded-[4rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-[6px] border-white relative z-10 group bg-white">
-              <video 
-                autoPlay 
-                loop 
-                muted 
+            <div className="w-full h-full rounded-[2.5rem] xl:rounded-[4rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.2)] border-[6px] border-white relative z-10 group bg-black">
+              <video
+                autoPlay
+                loop
+                muted
                 playsInline
-                poster="/@fs/home/zafar-farooque/.gemini/antigravity/brain/15140b34-30d2-4d7a-b767-a7deb8004a91/hero_infrastructure_1781678147300.png"
-                className="w-full h-full object-cover object-center scale-[1.3] md:scale-[1.35] transition-transform duration-[1.5s] group-hover:scale-[1.4]"
+                className="w-full h-full object-cover object-center transition-transform duration-[1.5s] group-hover:scale-105"
               >
-                <source src="/lv_0_20260618184154.mp4" type="video/mp4" />
+                <source src="/New_hero.mp4" type="video/mp4" />
               </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A4D8C]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+              {/* Bottom gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+              {/* Center vertical divider */}
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[6px] bg-white/80 backdrop-blur-sm pointer-events-none z-20"
+                   style={{ boxShadow: '0 0 12px 2px rgba(255,255,255,0.4)' }} />
             </div>
 
-            {/* Floating Element 1 (Value) */}
-            <div className="absolute -left-8 lg:-left-12 bottom-[10%] xl:bottom-[15%] bg-white/95 dark:bg-[#111827]/95 backdrop-blur-xl border border-white dark:border-white/10 p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(41,171,226,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '4s' }}>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-gradient-to-br from-[#29ABE2]/20 to-[#0A4D8C]/10 flex items-center justify-center text-[#29ABE2]">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                </div>
-                <div>
-                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Portfolio Value</p>
-                  <p className="text-xl xl:text-2xl font-black text-gray-900 dark:text-white">₹2500 Cr+</p>
-                </div>
+            {/* Floating Badge 1 — Portfolio Value — bottom edge, slightly outside */}
+            <div
+              className="absolute -bottom-5 left-8 bg-white dark:bg-[#0A1628] backdrop-blur-xl border border-gray-100 dark:border-white/10 p-3 xl:p-4 rounded-2xl shadow-[0_20px_40px_rgba(41,171,226,0.15)] z-20 animate-bounce hidden sm:flex items-center gap-3"
+              style={{ animationDuration: '4s' }}
+            >
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#29ABE2]/20 to-[#0A4D8C]/10 flex items-center justify-center text-[#29ABE2] flex-shrink-0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div>
+                <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Portfolio Value</p>
+                <p className="text-base xl:text-lg font-black text-gray-900 dark:text-white leading-tight">₹2500 Cr+</p>
               </div>
             </div>
 
-            {/* Floating Element 2 (Team) */}
-            <div className="absolute -right-4 lg:-right-10 top-[10%] xl:top-[12%] bg-white/95 dark:bg-[#111827]/95 backdrop-blur-xl border border-white dark:border-white/10 p-4 xl:p-6 rounded-3xl shadow-[0_30px_60px_rgba(10,77,140,0.15)] z-20 animate-bounce hidden sm:block" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-3 xl:-space-x-4">
-                  <img className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Engineer" />
-                  <img className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Architect" />
-                  <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-full border-[3px] border-white bg-[#0A4D8C] flex items-center justify-center text-white text-xs xl:text-sm font-bold shadow-inner z-10">+50</div>
-                </div>
-                <div>
-                  <p className="text-sm xl:text-base font-black text-gray-900 dark:text-white">Expert Team</p>
-                  <p className="text-[10px] xl:text-xs font-bold text-gray-500 dark:text-gray-400 uppercase">Engineers & Archs</p>
-                </div>
+            {/* Floating Badge 2 — Expert Team — top edge, slightly outside */}
+            <div
+              className="absolute -top-5 right-8 bg-white dark:bg-[#0A1628] backdrop-blur-xl border border-gray-100 dark:border-white/10 p-3 xl:p-4 rounded-2xl shadow-[0_20px_40px_rgba(10,77,140,0.12)] z-20 animate-bounce hidden sm:flex items-center gap-3"
+              style={{ animationDuration: '5s', animationDelay: '1s' }}
+            >
+              <div className="flex -space-x-2">
+                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="/avatar_engineer.png" alt="Engineer" />
+                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="/avatar_architect.png" alt="Architect" />
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-[#0A4D8C] flex items-center justify-center text-white text-[10px] font-bold shadow-inner z-10">+50</div>
+              </div>
+              <div>
+                <p className="text-sm font-black text-gray-900 dark:text-white">Expert Team</p>
+                <p className="text-[9px] font-bold text-gray-400 uppercase tracking-wide">Engineers & Archs</p>
               </div>
             </div>
 
           </FadeIn>
         </div>
+
+
 
         {/* Mobile only buttons & stats (shown below video) */}
         <div className="lg:hidden flex flex-col gap-6 mt-2 w-full max-w-xl mx-auto relative z-20">
@@ -405,70 +416,142 @@ function CTABanner() {
   );
 }
 
-const CLIENTELE = [
-  { Icon: Building2,     sector: 'Real Estate Developers', names: 'Commercial Complexes, Residential Townships, Mixed-Use Developments' },
-  { Icon: Factory,       sector: 'Manufacturing & Industrial', names: 'Automotive Plants, FMCG Factories, Pharmaceutical Units' },
-  { Icon: Landmark,      sector: 'Government & PSU', names: 'Public Infrastructure, Defence Establishments, Municipal Projects' },
-  { Icon: Briefcase,     sector: 'Corporate & IT Parks', names: 'Office Campuses, Tech Parks, Business Centers' },
-  { Icon: HeartPulse,    sector: 'Healthcare', names: 'Hospitals, Clinics, Diagnostic Centers' },
-  { Icon: ShoppingBag,   sector: 'Retail & Commercial', names: 'Malls, Showrooms, Quick Service Restaurants' },
-  { Icon: Hotel,         sector: 'Hospitality', names: 'Hotels, Resorts, Convention Centers' },
-  { Icon: Train,         sector: 'Logistics & Warehousing', names: 'Warehouses, Cold Storage, Distribution Hubs' },
+const TESTIMONIALS = [
+  {
+    name: 'Rajesh Kapoor',
+    role: 'Managing Director',
+    company: 'Kapoor Realty Group',
+    sector: 'Real Estate',
+    photo: '/testimonial_1.png',
+    quote: 'Mahendram Landmark delivered our 3-lakh sq ft commercial complex in Pune ahead of schedule. Their engineering precision and project management capabilities are truly world-class. We have already engaged them for our next township project.',
+    rating: 5,
+  },
+  {
+    name: 'Priya Venkatesh',
+    role: 'VP — Operations',
+    company: 'Meridian Manufacturing Pvt Ltd',
+    sector: 'Manufacturing',
+    photo: '/testimonial_2.png',
+    quote: 'From plant layout to MEP integration, the team handled our entire factory expansion in Gujarat with remarkable professionalism. Zero safety incidents across 14 months of construction. That speaks volumes about their commitment.',
+    rating: 5,
+  },
+  {
+    name: 'Arjun Mehta',
+    role: 'General Manager — Facilities',
+    company: 'NexGen IT Park, Hyderabad',
+    sector: 'Corporate',
+    photo: '/testimonial_3.png',
+    quote: 'Inovvio Interior transformed our 5-tower IT campus interiors beautifully, and Ortus Apex now manages our entire facility. Having one group handle design, build and operations has simplified everything for us.',
+    rating: 5,
+  },
+];
+
+const CLIENT_SECTORS = [
+  { Icon: Building2, label: 'Real Estate' },
+  { Icon: Factory, label: 'Manufacturing' },
+  { Icon: Landmark, label: 'Government' },
+  { Icon: Briefcase, label: 'Corporate' },
+  { Icon: HeartPulse, label: 'Healthcare' },
+  { Icon: ShoppingBag, label: 'Retail' },
+  { Icon: Hotel, label: 'Hospitality' },
+  { Icon: Train, label: 'Logistics' },
 ];
 
 function Clientele() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => setActive(p => (p + 1) % TESTIMONIALS.length), 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const t = TESTIMONIALS[active];
+
   return (
     <section id="clientele" className="py-24 relative overflow-hidden">
       <div className="container-xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Image */}
-          <FadeIn delay={0}>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
-              <img
-                src="/clientele_people.png"
-                alt="Our team of professionals"
-                className="w-full h-full object-cover"
-                onError={e => { e.target.src = '/clientele_collage.png'; }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-[#29ABE2] flex items-center justify-center shadow-lg">
-                    <Building2 size={22} className="text-white" />
+
+        {/* Header */}
+        <FadeIn delay={0}>
+          <div className="text-center mb-16">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Client Testimonials</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">What Our Clients Say</h2>
+            <p className="mt-3 text-sm text-gray-500 dark:text-gray-400 font-medium max-w-xl mx-auto">Trusted by leading enterprises across India. Hear directly from the people we've built for.</p>
+          </div>
+        </FadeIn>
+
+        {/* Testimonial Card */}
+        <FadeIn delay={0.1}>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-white dark:bg-[#111827] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 overflow-hidden">
+
+              {/* Quote Icon */}
+              <div className="absolute top-6 right-8 text-[#29ABE2]/10">
+                <Quote size={80} strokeWidth={1} />
+              </div>
+
+              <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                {/* Photo */}
+                <div className="flex-shrink-0">
+                  <div className="w-28 h-28 md:w-36 md:h-36 rounded-3xl overflow-hidden shadow-lg border-4 border-[#29ABE2]/20">
+                    <img
+                      key={t.photo}
+                      src={t.photo}
+                      alt={t.name}
+                      className="w-full h-full object-cover object-top transition-opacity duration-500"
+                    />
                   </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 text-center md:text-left">
+                  {/* Stars */}
+                  <div className="flex items-center gap-1 justify-center md:justify-start mb-4">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Star key={i} size={16} className="fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+
+                  <p className="text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-medium italic mb-6">
+                    "{t.quote}"
+                  </p>
+
                   <div>
-                    <p className="text-white font-extrabold text-lg">People Who Deliver</p>
-                    <p className="text-white/70 text-xs font-bold uppercase tracking-wider">500+ Projects Across India</p>
+                    <p className="font-extrabold text-gray-900 dark:text-white text-lg">{t.name}</p>
+                    <p className="text-sm text-[#29ABE2] font-bold">{t.role}</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 font-medium mt-0.5">{t.company} · {t.sector}</p>
                   </div>
                 </div>
               </div>
-            </div>
-          </FadeIn>
 
-          {/* Right: Sector Grid */}
-          <div>
-            <FadeIn delay={0.1}>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Our Clientele</p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Serving India's Leading Enterprises</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed mb-8 max-w-lg">From Fortune 500 corporations to government institutions, our clientele spans every major sector of the Indian economy.</p>
-            </FadeIn>
-            <div className="grid grid-cols-2 gap-3">
-              {CLIENTELE.map((c, i) => (
-                <FadeIn key={c.sector} delay={0.15 + i * 0.05}>
-                  <div className="group flex items-start gap-3 p-4 rounded-2xl bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#F0F7FF] dark:bg-white/5 text-[#29ABE2] group-hover:bg-[#29ABE2] group-hover:text-white transition-all duration-300">
-                      <c.Icon size={18} strokeWidth={2} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-sm font-extrabold text-gray-900 dark:text-white leading-tight">{c.sector}</p>
-                      <p className="text-[10px] text-gray-400 dark:text-gray-500 font-medium mt-0.5 leading-snug">{c.names}</p>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
+              {/* Dots */}
+              <div className="flex items-center justify-center gap-2 mt-8">
+                {TESTIMONIALS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={`rounded-full transition-all duration-300 ${i === active ? 'w-8 h-2.5 bg-[#29ABE2]' : 'w-2.5 h-2.5 bg-gray-200 dark:bg-white/10 hover:bg-gray-300'}`}
+                    aria-label={`Testimonial ${i + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
+
+        {/* Sector Pills */}
+        <FadeIn delay={0.2}>
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-14">
+            <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mr-2">Sectors We Serve</p>
+            {CLIENT_SECTORS.map(s => (
+              <div key={s.label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 shadow-sm text-xs font-bold text-gray-600 dark:text-gray-300 hover:border-[#29ABE2]/30 hover:text-[#29ABE2] transition-all duration-200">
+                <s.Icon size={14} strokeWidth={2} />
+                {s.label}
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+
       </div>
     </section>
   );
