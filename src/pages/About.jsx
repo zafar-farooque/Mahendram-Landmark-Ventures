@@ -154,7 +154,7 @@ function Overview() {
             <FadeIn delay={0.1}>
               <div className="relative z-10 w-full mb-2">
                 <div className="overflow-hidden rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.08)] group w-full bg-white">
-                  <img src="/team_blueprints.png" alt="Engineering team" className="w-full h-64 md:h-80 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105" />
+                  <img src="/company_overview.jpeg" alt="Engineering team" className="w-full h-64 md:h-80 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105" />
                 </div>
               </div>
             </FadeIn>
@@ -332,6 +332,239 @@ function CTABanner() {
   );
 }
 
+const LEADERS = [
+  { name: 'Rajiv Mahendram', role: 'Founder & Managing Director', image: '/leader_ceo.png', desc: 'Over 30 years of visionary experience in Indian infrastructure and engineering.' },
+  { name: 'Priya Sharma', role: 'Chief Operating Officer', image: '/leader_coo.png', desc: 'Expert in driving operational excellence and scaling pan-India project execution.' },
+  { name: 'Arun Desai', role: 'Chief Financial Officer', image: '/leader_cfo.png', desc: 'Strategic financial leadership guiding sustainable growth and corporate governance.' },
+];
+
+function LeadershipTeam() {
+  return (
+    <section id="about-leadership" className="section-padding relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="text-center mb-16">
+          <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Our People</p></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Leadership Team</h2></FadeIn>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {LEADERS.map((leader, i) => (
+            <FadeIn key={leader.name} delay={i * 0.1}>
+              <div className="group rounded-[2.5rem] overflow-hidden bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 text-center shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300">
+                <div className="relative aspect-square overflow-hidden mb-6">
+                  <img src={leader.image} alt={leader.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </div>
+                <div className="px-6 pb-8">
+                  <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-1">{leader.name}</h3>
+                  <p className="text-sm font-bold text-[#29ABE2] uppercase tracking-wide mb-3">{leader.role}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{leader.desc}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OurStory() {
+  return (
+    <section id="about-story" className="section-padding relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <FadeIn delay={0}>
+            <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" alt="Our Story" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <p className="text-white text-3xl font-black">Since 2010</p>
+                <p className="text-white/80 font-medium">Building the foundation of modern India.</p>
+              </div>
+            </div>
+          </FadeIn>
+          <div className="flex flex-col gap-6">
+            <FadeIn delay={0.1}>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#29ABE2]">Our Story</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">
+                A Legacy of Engineering Excellence
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                What began as a specialized engineering contracting firm has evolved into a premier integrated infrastructure powerhouse. For over a decade, Mahendram Landmark has been at the forefront of India's rapid development.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                Our journey is defined by relentless innovation, unwavering commitment to quality, and a deeply ingrained ethos of building sustainable, future-ready spaces. Today, we stand as a trusted partner for India's leading enterprises, turning ambitious blueprints into enduring landmarks.
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyMahendram() {
+  return (
+    <section id="why-mahendram" className="section-padding relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="bg-gradient-to-br from-[#0A4D8C] to-[#0A1628] rounded-[3rem] md:rounded-[4rem] p-10 md:p-16 lg:p-20 text-white shadow-2xl relative overflow-hidden">
+          {/* Subtle background graphics */}
+          <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-white/5 blur-[100px] pointer-events-none" />
+          
+          <div className="text-center mb-16 relative z-10">
+            <FadeIn delay={0}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">The Advantage</p></FadeIn>
+            <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold">Why Choose Mahendram</h2></FadeIn>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+            {[
+              { title: 'Single Point Accountability', desc: 'From concept to commissioning and lifecycle management.' },
+              { title: 'Technical Mastery', desc: 'In-house multidisciplinary engineering teams.' },
+              { title: 'Financial Strength', desc: 'Robust financial backing to execute mega-scale projects.' },
+              { title: 'Technology Driven', desc: 'BIM integration, IoT enabled facility management, and transparent reporting.' }
+            ].map((item, i) => (
+              <FadeIn key={item.title} delay={i * 0.1}>
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2rem] h-full hover:bg-white/10 transition-all duration-300 shadow-xl group">
+                  <div className="w-12 h-12 rounded-[1rem] bg-gradient-to-br from-[#29ABE2] to-[#0A4D8C] flex items-center justify-center mb-6 text-white font-black text-xl shadow-inner group-hover:scale-110 transition-transform">{i+1}</div>
+                  <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                  <p className="text-sm text-white/70 font-medium leading-relaxed">{item.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PanIndiaPresence() {
+  return (
+    <section id="pan-india" className="section-padding relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col gap-6 order-2 lg:order-1">
+            <FadeIn delay={0}>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#29ABE2]">Nationwide Reach</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">
+                Pan India Presence
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                Our operational footprint spans across the diverse geography of India. With regional hubs, dedicated logistics networks, and localized execution teams, we ensure seamless delivery of projects and services regardless of location.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="flex flex-wrap gap-3 mt-4">
+                {['Mumbai (HQ)', 'Delhi NCR', 'Bengaluru', 'Pune', 'Hyderabad', 'Chennai', 'Kolkata', 'Ahmedabad'].map(city => (
+                  <span key={city} className="px-4 py-2 rounded-full border border-gray-200 dark:border-white/20 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5">{city}</span>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.3} className="order-1 lg:order-2">
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(41,171,226,0.15)] aspect-[4/3] md:aspect-video border-[6px] border-white dark:border-white/10 bg-black">
+              <img src="/pan_india_presence.png" alt="Pan India Operations Map" className="w-full h-full object-cover" />
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CorporateGovernance() {
+  return (
+    <section id="corporate-governance" className="section-padding relative overflow-hidden bg-[#F8FAFC] dark:bg-[#0A1628]/50">
+      <div className="container-xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <FadeIn delay={0}>
+            <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl">
+              <img src="/corporate_governance.jpeg" alt="Corporate Governance" className="w-full h-full object-cover" />
+            </div>
+          </FadeIn>
+          <div className="flex flex-col gap-6">
+            <FadeIn delay={0.1}>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#29ABE2]">Integrity & Transparency</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">
+                Corporate Governance
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                At Mahendram Landmark, corporate governance is more than just compliance; it is the cornerstone of our corporate philosophy. We are committed to maintaining the highest standards of ethical conduct, transparency, and accountability in all our dealings.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <ul className="space-y-4 mt-2">
+                {[
+                  'Strict adherence to statutory and regulatory frameworks.',
+                  'Transparent reporting and financial disclosures.',
+                  'Robust risk management and internal control systems.',
+                  'Zero tolerance policy towards unethical practices.'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 size={20} className="text-[#29ABE2] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SustainabilityCommitment() {
+  return (
+    <section id="sustainability" className="section-padding relative overflow-hidden">
+      <div className="container-xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col gap-6 order-2 lg:order-1">
+            <FadeIn delay={0}>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#34D399]">Green Initiatives</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">
+                Sustainability Commitment
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                We recognize our profound responsibility towards the environment and future generations. Sustainable practices are embedded deep within our operational DNA, from green building design to eco-conscious facility management.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="grid grid-cols-2 gap-6 mt-4">
+                {[
+                  { title: 'Green Building', desc: 'IGBC & LEED certified project execution capabilities.' },
+                  { title: 'Energy Efficiency', desc: 'Optimized MEP designs and renewable energy integration.' },
+                  { title: 'Waste Management', desc: 'Zero-to-landfill protocols across construction sites.' },
+                  { title: 'Community Impact', desc: 'Active CSR initiatives uplifting local communities.' }
+                ].map((item) => (
+                  <div key={item.title}>
+                    <h4 className="font-bold text-sm text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                    <p className="text-xs text-gray-500 font-medium">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.3} className="order-1 lg:order-2">
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3]">
+              <img src="/sustainability_about.png" alt="Sustainability Commitment" className="w-full h-full object-cover" />
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function About() {
   return (
     <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen transition-colors duration-300">
@@ -344,9 +577,15 @@ export default function About() {
       <FloatingStats />
       
       {/* Sections now float seamlessly on the unified off-white background */}
+      <OurStory />
       <Overview />
+      <WhyMahendram />
       <Divisions />
+      <LeadershipTeam />
+      <PanIndiaPresence />
       <CoreValues />
+      <CorporateGovernance />
+      <SustainabilityCommitment />
       <Timeline />
       <CTABanner />
     </div>

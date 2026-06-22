@@ -1,16 +1,39 @@
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { X, Sun, Moon, Phone } from 'lucide-react';
+import {
+  X, Sun, Moon, Phone,
+  Home, Info, Lightbulb, Wrench,
+  Factory, FolderKanban, BookOpen,
+  Handshake, Briefcase, MessageSquare,
+} from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
-const NAV_LINKS = [
-  { label: 'Home',             to: '/'                 },
-  { label: 'About',            to: '/about'            },
-  { label: 'Services',         to: '/services'         },
-  { label: 'Industries',       to: '/industries'       },
-  { label: 'Projects',         to: '/projects'         },
-  { label: 'Knowledge Center', to: '/knowledge-center' },
-  { label: 'Contact',          to: '/contact'          },
+const NAV_SECTIONS = [
+  {
+    label: 'Main',
+    links: [
+      { label: 'Home',      to: '/',         Icon: Home      },
+      { label: 'About',     to: '/about',    Icon: Info      },
+      { label: 'Solutions', to: '/solutions',Icon: Lightbulb },
+      { label: 'Services',  to: '/services', Icon: Wrench    },
+    ],
+  },
+  {
+    label: 'Explore',
+    links: [
+      { label: 'Industries', to: '/industries', Icon: Factory      },
+      { label: 'Projects',   to: '/projects',   Icon: FolderKanban },
+      { label: 'Resources',  to: '/resources',  Icon: BookOpen     },
+    ],
+  },
+  {
+    label: 'Connect',
+    links: [
+      { label: 'Partner With Us', to: '/partner', Icon: Handshake    },
+      { label: 'Careers',         to: '/careers', Icon: Briefcase    },
+      { label: 'Contact',         to: '/contact', Icon: MessageSquare},
+    ],
+  },
 ];
 
 const LinkedinIcon = () => (
@@ -34,13 +57,8 @@ const XIcon = () => (
 export default function MobileMenuSheet({ isOpen, onClose }) {
   const { theme, toggleTheme } = useTheme();
 
-  // Lock body scroll when open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
@@ -61,7 +79,7 @@ export default function MobileMenuSheet({ isOpen, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`md:hidden fixed left-0 right-0 bottom-0 z-[100] bg-white dark:bg-[#0D1424] rounded-t-[2rem] shadow-2xl transition-transform duration-300 ease-out`}
+        className="md:hidden fixed left-0 right-0 bottom-0 z-[100] bg-white dark:bg-[#0D1424] rounded-t-[2rem] shadow-2xl transition-transform duration-300 ease-out"
         style={{
           transform: isOpen ? 'translateY(0)' : 'translateY(100%)',
           paddingBottom: 'calc(80px + env(safe-area-inset-bottom))',
@@ -75,9 +93,9 @@ export default function MobileMenuSheet({ isOpen, onClose }) {
           <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-white/20" />
         </div>
 
-        {/* Header Row */}
+        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
-          <span className="text-sm font-extrabold text-gray-900 dark:text-white tracking-wide uppercase">Navigation</span>
+          <span className="text-sm font-extrabold text-gray-900 dark:text-white tracking-wide uppercase">Menu</span>
           <button
             onClick={onClose}
             aria-label="Close menu"
@@ -88,62 +106,78 @@ export default function MobileMenuSheet({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Nav Links */}
-        <nav className="flex flex-col px-4 pt-4 gap-1" aria-label="Mobile menu navigation">
-          {NAV_LINKS.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              onClick={onClose}
-              id={`sheet-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-5 py-3.5 rounded-2xl text-base font-semibold transition-all duration-150 active:scale-95 ${
-                  isActive
-                    ? 'bg-[#29ABE2] text-white shadow-sm'
-                    : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10'
-                }`
-              }
-              style={{ touchAction: 'manipulation' }}
-            >
-              {link.label}
-            </NavLink>
+        {/* Grouped Nav Links */}
+        <div className="flex flex-col px-4 pt-4 gap-5">
+          {NAV_SECTIONS.map((section) => (
+            <div key={section.label}>
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500 px-4 mb-1.5">
+                {section.label}
+              </p>
+              <nav className="flex flex-col gap-0.5" aria-label={`${section.label} navigation`}>
+                {section.links.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    end={link.to === '/'}
+                    onClick={onClose}
+                    id={`sheet-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-semibold transition-all duration-150 active:scale-95 ${
+                        isActive
+                          ? 'bg-[#29ABE2] text-white shadow-sm'
+                          : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10'
+                      }`
+                    }
+                    style={{ touchAction: 'manipulation' }}
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <span className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isActive ? 'bg-white/25' : 'bg-gray-100 dark:bg-white/10'}`}>
+                          <link.Icon size={15} className={isActive ? 'text-white' : 'text-[#29ABE2]'} />
+                        </span>
+                        {link.label}
+                      </>
+                    )}
+                  </NavLink>
+                ))}
+              </nav>
+            </div>
           ))}
-        </nav>
+        </div>
 
         {/* Divider */}
-        <div className="mx-4 my-4 border-t border-gray-100 dark:border-white/10" />
+        <div className="mx-4 my-5 border-t border-gray-100 dark:border-white/10" />
 
-        {/* Theme Toggle Row */}
+        {/* Theme Toggle */}
         <div className="px-4">
           <button
-            onClick={() => { toggleTheme(); }}
-            className="w-full flex items-center gap-4 px-5 py-3.5 rounded-2xl text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10 transition-all active:scale-95"
+            onClick={toggleTheme}
+            className="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10 transition-all active:scale-95"
             style={{ touchAction: 'manipulation' }}
           >
-            <span className="w-9 h-9 rounded-xl flex items-center justify-center bg-gray-100 dark:bg-white/10 flex-shrink-0">
-              {theme === 'dark' ? <Sun size={17} className="text-amber-400" /> : <Moon size={17} className="text-[#29ABE2]" />}
+            <span className="w-8 h-8 rounded-xl flex items-center justify-center bg-gray-100 dark:bg-white/10 flex-shrink-0">
+              {theme === 'dark' ? <Sun size={16} className="text-amber-400" /> : <Moon size={16} className="text-[#29ABE2]" />}
             </span>
-            <span>{theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span>
+            {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           </button>
         </div>
 
-        {/* Phone Row */}
+        {/* Phone */}
         <div className="px-4 mt-1">
           <a
             href="tel:+919876543210"
-            className="w-full flex items-center gap-4 px-5 py-3.5 rounded-2xl text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10 transition-all active:scale-95"
+            className="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10 transition-all active:scale-95"
             style={{ touchAction: 'manipulation' }}
           >
-            <span className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#29ABE2]/10 text-[#29ABE2] flex-shrink-0">
-              <Phone size={17} />
+            <span className="w-8 h-8 rounded-xl flex items-center justify-center bg-[#29ABE2]/10 text-[#29ABE2] flex-shrink-0">
+              <Phone size={16} />
             </span>
-            <span>+91 98765 43210</span>
+            +91 98765 43210
           </a>
         </div>
 
         {/* Social Icons */}
-        <div className="px-6 mt-4 pb-2 flex items-center gap-4">
+        <div className="px-6 mt-4 pb-2 flex items-center gap-3">
           <a href="https://linkedin.com" target="_blank" rel="noreferrer"
             className="w-10 h-10 rounded-xl flex items-center justify-center bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400 hover:text-[#29ABE2] transition-colors active:scale-90"
             style={{ touchAction: 'manipulation' }}>
@@ -159,7 +193,7 @@ export default function MobileMenuSheet({ isOpen, onClose }) {
             style={{ touchAction: 'manipulation' }}>
             <XIcon />
           </a>
-          <p className="ml-2 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Follow Us</p>
+          <p className="ml-1 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Follow Us</p>
         </div>
       </div>
     </>

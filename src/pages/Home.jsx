@@ -6,7 +6,7 @@ import {
   Building2, PenTool, Settings, HardHat, Wrench, ArrowUpCircle, Package,
   GraduationCap, Link as LinkIcon, MapPin, BarChart3, CheckCircle2, ShieldCheck, Zap,
   Factory, Landmark, HeartPulse, ShoppingBag, Hotel, GraduationCap as GradCap2, Train, Briefcase,
-  Star, Quote
+  Star, Quote, ArrowRight, Calendar, Clock
 } from 'lucide-react';
 import TiltCard from '../components/TiltCard';
 import CountUp from '../components/CountUp';
@@ -19,9 +19,9 @@ const STATS = [
 ];
 
 const DIVISIONS = [
-  { id: 'mlv',     name: 'Mahendram Landmark Ventures', sub: 'Engineering & Infrastructure',   accent: '#60A5FA', to: '/about', bgImage: '/engineering_bg_1781672667460.png'    },
-  { id: 'inovvio', name: 'Inovvio Interior',             sub: 'Interior Design & Turnkey Fit-Out',    accent: '#FCD34D', to: '/services', bgImage: '/interior_bg_1781672681086.png' },
-  { id: 'ortus',   name: 'Ortus Apex',                   sub: 'Facility & Asset Management',    accent: '#34D399', to: '/services', bgImage: '/ortus_facility_management.png' },
+  { id: 'mlv',     name: 'Mahendram Landmark Ventures', sub: 'Engineering & Infrastructure',   accent: '#60A5FA', to: '/about', bgImage: '/div_mlv.png'    },
+  { id: 'inovvio', name: 'Inovvio Interior',             sub: 'Interior Design & Turnkey Fit-Out',    accent: '#FCD34D', to: '/services', bgImage: '/div_inovvio.png' },
+  { id: 'ortus',   name: 'Ortus Apex',                   sub: 'Facility & Asset Management',    accent: '#34D399', to: '/services', bgImage: '/div_ortus.png' },
 ];
 
 const PARTNERS = [
@@ -329,7 +329,7 @@ function WhyUs() {
           <FadeIn delay={0}>
             <div className="relative">
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-gray-100 aspect-square md:aspect-[4/3] lg:aspect-[4/5]">
-                <img src="/why_us_team.png" alt="Our Team" className="w-full h-full object-cover" />
+                <img src="/mahendram_advantage.png" alt="Our Indian Engineering Team" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#0A4D8C]/20 to-transparent mix-blend-multiply" />
               </div>
               
@@ -584,6 +584,106 @@ function Partners() {
   );
 }
 
+const FEATURED_PROJECTS = [
+  { title: 'CyberHub IT Park Phase II', location: 'Bengaluru, Karnataka', division: 'Mahendram Landmark Ventures', area: '1.2M sq. ft.', image: '/project_it_park.png' },
+  { title: 'Global Auto-Components Plant', location: 'Pune, Maharashtra', division: 'Mahendram Landmark Ventures', area: '450,000 sq. ft.', image: '/project_industrial.png' },
+  { title: 'The Crest Luxury Residences', location: 'Gurugram, Haryana', division: 'Inovvio Interior (Fit-Out)', area: '850,000 sq. ft.', image: '/project_residential.png' },
+];
+
+function FeaturedProjects() {
+  return (
+    <section className="py-24 relative overflow-hidden bg-white/50 dark:bg-[#111827]/50">
+      <div className="container-xl relative z-10">
+        <FadeIn delay={0}>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Latest Portfolio</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed">Showcasing our recent engineering and interior milestones across commercial, industrial, and residential sectors.</p>
+            </div>
+            <Link to="/projects" className="inline-flex items-center gap-2 text-[#0A4D8C] dark:text-[#29ABE2] font-bold hover:gap-3 transition-all group">
+              View All Projects <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </FadeIn>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {FEATURED_PROJECTS.map((p, i) => (
+            <FadeIn key={p.title} delay={0.1 * i}>
+              <div className="group rounded-3xl overflow-hidden bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+                    <p className="text-[10px] font-bold text-white uppercase tracking-wider">{p.division}</p>
+                  </div>
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-[#29ABE2] transition-colors">{p.title}</h3>
+                  <div className="flex items-center gap-4 text-xs font-medium text-gray-500 dark:text-gray-400 mt-auto">
+                    <div className="flex items-center gap-1.5"><MapPin size={14} className="text-[#29ABE2]" />{p.location}</div>
+                    <div className="flex items-center gap-1.5"><Building2 size={14} className="text-[#29ABE2]" />{p.area}</div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const KNOWLEDGE_ARTICLES = [
+  { title: 'The Future of Sustainable Construction in India', category: 'Sustainability', date: 'Jun 12, 2026', read: '5 min read', image: '/knowledge_sustainability.png' },
+  { title: 'IoT and AI in Modern Facility Management', category: 'Technology', date: 'May 28, 2026', read: '8 min read', image: '/knowledge_facility.png' },
+  { title: 'Biophilic Design Trends for Corporate Offices', category: 'Interior Design', date: 'May 15, 2026', read: '6 min read', image: '/knowledge_workspace.png' },
+];
+
+function KnowledgeCenter() {
+  return (
+    <section className="py-24 relative overflow-hidden bg-[#F8FAFC] dark:bg-[#0A1628]/50">
+      <div className="container-xl relative z-10">
+        <FadeIn delay={0}>
+          <div className="text-center mb-16">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3 text-[#29ABE2]">Insights</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Knowledge Center Highlights</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto">Latest insights, trends, and expert opinions on engineering, facility management, and workspaces.</p>
+          </div>
+        </FadeIn>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {KNOWLEDGE_ARTICLES.map((a, i) => (
+            <FadeIn key={a.title} delay={0.1 * i}>
+              <Link to="/knowledge" className="group flex flex-col h-full bg-white dark:bg-[#111827] rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 dark:border-white/10 transition-all duration-300">
+                <div className="relative aspect-[16/9] overflow-hidden flex-shrink-0">
+                  <img src={a.image} alt={a.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1 rounded-full">
+                    <p className="text-[10px] font-extrabold text-[#29ABE2] uppercase tracking-wider">{a.category}</p>
+                  </div>
+                </div>
+                <div className="p-6 md:p-8 flex-1 flex flex-col">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-[#29ABE2] transition-colors leading-snug">{a.title}</h3>
+                  <div className="mt-auto flex items-center justify-between pt-6 border-t border-gray-100 dark:border-white/10">
+                    <div className="flex items-center gap-3 text-xs font-medium text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center gap-1.5"><Calendar size={14} />{a.date}</div>
+                      <div className="flex items-center gap-1.5"><Clock size={14} />{a.read}</div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={0.3}>
+          <div className="mt-12 text-center">
+            <Link to="/knowledge" className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-gray-200 dark:border-white/20 text-gray-900 dark:text-white font-bold hover:border-[#29ABE2] hover:text-[#29ABE2] hover:bg-gray-50 dark:hover:bg-white/5 transition-all">
+              Visit Knowledge Center
+            </Link>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div className="bg-[#fafcff] dark:bg-[#0A0F1A] min-h-screen relative overflow-hidden transition-colors duration-300">
@@ -607,9 +707,11 @@ export default function Home() {
         <StatsBar />
         <GroupStructure />
         <SolutionsGrid />
+        <FeaturedProjects />
         <IndustriesStrip />
         <WhyUs />
         <Clientele />
+        <KnowledgeCenter />
         <Partners />
         <CTABanner />
       </div>

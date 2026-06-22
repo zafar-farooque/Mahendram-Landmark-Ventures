@@ -6,16 +6,15 @@ import { getAllProjects, imageUrl } from '../lib/sanityClient';
 
 /* ── Constants ─────────────────────────────── */
 const CATEGORIES = [
-  { label: 'All',               value: 'all'                 },
-  { label: 'Infrastructure',    value: 'infrastructure'      },
-  { label: 'Construction',      value: 'construction'        },
-  { label: 'Industrial',        value: 'industrial'          },
-  { label: 'Warehousing',       value: 'warehousing'         },
-  { label: 'PEB',               value: 'peb'                 },
-  { label: 'MEP',               value: 'mep'                 },
-  { label: 'Fire Protection',   value: 'fire-protection'     },
-  { label: 'Interiors',         value: 'interiors'           },
-  { label: 'Software & IT',     value: 'software-it'         },
+  { label: 'All',                value: 'all'                 },
+  { label: 'Construction',       value: 'construction'        },
+  { label: 'Infrastructure',     value: 'infrastructure'      },
+  { label: 'PEB',                value: 'peb'                 },
+  { label: 'Warehousing',        value: 'warehousing'         },
+  { label: 'MEP',                value: 'mep'                 },
+  { label: 'Fire Protection',    value: 'fire-protection'     },
+  { label: 'Interiors',          value: 'interiors'           },
+  { label: 'Facility Management',value: 'facility-management' },
 ];
 
 const CAT_LABEL = Object.fromEntries(
@@ -23,18 +22,20 @@ const CAT_LABEL = Object.fromEntries(
 );
 
 const CAT_COLOR = {
-  infrastructure: '#0369A1', construction: '#29ABE2', industrial: '#374151',
-  warehousing: '#7C3AED', peb: '#92400E', mep: '#B45309',
-  'fire-protection': '#B91C1C', interiors: '#BE185D', 'software-it': '#065F46',
+  construction: '#29ABE2', infrastructure: '#0369A1', peb: '#92400E',
+  warehousing: '#7C3AED', mep: '#B45309', 'fire-protection': '#B91C1C',
+  interiors: '#BE185D', 'facility-management': '#065F46',
 };
 
 const FALLBACK_PROJECTS = [
-  { _id: 'p1', title: 'Large-Scale Warehouse Complex',         category: 'warehousing',   location: 'Pune, Maharashtra',      year: 2024, scopeOfWork: 'Complete warehouse infrastructure including PEB structure, MEP, fire protection and landscaping over 2 lakh sq ft.', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'p2', title: 'Commercial Office Fit-Out',               category: 'interiors',  location: 'Delhi NCR',              year: 2024, scopeOfWork: 'Premium corporate office fit-out interior, modern workspaces, elegant lighting, and facility management setup.', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'p3', title: 'PEB Industrial Shed — Logistics Park',  category: 'peb',           location: 'Nashik, Maharashtra',    year: 2024, scopeOfWork: 'Pre-engineered building structures for a 3-unit logistics park with loading docks and utility connections.', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'p4', title: 'Fire Protection — Multi-Specialty Hospital', category: 'fire-protection', location: 'Chennai, Tamil Nadu', year: 2023, scopeOfWork: 'Design and installation of complete fire fighting, detection, alarm and suppression systems across 8 floors.', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'p5', title: 'Manufacturing Plant Setup',             category: 'industrial',    location: 'Ahmedabad, Gujarat',     year: 2023, scopeOfWork: 'Greenfield manufacturing plant with utility infrastructure, electrical systems and industrial fit-out.', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80' },
-  { _id: 'p6', title: 'MEP Integration — IT Park',             category: 'mep',           location: 'Hyderabad, Telangana',   year: 2023, scopeOfWork: 'Complete MEP design and installation across 5 towers including HVAC, electrical, plumbing and BMS integration.', coverImage: null, fallbackUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p1', title:'Corporate Headquarters — Phase II', category:'construction', location:'Bengaluru, Karnataka', year:2024, overview:'A 12-floor corporate HQ for a leading Indian IT firm, delivered in 18 months.', scopeOfWork:'Turnkey construction including structure, façade, MEP, interiors and landscaping over 4.5 lakh sq ft.', challenges:'Tight urban site with limited laydown area and concurrent design-build execution.', solutions:'Adopted top-down construction sequencing and BIM-driven coordination to eliminate rework.', outcomes:'Delivered 3 weeks ahead of schedule with zero LTI safety record.', gallery:['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p2', title:'Premium Office Fit-Out — Inovvio', category:'interiors', location:'Delhi NCR', year:2024, overview:'Turnkey interior fit-out for a 60,000 sq ft BFSI sector client.', scopeOfWork:'False ceiling, flooring, glass partitions, furniture, lighting design and IT infrastructure.', challenges:'Client required zero business disruption — work carried out in phased weekend shifts.', solutions:'Modular pre-fabricated partition systems installed with minimal site noise and dust.', outcomes:'IGBC Gold certified workspace; employee satisfaction score improved by 42%.', gallery:['https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p3', title:'Logistics Park — PEB Warehouses', category:'peb', location:'Nashik, Maharashtra', year:2024, overview:'3-unit pre-engineered warehouse complex for a leading 3PL logistics company.', scopeOfWork:'PEB design, fabrication, erection and civil finishing with loading docks and fire protection.', challenges:'Monsoon season delivery with strict tenant move-in deadlines.', solutions:'Pre-fabricated portal frames dispatched from factory in sequence to enable parallel erection.', outcomes:'All 3 units handed over within 14 weeks; 18% cost saving vs RCC alternative.', gallery:['https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p4', title:'Fire Protection — Multi-Specialty Hospital', category:'fire-protection', location:'Chennai, Tamil Nadu', year:2023, overview:'Complete fire safety system for a 450-bed hospital across 8 floors.', scopeOfWork:'Sprinklers, fire alarm, detection, PA system and gas suppression across 8 floors.', challenges:'Active hospital — no service disruption allowed during installation.', solutions:'Night-shift installation with floor-by-floor isolation protocols.', outcomes:'NBC 2016 and NABH compliant; fire NOC obtained in first inspection.', gallery:['https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p5', title:'MEP Integration — IT Park Towers', category:'mep', location:'Hyderabad, Telangana', year:2023, overview:'Full MEP design-build for 5 IT park towers totalling 8 lakh sq ft.', scopeOfWork:'HVAC, electrical HT/LT, plumbing, BMS integration and commissioning across 5 towers.', challenges:'Coordinating 5 parallel towers with a single MEP team and shared shaft routing.', solutions:'BIM clash detection reduced site conflicts by 65%; centralised BMS control room installed.', outcomes:'Energy consumption 22% below design benchmark; LEED Gold certification achieved.', gallery:['https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p6', title:'Cold Chain Warehouse Complex', category:'warehousing', location:'Pune, Maharashtra', year:2024, overview:'State-of-the-art cold chain facility for a leading FMCG brand.', scopeOfWork:'PEB structure, insulated panels, refrigeration systems, dock levellers and fire protection.', challenges:'Precise temperature zoning required from -25°C to +10°C in a single facility.', solutions:'Multi-zone refrigeration design with independent temperature controls per bay.', outcomes:'Operational efficiency improved by 30%; zero product loss in first operational year.', gallery:['https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p7', title:'Highway Corridor Infrastructure', category:'infrastructure', location:'Rajasthan', year:2023, overview:'42 km highway corridor development including road, drainage and utility infrastructure.', scopeOfWork:'Road construction, culverts, street lighting, utility ducting and signage.', challenges:'Remote site with extreme heat conditions and supply chain constraints.', solutions:'Pre-positioned material depots at 10 km intervals; night-shift paving during summer.', outcomes:'Completed 5% under budget; MORTH quality certification achieved.', gallery:['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80' },
+  { _id:'p8', title:'Integrated FM — SEZ Campus', category:'facility-management', location:'Noida, Uttar Pradesh', year:2024, overview:'Annual facility management contract for a 3 mn sq ft SEZ campus via Ortus Apex.', scopeOfWork:'MEP maintenance, housekeeping, pest control, security, landscaping and energy management.', challenges:'Managing 250+ tenants with varying SLA requirements across a sprawling campus.', solutions:'IoT-enabled CAFM platform deployed for real-time asset tracking and ticket resolution.', outcomes:'SLA compliance at 98.7%; energy costs reduced by 19% in first year of operations.', gallery:['/ortus_facility_management.png'], coverImage:null, fallbackUrl:'/ortus_facility_management.png' },
 ];
 
 /* ── Hero ──────────────────────────────────── */
@@ -97,73 +98,74 @@ function PageHero() {
 }
 
 /* ── Project Card ───────────────────────────── */
+const DETAIL_TABS = ['Overview','Scope','Challenges','Solutions','Outcomes','Gallery'];
+
 function ProjectCard({ project }) {
+  const [activeTab, setActiveTab] = useState(null);
   const img      = imageUrl(project.coverImage) || project.fallbackUrl;
   const catColor = CAT_COLOR[project.category] || '#29ABE2';
   const catLabel = CAT_LABEL[project.category]  || project.category;
+  const isOpen   = activeTab !== null;
+
+  const tabContent = {
+    Overview:   project.overview   || project.scopeOfWork,
+    Scope:      project.scopeOfWork,
+    Challenges: project.challenges,
+    Solutions:  project.solutions,
+    Outcomes:   project.outcomes,
+    Gallery:    null,
+  };
 
   return (
-    <div className="bg-white dark:bg-[#111827] rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
-
+    <div className="bg-white dark:bg-[#111827] rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-gray-100 dark:border-white/10 overflow-hidden group transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
       {/* Cover */}
-      <div className="relative h-56 w-full flex-shrink-0 overflow-hidden bg-gray-100 p-2">
+      <div className="relative h-52 w-full flex-shrink-0 overflow-hidden bg-gray-100 p-2">
         <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
           {img
             ? <img src={img} alt={project.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" />
-            : (
-              <div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
-              </div>
-            )
+            : <div className="flex items-center justify-center w-full h-full bg-gray-200 text-gray-400">No Image</div>
           }
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          
-          {/* Category badge */}
-          <span className="absolute top-4 left-4 text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full text-white shadow-md"
-            style={{ backgroundColor: catColor }}>{catLabel}</span>
-          
-          {/* Year badge */}
-          <span className="absolute top-4 right-4 text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full text-white bg-black/50 backdrop-blur-sm shadow-md">
-            {project.year}
-          </span>
-          
-          {/* Featured ribbon */}
-          {project.featured && (
-            <div className="absolute bottom-4 left-4 text-xs font-bold px-3 py-1.5 rounded-full text-[#29ABE2] bg-white shadow-md">
-              ⭐ Featured
-            </div>
-          )}
+          <span className="absolute top-4 left-4 text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full text-white shadow-md" style={{ backgroundColor: catColor }}>{catLabel}</span>
+          <span className="absolute top-4 right-4 text-[10px] font-black px-3 py-1.5 rounded-full text-white bg-black/50 backdrop-blur-sm">{project.year}</span>
         </div>
       </div>
 
       {/* Body */}
-      <div className="flex flex-col gap-4 p-6 pt-4 flex-grow relative z-10">
-        <h2 className="font-extrabold text-xl text-gray-900 dark:text-white leading-snug group-hover:text-[#29ABE2] transition-colors">{project.title}</h2>
-
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs font-bold text-gray-500 dark:text-gray-400">
-          <span className="flex items-center gap-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#29ABE2]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            {project.location}
-          </span>
-          {project.clientName && <span className="flex items-center gap-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#29ABE2]"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
-            {project.clientName}
-          </span>}
+      <div className="p-6 pt-4">
+        <h2 className="font-extrabold text-xl text-gray-900 dark:text-white leading-snug mb-2 group-hover:text-[#29ABE2] transition-colors">{project.title}</h2>
+        <div className="flex items-center gap-1.5 text-xs font-bold text-gray-500 dark:text-gray-400 mb-4">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#29ABE2]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          {project.location}
         </div>
 
-        {project.scopeOfWork && (
-          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 font-medium line-clamp-3">
-            {project.scopeOfWork}
-          </p>
-        )}
-      </div>
+        {/* Tab pills */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {DETAIL_TABS.map((tab) => (
+            <button key={tab}
+              onClick={() => setActiveTab(activeTab === tab ? null : tab)}
+              className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${activeTab === tab ? 'text-white shadow-sm' : 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200'}`}
+              style={activeTab === tab ? { backgroundColor: catColor } : {}}
+            >{tab}</button>
+          ))}
+        </div>
 
-      {/* Footer */}
-      <div className="px-6 py-5 border-t border-gray-100 dark:border-white/10 flex items-center justify-between mt-auto">
-        <Link to={`/projects/${project.slug || project._id}`} className="flex items-center gap-1.5 text-sm font-bold text-[#29ABE2] group/link">
-          View Project Details
-          <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
-        </Link>
+        {/* Tab Content */}
+        {isOpen && (
+          <div className="mt-2 p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+            {activeTab === 'Gallery' ? (
+              project.gallery?.length ? (
+                <div className="grid grid-cols-2 gap-2">
+                  {project.gallery.map((url, i) => (
+                    <img key={i} src={url} alt={`Gallery ${i+1}`} className="w-full h-24 object-cover rounded-xl" />
+                  ))}
+                </div>
+              ) : <p className="text-gray-400">No gallery images available.</p>
+            ) : (
+              <p>{tabContent[activeTab] || <span className="text-gray-400">Not available.</span>}</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -173,21 +175,16 @@ function ProjectCard({ project }) {
 function Skeleton() {
   return (
     <div className="rounded-[2rem] bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 overflow-hidden animate-pulse shadow-sm">
-      <div className="h-56 bg-gray-200 p-2">
-        <div className="w-full h-full bg-gray-300 rounded-[1.5rem]"></div>
-      </div>
-      <div className="p-6 flex flex-col gap-4">
+      <div className="h-52 bg-gray-200 p-2"><div className="w-full h-full bg-gray-300 rounded-[1.5rem]"></div></div>
+      <div className="p-6 flex flex-col gap-3">
         <div className="h-6 rounded bg-gray-200 w-3/4"></div>
         <div className="h-4 rounded bg-gray-200 w-1/2"></div>
-        <div className="h-4 rounded bg-gray-200"></div>
-        <div className="h-4 rounded bg-gray-200 w-5/6"></div>
-      </div>
-      <div className="px-6 py-5 border-t border-gray-100">
-        <div className="h-4 rounded bg-gray-200 w-1/3"></div>
+        <div className="flex gap-2">{Array.from({length:6}).map((_,i)=><div key={i} className="h-6 w-16 rounded-full bg-gray-200"></div>)}</div>
       </div>
     </div>
   );
 }
+
 
 /* ── CTABanner ──────────────────────────────── */
 function CTABanner() {
