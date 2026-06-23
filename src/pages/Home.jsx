@@ -110,23 +110,28 @@ function Hero() {
           <FadeIn delay={0.3} className="w-full h-full relative">
 
             {/* Main Video Card */}
-            <div className="w-full h-full rounded-[2.5rem] xl:rounded-[4rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.2)] border-[6px] border-white relative z-10 group bg-black">
+            <div className="w-full h-full rounded-[2.5rem] xl:rounded-[4rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.2)] border-[6px] border-white relative z-10 group">
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover object-center transition-transform duration-[1.5s] group-hover:scale-105"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '180%',
+                  height: '180%',
+                  objectFit: 'cover',
+                  transform: 'translate(-50%, -50%)',
+                  transition: 'transform 1.5s ease',
+                }}
               >
-                <source src="/New_hero.mp4" type="video/mp4" />
+                <source src="/Hero.mp4" type="video/mp4" />
               </video>
 
               {/* Bottom gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-              {/* Center vertical divider */}
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[6px] bg-white/80 backdrop-blur-sm pointer-events-none z-20"
-                   style={{ boxShadow: '0 0 12px 2px rgba(255,255,255,0.4)' }} />
             </div>
 
             {/* Floating Badge 1 — Portfolio Value — bottom edge, slightly outside */}
