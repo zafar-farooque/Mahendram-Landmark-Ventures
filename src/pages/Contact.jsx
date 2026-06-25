@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjgdpebq';
+const API = 'http://localhost:5000';
 const WHATSAPP_NUMBER = '918210146579';
 const WHATSAPP_MSG = encodeURIComponent('Hello, I would like to get in touch with Mahendram Landmark Ventures Pvt Ltd.');
 
@@ -90,13 +90,14 @@ function ContactForm({ tabId }) {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch(`${API}/api/contact`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _form_name: formDef.hidden, ...values }),
       });
-      if (res.ok) { setStatus('success'); setValues(emptyState()); }
-      else { const d = await res.json(); setErrMsg(d?.error || 'Submission failed. Please try again.'); setStatus('error'); }
+      const d = await res.json();
+      if (d.success) { setStatus('success'); setValues(emptyState()); }
+      else { setErrMsg(d?.message || 'Submission failed. Please try again.'); setStatus('error'); }
     } catch { setErrMsg('Network error. Please try again.'); setStatus('error'); }
   };
 

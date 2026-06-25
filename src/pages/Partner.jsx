@@ -16,10 +16,37 @@ const BENEFITS = [
   'Digital work order and billing system', 'ISO-compliant documentation framework',
 ];
 
+const API = 'http://localhost:5000';
+
 export default function Partner() {
   const [form, setForm] = useState({ name:'', company:'', type:'', city:'', email:'', phone:'' });
   const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e) => { e.preventDefault(); setSubmitted(true); };
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch(`${API}/api/partner`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Could not connect to server. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen">
       <Helmet><title>Partner With Us | Mahendram Landmark</title><meta name="description" content="Partner with Mahendram Landmark Ventures as vendor, contractor, supplier, regional partner or consultant. Join India's growing infrastructure company." /></Helmet>
@@ -76,7 +103,8 @@ export default function Partner() {
                   <input required placeholder="Phone Number" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 text-sm bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#29ABE2]/30" />
                 </div>
                 <input required type="email" placeholder="Email Address" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 text-sm bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#29ABE2]/30" />
-                <button type="submit" className="px-8 py-4 rounded-xl bg-[#29ABE2] text-white font-bold hover:scale-105 transition-all mt-2">Submit Partnership Application</button>
+                {error && <p className="text-sm text-red-500 font-medium text-center">{error}</p>}
+                <button type="submit" disabled={loading} className="px-8 py-4 rounded-xl bg-[#29ABE2] text-white font-bold hover:scale-105 transition-all mt-2 disabled:opacity-60 disabled:cursor-not-allowed">{loading ? 'Submitting...' : 'Submit Partnership Application'}</button>
               </form>
             ) : (
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700/30 rounded-[2rem] p-12 text-center">

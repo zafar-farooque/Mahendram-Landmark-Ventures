@@ -22,11 +22,37 @@ const BENEFITS = [
 
 const DEPT_COLORS = { Construction: '#29ABE2', 'MEP Services': '#B45309', Sales: '#7C3AED', 'Inovvio Interior': '#D97706', 'Ortus Apex': '#065F46', 'PEB Solutions': '#92400E', 'Engineering & Design': '#0369A1', HSE: '#DC2626' };
 
+const API = 'http://localhost:5000';
+
 export default function Careers() {
   const [form, setForm] = useState({ name:'', email:'', phone:'', role:'', exp:'', city:'' });
   const [resume, setResume] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e) => { e.preventDefault(); setSubmitted(true); };
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch(`${API}/api/careers`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Could not connect to server. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen">
@@ -95,7 +121,8 @@ export default function Careers() {
                   <label className="text-xs font-bold text-gray-600 dark:text-gray-400 mb-2 block">Upload Resume (PDF)</label>
                   <input type="file" accept=".pdf" onChange={e => setResume(e.target.files[0])} className="text-sm text-gray-600 dark:text-gray-400" />
                 </div>
-                <button type="submit" className="px-8 py-4 rounded-xl bg-[#29ABE2] text-white font-bold hover:scale-105 transition-all mt-2">Submit Application</button>
+                {error && <p className="text-sm text-red-500 font-medium text-center">{error}</p>}
+                <button type="submit" disabled={loading} className="px-8 py-4 rounded-xl bg-[#29ABE2] text-white font-bold hover:scale-105 transition-all mt-2 disabled:opacity-60 disabled:cursor-not-allowed">{loading ? 'Submitting...' : 'Submit Application'}</button>
               </form>
             ) : (
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700/30 rounded-[2rem] p-12 text-center">
