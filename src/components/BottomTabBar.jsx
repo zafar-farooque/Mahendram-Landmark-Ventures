@@ -1,11 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Wrench, Building2, Phone, MoreHorizontal } from 'lucide-react';
+import { Home, Layers, FolderOpen, Phone, MoreHorizontal } from 'lucide-react';
 
+// Primary 4 tabs — most visited pages on mobile
+// The rest (About, Divisions, Insights, Careers) are accessible via "More"
 const TABS = [
-  { label: 'Home',     to: '/',          Icon: Home      },
-  { label: 'Services', to: '/services',  Icon: Wrench    },
-  { label: 'Projects', to: '/projects',  Icon: Building2 },
-  { label: 'Contact',  to: '/contact',   Icon: Phone     },
+  { label: 'Home',      to: '/',          Icon: Home       },
+  { label: 'Solutions', to: '/solutions', Icon: Layers     },
+  { label: 'Projects',  to: '/projects',  Icon: FolderOpen },
+  { label: 'Contact',   to: '/contact',   Icon: Phone      },
 ];
 
 export default function BottomTabBar({ onMenuOpen }) {
@@ -21,7 +23,8 @@ export default function BottomTabBar({ onMenuOpen }) {
       }}
     >
       <div className="flex items-stretch h-16">
-        {/* Regular nav tabs */}
+
+        {/* Primary nav tabs */}
         {TABS.map(({ label, to, Icon }) => (
           <NavLink
             key={to}
@@ -39,7 +42,10 @@ export default function BottomTabBar({ onMenuOpen }) {
           >
             {({ isActive }) => (
               <>
-                {/* Removed active dot indicator as requested */}
+                {/* Active indicator bar at top */}
+                {isActive && (
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2.5px] rounded-full bg-[#29ABE2]" />
+                )}
                 <Icon size={22} strokeWidth={isActive ? 2.5 : 1.75} />
                 <span className="text-[10px] font-bold tracking-wide">{label}</span>
               </>
@@ -47,7 +53,7 @@ export default function BottomTabBar({ onMenuOpen }) {
           </NavLink>
         ))}
 
-        {/* More / Menu tab */}
+        {/* More — opens mobile menu for About, Divisions, Insights, Careers */}
         <button
           id="bottom-tab-more"
           onClick={onMenuOpen}
@@ -58,6 +64,7 @@ export default function BottomTabBar({ onMenuOpen }) {
           <MoreHorizontal size={22} strokeWidth={1.75} />
           <span className="text-[10px] font-bold tracking-wide">More</span>
         </button>
+
       </div>
     </nav>
   );
