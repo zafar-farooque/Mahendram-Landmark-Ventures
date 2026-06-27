@@ -44,15 +44,15 @@ const DIVISIONS = [
 ];
 
 const CAPABILITIES = [
-  { title: 'Infrastructure Development', items: ['Industrial Construction', 'Commercial Construction', 'Warehouse Development', 'Design Coordination', 'Project Management Consultancy'], icon: Building2, img: 'https://images.unsplash.com/photo-1541888087625-f81aba8301c2?w=800&q=80' },
-  { title: 'Commercial Interiors', items: ['Turnkey Fit-outs', 'Renovation & Modernization', 'Space Planning', 'MEP Design Integration'], icon: PenTool, img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
-  { title: 'Facility Management', items: ['Engineering Support', 'Asset Maintenance', 'Annual Maintenance Contracts', 'Soft Services'], icon: Settings, img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80' },
+  { title: 'Infrastructure Development', items: ['Industrial Construction', 'Commercial Construction', 'Warehouse Development', 'Design Coordination', 'Project Management Consultancy'], icon: Building2, img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80' },
+  { title: 'Commercial Interiors', items: ['Turnkey Fit-outs', 'Renovation & Modernization', 'Space Planning', 'MEP Design Integration'], icon: PenTool, img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80' },
+  { title: 'Facility Management', items: ['Engineering Support', 'Asset Maintenance', 'Annual Maintenance Contracts', 'Soft Services'], icon: Settings, img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80' },
 ];
 
 const INDUSTRIES = [
-  { name: 'Manufacturing', icon: Factory, img: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&q=80' },
-  { name: 'Warehousing & Logistics', icon: Package, img: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c83a7f?w=600&q=80' },
-  { name: 'Healthcare', icon: HeartPulse, img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80' },
+  { name: 'Manufacturing', icon: Factory, img: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&q=80' },
+  { name: 'Warehousing & Logistics', icon: Package, img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80' },
+  { name: 'Healthcare', icon: HeartPulse, img: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80' },
   { name: 'Corporate Offices', icon: Briefcase, img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80' },
   { name: 'Hospitality', icon: Hotel, img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80' },
   { name: 'Education', icon: GraduationCap, img: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80' },
@@ -75,9 +75,9 @@ const PROCESS = [
 ];
 
 const PROJECTS = [
-  { name: 'Apex Industrial Park', industry: 'Manufacturing', client: 'Global AutoCorp', scope: 'Turnkey EPC', area: '250k Sq.Ft.', location: 'Pune', img: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80' },
+  { name: 'Apex Industrial Park', industry: 'Manufacturing', client: 'Global AutoCorp', scope: 'Turnkey EPC', area: '250k Sq.Ft.', location: 'Pune', img: 'https://images.unsplash.com/photo-1621252179027-94459d278660?w=800&q=80' },
   { name: 'Zenith Corporate Tower', industry: 'Commercial', client: 'TechNova', scope: 'Core & Interiors', area: '120k Sq.Ft.', location: 'Bengaluru', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80' },
-  { name: 'Nexus Logistics Hub', industry: 'Warehousing', client: 'Prime Freight', scope: 'PEB Warehousing', area: '500k Sq.Ft.', location: 'Gurugram', img: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c83a7f?w=800&q=80' },
+  { name: 'Nexus Logistics Hub', industry: 'Warehousing', client: 'Prime Freight', scope: 'PEB Warehousing', area: '500k Sq.Ft.', location: 'Gurugram', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80' },
 ];
 
 const CASE_STUDIES = [
@@ -112,9 +112,9 @@ const TESTIMONIALS = [
 ];
 
 const KNOWLEDGE = [
-  { title: 'The Future of PEB Warehousing in India', cat: 'Trends', date: 'Oct 12', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80' },
-  { title: 'Achieving Zero-Harm Sites: Our Approach', cat: 'Safety', date: 'Nov 05', img: 'https://images.unsplash.com/photo-1541888087625-f81aba8301c2?w=600&q=80' },
-  { title: 'Integrating IoT in Facility Management', cat: 'Tech', date: 'Dec 18', img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80' },
+  { title: 'The Future of PEB Warehousing in India', cat: 'Trends', date: 'Oct 12', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80' },
+  { title: 'Achieving Zero-Harm Sites: Our Approach', cat: 'Safety', date: 'Nov 05', img: 'https://images.unsplash.com/photo-1621252179027-94459d278660?w=600&q=80' },
+  { title: 'Integrating IoT in Facility Management', cat: 'Tech', date: 'Dec 18', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80' },
 ];
 
 // ── COMPONENT ───────────────────────────────────────────────────────────────
@@ -583,7 +583,7 @@ export default function Home() {
               <Link to="/careers" className="px-8 py-4 rounded-full bg-[#29ABE2] text-white font-bold text-sm inline-flex hover:scale-105 transition-transform shadow-lg shadow-blue-500/20">View Current Openings</Link>
             </FadeIn>
             <FadeIn delay={0.2} className="relative z-10 h-full min-h-[300px] lg:min-h-[400px] rounded-[2rem] overflow-hidden shadow-2xl">
-               <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Careers at Mahendram" className="absolute inset-0 w-full h-full object-cover" />
+               <img src="/indian_corporate_team.png" alt="Careers at Mahendram" className="absolute inset-0 w-full h-full object-cover" />
             </FadeIn>
           </div>
         </div>

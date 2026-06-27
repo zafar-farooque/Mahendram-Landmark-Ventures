@@ -29,13 +29,13 @@ const CAT_COLOR = {
 
 const FALLBACK_PROJECTS = [
   { _id:'p1', title:'Corporate Headquarters — Phase II', category:'construction', location:'Bengaluru, Karnataka', year:2024, overview:'A 12-floor corporate HQ for a leading Indian IT firm, delivered in 18 months.', scopeOfWork:'Turnkey construction including structure, façade, MEP, interiors and landscaping over 4.5 lakh sq ft.', challenges:'Tight urban site with limited laydown area and concurrent design-build execution.', solutions:'Adopted top-down construction sequencing and BIM-driven coordination to eliminate rework.', outcomes:'Delivered 3 weeks ahead of schedule with zero LTI safety record.', gallery:['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p2', title:'Premium Office Fit-Out — Inovvio', category:'interiors', location:'Delhi NCR', year:2024, overview:'Turnkey interior fit-out for a 60,000 sq ft BFSI sector client.', scopeOfWork:'False ceiling, flooring, glass partitions, furniture, lighting design and IT infrastructure.', challenges:'Client required zero business disruption — work carried out in phased weekend shifts.', solutions:'Modular pre-fabricated partition systems installed with minimal site noise and dust.', outcomes:'IGBC Gold certified workspace; employee satisfaction score improved by 42%.', gallery:['https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p3', title:'Logistics Park — PEB Warehouses', category:'peb', location:'Nashik, Maharashtra', year:2024, overview:'3-unit pre-engineered warehouse complex for a leading 3PL logistics company.', scopeOfWork:'PEB design, fabrication, erection and civil finishing with loading docks and fire protection.', challenges:'Monsoon season delivery with strict tenant move-in deadlines.', solutions:'Pre-fabricated portal frames dispatched from factory in sequence to enable parallel erection.', outcomes:'All 3 units handed over within 14 weeks; 18% cost saving vs RCC alternative.', gallery:['https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p4', title:'Fire Protection — Multi-Specialty Hospital', category:'fire-protection', location:'Chennai, Tamil Nadu', year:2023, overview:'Complete fire safety system for a 450-bed hospital across 8 floors.', scopeOfWork:'Sprinklers, fire alarm, detection, PA system and gas suppression across 8 floors.', challenges:'Active hospital — no service disruption allowed during installation.', solutions:'Night-shift installation with floor-by-floor isolation protocols.', outcomes:'NBC 2016 and NABH compliant; fire NOC obtained in first inspection.', gallery:['https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p5', title:'MEP Integration — IT Park Towers', category:'mep', location:'Hyderabad, Telangana', year:2023, overview:'Full MEP design-build for 5 IT park towers totalling 8 lakh sq ft.', scopeOfWork:'HVAC, electrical HT/LT, plumbing, BMS integration and commissioning across 5 towers.', challenges:'Coordinating 5 parallel towers with a single MEP team and shared shaft routing.', solutions:'BIM clash detection reduced site conflicts by 65%; centralised BMS control room installed.', outcomes:'Energy consumption 22% below design benchmark; LEED Gold certification achieved.', gallery:['https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p6', title:'Cold Chain Warehouse Complex', category:'warehousing', location:'Pune, Maharashtra', year:2024, overview:'State-of-the-art cold chain facility for a leading FMCG brand.', scopeOfWork:'PEB structure, insulated panels, refrigeration systems, dock levellers and fire protection.', challenges:'Precise temperature zoning required from -25°C to +10°C in a single facility.', solutions:'Multi-zone refrigeration design with independent temperature controls per bay.', outcomes:'Operational efficiency improved by 30%; zero product loss in first operational year.', gallery:['https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p7', title:'Highway Corridor Infrastructure', category:'infrastructure', location:'Rajasthan', year:2023, overview:'42 km highway corridor development including road, drainage and utility infrastructure.', scopeOfWork:'Road construction, culverts, street lighting, utility ducting and signage.', challenges:'Remote site with extreme heat conditions and supply chain constraints.', solutions:'Pre-positioned material depots at 10 km intervals; night-shift paving during summer.', outcomes:'Completed 5% under budget; MORTH quality certification achieved.', gallery:['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80'], coverImage:null, fallbackUrl:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80' },
-  { _id:'p8', title:'Integrated FM — SEZ Campus', category:'facility-management', location:'Noida, Uttar Pradesh', year:2024, overview:'Annual facility management contract for a 3 mn sq ft SEZ campus via Ortus Apex.', scopeOfWork:'MEP maintenance, housekeeping, pest control, security, landscaping and energy management.', challenges:'Managing 250+ tenants with varying SLA requirements across a sprawling campus.', solutions:'IoT-enabled CAFM platform deployed for real-time asset tracking and ticket resolution.', outcomes:'SLA compliance at 98.7%; energy costs reduced by 19% in first year of operations.', gallery:['/ortus_facility_management.png'], coverImage:null, fallbackUrl:'/ortus_facility_management.png' },
+  { _id:'p2', title:'Premium Office Fit-Out — Inovvio', category:'interiors', location:'Delhi NCR', year:2024, overview:'Turnkey interior fit-out for a 60,000 sq ft BFSI sector client.', scopeOfWork:'False ceiling, flooring, glass partitions, furniture, lighting design and IT infrastructure.', challenges:'Client required zero business disruption — work carried out in phased weekend shifts.', solutions:'Modular pre-fabricated partition systems installed with minimal site noise and dust.', outcomes:'IGBC Gold certified workspace; employee satisfaction score improved by 42%.', gallery:['/proj_interior.png'], coverImage:null, fallbackUrl:'/proj_interior.png' },
+  { _id:'p3', title:'Logistics Park — PEB Warehouses', category:'peb', location:'Nashik, Maharashtra', year:2024, overview:'3-unit pre-engineered warehouse complex for a leading 3PL logistics company.', scopeOfWork:'PEB design, fabrication, erection and civil finishing with loading docks and fire protection.', challenges:'Monsoon season delivery with strict tenant move-in deadlines.', solutions:'Pre-fabricated portal frames dispatched from factory in sequence to enable parallel erection.', outcomes:'All 3 units handed over within 14 weeks; 18% cost saving vs RCC alternative.', gallery:['/proj_warehouse.png'], coverImage:null, fallbackUrl:'/proj_warehouse.png' },
+  { _id:'p4', title:'Fire Protection — Multi-Specialty Hospital', category:'fire-protection', location:'Chennai, Tamil Nadu', year:2023, overview:'Complete fire safety system for a 450-bed hospital across 8 floors.', scopeOfWork:'Sprinklers, fire alarm, detection, PA system and gas suppression across 8 floors.', challenges:'Active hospital — no service disruption allowed during installation.', solutions:'Night-shift installation with floor-by-floor isolation protocols.', outcomes:'NBC 2016 and NABH compliant; fire NOC obtained in first inspection.', gallery:['/proj_fire.png'], coverImage:null, fallbackUrl:'/proj_fire.png' },
+  { _id:'p5', title:'MEP Integration — IT Park Towers', category:'mep', location:'Hyderabad, Telangana', year:2023, overview:'Full MEP design-build for 5 IT park towers totalling 8 lakh sq ft.', scopeOfWork:'HVAC, electrical HT/LT, plumbing, BMS integration and commissioning across 5 towers.', challenges:'Coordinating 5 parallel towers with a single MEP team and shared shaft routing.', solutions:'BIM clash detection reduced site conflicts by 65%; centralised BMS control room installed.', outcomes:'Energy consumption 22% below design benchmark; LEED Gold certification achieved.', gallery:['/proj_mep.png'], coverImage:null, fallbackUrl:'/proj_mep.png' },
+  { _id:'p6', title:'Cold Chain Warehouse Complex', category:'warehousing', location:'Pune, Maharashtra', year:2024, overview:'State-of-the-art cold chain facility for a leading FMCG brand.', scopeOfWork:'PEB structure, insulated panels, refrigeration systems, dock levellers and fire protection.', challenges:'Precise temperature zoning required from -25°C to +10°C in a single facility.', solutions:'Multi-zone refrigeration design with independent temperature controls per bay.', outcomes:'Operational efficiency improved by 30%; zero product loss in first operational year.', gallery:['/proj_warehouse.png'], coverImage:null, fallbackUrl:'/proj_warehouse.png' },
+  { _id:'p7', title:'Highway Corridor Infrastructure', category:'infrastructure', location:'Rajasthan', year:2023, overview:'42 km highway corridor development including road, drainage and utility infrastructure.', scopeOfWork:'Road construction, culverts, street lighting, utility ducting and signage.', challenges:'Remote site with extreme heat conditions and supply chain constraints.', solutions:'Pre-positioned material depots at 10 km intervals; night-shift paving during summer.', outcomes:'Completed 5% under budget; MORTH quality certification achieved.', gallery:['/infra_gallery_1.png'], coverImage:null, fallbackUrl:'/infra_gallery_1.png' },
+  { _id:'p8', title:'Integrated FM — SEZ Campus', category:'facility-management', location:'Noida, Uttar Pradesh', year:2024, overview:'Annual facility management contract for a 3 mn sq ft SEZ campus via Ortus Apex.', scopeOfWork:'MEP maintenance, housekeeping, pest control, security, landscaping and energy management.', challenges:'Managing 250+ tenants with varying SLA requirements across a sprawling campus.', solutions:'IoT-enabled CAFM platform deployed for real-time asset tracking and ticket resolution.', outcomes:'SLA compliance at 98.7%; energy costs reduced by 19% in first year of operations.', gallery:['/indian_facility_management.png'], coverImage:null, fallbackUrl:'/indian_facility_management.png' },
 ];
 
 /* ── Hero ──────────────────────────────────── */
@@ -186,11 +186,152 @@ function Skeleton() {
 }
 
 
+/* ── Case Studies ───────────────────────────── */
+const CASE_STUDIES = [
+  {
+    id: 'cs1',
+    tag: 'Construction · LEED Gold',
+    title: 'TechNova Global HQ — Bengaluru',
+    client: 'TechNova Solutions Pvt. Ltd.',
+    location: 'Whitefield, Bengaluru',
+    year: '2024',
+    duration: '22 months',
+    area: '6.8 Lakh Sq.Ft.',
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=85',
+    challenge: 'TechNova needed a flagship 14-floor corporate campus for 8,000 employees, designed to LEED Gold standards, on a constrained urban site in Whitefield — with a hard operational deadline tied to their lease exit from a legacy campus.',
+    approach: 'Mahendram deployed an integrated Design & Build model with concurrent structural and MEP engineering. BIM clash detection eliminated 800+ coordination conflicts before breaking ground. A phased handover strategy allowed floors 1–5 to be occupied 3 months before full completion.',
+    result: 'Delivered 2 weeks ahead of schedule. LEED Gold certification awarded on first submission. Energy consumption 28% below baseline. Zero lost-time incidents across 2.1 million man-hours.',
+    metrics: [{ val: '6.8L', label: 'Sq.Ft.' }, { val: '22mo', label: 'Delivered In' }, { val: '28%', label: 'Energy Saved' }, { val: '0', label: 'LTI' }],
+  },
+  {
+    id: 'cs2',
+    tag: 'Industrial · PEB · MEP',
+    title: 'Sunrise Auto Components — Manufacturing Plant',
+    client: 'Sunrise Auto Components Ltd.',
+    location: 'Chakan Industrial Area, Pune',
+    year: '2023',
+    duration: '14 months',
+    area: '3.2 Lakh Sq.Ft.',
+    img: '/infra_gallery_2.png',
+    challenge: 'Sunrise needed a greenfield auto-component manufacturing plant with precision-controlled environments for stamping, welding, and assembly lines — all within a 14-month window tied to a major OEM supply agreement start date.',
+    approach: 'A PEB superstructure was erected in 11 weeks to give early weather protection, enabling civil and MEP work to proceed in parallel. The precision HVAC system for the clean-room assembly area was pre-commissioned in a factory setting before installation to de-risk site testing.',
+    result: 'Plant handed over on Day 420 — exactly on the contractual milestone. OEM supply commenced without delay. Annual output capacity of ₹850 Cr achieved in Year 1. No quality rejections attributable to facility conditions.',
+    metrics: [{ val: '3.2L', label: 'Sq.Ft.' }, { val: '14mo', label: 'Delivered In' }, { val: '₹850Cr', label: 'Annual Capacity' }, { val: '100%', label: 'On-Schedule' }],
+  },
+  {
+    id: 'cs3',
+    tag: 'Facility Management · IoT',
+    title: 'NexGen SEZ Campus — IFM Contract',
+    client: 'NexGen Infra Developers Pvt. Ltd.',
+    location: 'Sector 135, Noida',
+    year: '2024',
+    duration: 'Ongoing (3 yr contract)',
+    area: '32 Lakh Sq.Ft.',
+    img: '/indian_facility_management.png',
+    challenge: 'A 32 Lakh sq.ft. SEZ campus housing 250+ tenants with fragmented legacy maintenance contracts, declining SLA compliance (68%), escalating energy costs, and no centralised visibility into asset health.',
+    approach: 'Ortus Apex consolidated all FM streams under a single IFM contract. An IoT-enabled CAFM (Computer-Aided Facility Management) platform was deployed across 1,200+ assets. Predictive maintenance schedules replaced reactive break-fix workflows. A dedicated control room with live dashboards was established.',
+    result: 'SLA compliance improved from 68% to 98.7% in Year 1. Energy costs reduced by ₹2.4 Cr annually (19% reduction). Asset availability uptime reached 99.6%. Tenant satisfaction score reached 4.7/5.0.',
+    metrics: [{ val: '98.7%', label: 'SLA Compliance' }, { val: '19%', label: 'Energy Saving' }, { val: '99.6%', label: 'Asset Uptime' }, { val: '250+', label: 'Tenants Served' }],
+  },
+];
+
+function CaseStudyCard({ cs, idx }) {
+  const isEven = idx % 2 === 0;
+  return (
+    <FadeIn delay={idx * 0.1}>
+      <div className={`grid lg:grid-cols-2 gap-8 items-center rounded-3xl overflow-hidden bg-white dark:bg-[#111827] border border-gray-100 dark:border-white/10 shadow-md`}>
+        {/* Image */}
+        <div className={`relative h-72 lg:h-full min-h-[300px] overflow-hidden ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+          <img src={cs.img} alt={cs.title} className="w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#29ABE2] text-white">{cs.tag}</span>
+          <div className="absolute bottom-4 left-4 right-4 grid grid-cols-4 gap-2">
+            {cs.metrics.map(m => (
+              <div key={m.label} className="text-center bg-black/50 backdrop-blur-sm rounded-xl py-2 px-1">
+                <p className="text-sm font-black text-white leading-tight">{m.val}</p>
+                <p className="text-[9px] font-bold text-white/70 uppercase tracking-wider leading-tight mt-0.5">{m.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Content */}
+        <div className={`p-8 flex flex-col gap-5 ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+          <div>
+            <p className="text-[10px] font-black tracking-[0.18em] uppercase text-[#29ABE2] mb-1">{cs.location} · {cs.year}</p>
+            <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 dark:text-white leading-tight">{cs.title}</h3>
+            <p className="text-xs text-gray-500 mt-1">Client: {cs.client} · {cs.duration} · {cs.area}</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-black tracking-widest uppercase text-red-500 mb-1">Challenge</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{cs.challenge}</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-black tracking-widest uppercase text-amber-500 mb-1">Approach</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{cs.approach}</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-black tracking-widest uppercase text-emerald-500 mb-1">Result</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{cs.result}</p>
+          </div>
+          <Link to="/contact" className="inline-flex items-center gap-2 text-xs font-black text-[#29ABE2] hover:gap-3 transition-all">
+            Discuss a Similar Project →
+          </Link>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+
+/* ── Industries Served ──────────────────────── */
+const INDUSTRIES = [
+  { title: 'Manufacturing & Industrial',   icon: '🏭', img: '/infra_gallery_2.png',   desc: 'Auto, pharma, FMCG, chemicals & heavy engineering plants across India.' },
+  { title: 'Commercial & IT Offices',       icon: '🏢', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',   desc: 'Grade A office campuses, IT parks, SEZs, and BPO facilities.' },
+  { title: 'Warehousing & Logistics',       icon: '📦', img: '/proj_warehouse.png',   desc: 'Ambient, cold chain, and bonded warehouses with dock & fire systems.' },
+  { title: 'Healthcare & Life Sciences',    icon: '🏥', img: '/proj_fire.png',   desc: 'Hospitals, diagnostic centres, and pharma manufacturing facilities.' },
+  { title: 'Education & Institutions',      icon: '🎓', img: '/infra_gallery_3.png',   desc: 'Schools, engineering colleges, universities, and research campuses.' },
+  { title: 'Retail & Hospitality',          icon: '🛍️', img: '/fm_gallery_1.png',   desc: 'Malls, showrooms, hotels, serviced apartments and food courts.' },
+  { title: 'Government & Infrastructure',   icon: '🏛️', img: '/reno_main.png',   desc: 'Roads, bridges, civic buildings, and PSU industrial facilities.' },
+  { title: 'Data Centres & Mission Critical',icon: '💻', img: '/fm_gallery_2.png',   desc: 'Tier III/IV data centres with precision MEP and UPS infrastructure.' },
+];
+
+function IndustriesSection() {
+  return (
+    <section id="industries-served" className="py-20 bg-[#f8f9fa] dark:bg-[#0A0F1A]">
+      <div className="container-xl px-4 sm:px-6">
+        <FadeIn>
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.18em] uppercase bg-[#29ABE2]/10 text-[#29ABE2] mb-4">Industries We Serve</span>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Built for Every Sector</h2>
+            <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 max-w-xl mx-auto mt-3 leading-relaxed">
+              From heavy industry to high-tech campuses, our teams are experienced across India's most demanding sectors.
+            </p>
+          </div>
+        </FadeIn>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {INDUSTRIES.map((ind, i) => (
+            <FadeIn key={ind.title} delay={i * 0.06}>
+              <div className="group relative rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-white/10 cursor-pointer" style={{ aspectRatio: '4/3' }}>
+                <img src={ind.img} alt={ind.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="text-2xl mb-1">{ind.icon}</div>
+                  <h3 className="text-sm font-extrabold text-white leading-snug">{ind.title}</h3>
+                  <p className="text-[10px] text-white/70 mt-1 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">{ind.desc}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── CTABanner ──────────────────────────────── */
 function CTABanner() {
   return (
     <section id="projects-cta" className="py-12 md:py-14 relative overflow-hidden bg-gray-900 rounded-t-[2.5rem] shadow-2xl mt-10">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541888081622-1cb42c75a40a?auto=format&fit=crop&w=1920&q=80')] opacity-10 object-cover mix-blend-overlay pointer-events-none ken-burns-bg" />
+      <div className="absolute inset-0 bg-[url('/infra_gallery_1.png')] opacity-10 object-cover mix-blend-overlay pointer-events-none ken-burns-bg" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#29ABE2]/20 to-transparent pointer-events-none" />
       
       <div className="container-xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
@@ -313,6 +454,27 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+      {/* ── Case Studies ── */}
+      <section id="case-studies" className="py-20 bg-white dark:bg-[#080D18]">
+        <div className="container-xl px-4 sm:px-6">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.18em] uppercase bg-[#29ABE2]/10 text-[#29ABE2] mb-4">In-Depth Case Studies</span>
+              <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Project Deep Dives</h2>
+              <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 max-w-xl mx-auto mt-3 leading-relaxed">
+                A closer look at how we solve complex challenges for our clients across India — from project inception to handover.
+              </p>
+            </div>
+          </FadeIn>
+          <div className="flex flex-col gap-8">
+            {CASE_STUDIES.map((cs, i) => <CaseStudyCard key={cs.id} cs={cs} idx={i} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Industries Served ── */}
+      <IndustriesSection />
 
       <CTABanner />
     </div>

@@ -20,6 +20,9 @@ const KnowledgeCenter = lazy(() => import('./pages/KnowledgeCenter'));
 const Contact         = lazy(() => import('./pages/Contact'));
 const Inovvio         = lazy(() => import('./pages/Inovvio'));
 const Ortus           = lazy(() => import('./pages/Ortus'));
+const Divisions       = lazy(() => import('./pages/Divisions'));
+const Insights        = lazy(() => import('./pages/Insights'));
+
 const Resources       = lazy(() => import('./pages/Resources'));
 const Safety          = lazy(() => import('./pages/Safety'));
 const Quality         = lazy(() => import('./pages/Quality'));
@@ -70,6 +73,8 @@ function AnimatedRoutes() {
         <Route path="/contact"           element={<PT C={Contact} />} />
         <Route path="/inovvio"           element={<PT C={Inovvio} />} />
         <Route path="/ortus"             element={<PT C={Ortus} />} />
+        <Route path="/divisions"         element={<PT C={Divisions} />} />
+        <Route path="/insights"          element={<PT C={Insights} />} />
         <Route path="/resources"         element={<PT C={Resources} />} />
         <Route path="/safety"            element={<PT C={Safety} />} />
         <Route path="/quality"           element={<PT C={Quality} />} />

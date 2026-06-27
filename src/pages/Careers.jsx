@@ -58,12 +58,67 @@ export default function Careers() {
     <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen">
       <Helmet><title>Careers | Mahendram Landmark</title><meta name="description" content="Join Mahendram Landmark Ventures — current job openings in construction, MEP, interiors, facility management and more across India." /></Helmet>
       <section className="relative pt-20 pb-16 md:pt-48 md:pb-32 bg-gray-900 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80" alt="Careers" className="absolute inset-0 w-full h-full object-cover opacity-60 ken-burns-bg" />
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1920&q=80" alt="Careers" className="absolute inset-0 w-full h-full object-cover opacity-60 ken-burns-bg" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/60" />
         <div className="relative z-10 container-xl text-center">
-          <FadeIn><h1 className="text-4xl md:text-7xl font-extrabold text-white mb-6">Build Your Career<br />Build India's Future.</h1></FadeIn>
+          <FadeIn><h1 className="text-4xl md:text-7xl font-extrabold text-white mb-6">Build Your Career.<br />Build India's Future.</h1></FadeIn>
           <FadeIn delay={0.2}><p className="text-lg text-white/80 max-w-2xl mx-auto">Join a dynamic team of 500+ engineers, designers, and facility management professionals delivering landmark projects across India.</p></FadeIn>
           <FadeIn delay={0.3}><div className="flex flex-wrap justify-center gap-3 mt-8">{['500+ Team Members','14 Service Lines','Pan India Projects','Fast-Track Growth'].map(s=><span key={s} className="px-5 py-2 rounded-full text-xs font-bold bg-white/10 border border-white/20 text-white">{s}</span>)}</div></FadeIn>
+        </div>
+      </section>
+
+      {/* Life at Mahendram */}
+      <section className="section-padding">
+        <div className="container-xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <FadeIn>
+              <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl">
+                <img src="/indian_corporate_team.png" alt="Life at Mahendram" className="w-full h-full object-cover"/>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"/>
+              </div>
+            </FadeIn>
+            <div className="flex flex-col gap-6">
+              <FadeIn delay={0.1}>
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#29ABE2]">Life at Mahendram</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">Where Talent Meets Purpose</h2>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">At Mahendram Landmark, we believe great people build great projects. Our culture is rooted in collaboration, innovation, and a shared commitment to engineering excellence. Whether you're on a construction site in Mumbai, designing an office in Bengaluru, or managing a facility in Hyderabad, you are part of one team.</p>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <div className="grid grid-cols-2 gap-5">
+                  {[{icon:'🤝',title:'Inclusive Culture',desc:'Diverse teams from across India working with one purpose.'},{icon:'📈',title:'Fast-Track Growth',desc:'Structured career ladders and performance-based promotions.'},{icon:'🎯',title:'Ownership Mindset',desc:'We empower people to lead projects and own outcomes.'},{icon:'🌍',title:'Pan India Exposure',desc:'Work on landmark projects across 24+ Indian cities.'}].map(c=>(
+                    <div key={c.title} className="bg-white dark:bg-[#111827] rounded-2xl p-5 border border-gray-100 dark:border-white/10 shadow-sm">
+                      <span className="text-2xl mb-3 block">{c.icon}</span>
+                      <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">{c.title}</h4>
+                      <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Culture */}
+      <section className="section-padding bg-[#F8FAFC] dark:bg-[#0A1628]/30">
+        <div className="container-xl">
+          <div className="text-center mb-12">
+            <FadeIn><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Our Values in Action</p></FadeIn>
+            <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Culture</h2></FadeIn>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[{icon:'🛡️',title:'Safety First',desc:'We never compromise on safety — on site or in the office. Every person goes home safe.'},{icon:'💡',title:'Innovation',desc:'We encourage new ideas, new methods and smarter ways to solve infrastructure challenges.'},{icon:'🏆',title:'Excellence',desc:'We hold ourselves to the highest standards of quality, integrity and professionalism.'},{icon:'👥',title:'Teamwork',desc:'Cross-functional collaboration across divisions, geographies and disciplines.'}].map((v,i)=>(
+              <FadeIn key={v.title} delay={i*0.1}>
+                <div className="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-100 dark:border-white/10 shadow-sm text-center hover:-translate-y-1 transition-transform h-full">
+                  <span className="text-3xl mb-4 block">{v.icon}</span>
+                  <h3 className="text-base font-extrabold text-gray-900 dark:text-white mb-2">{v.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -131,6 +186,33 @@ export default function Careers() {
                 <p className="text-green-700 dark:text-green-400">Our HR team will review your profile and get back to you within 5 working days.</p>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Internships */}
+      <section className="section-padding bg-[#0A4D8C]">
+        <div className="container-xl px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <FadeIn>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#29ABE2] mb-3">Internships</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">Start Your Engineering Journey With Us</h2>
+              <p className="text-white/80 text-sm leading-relaxed mb-8">We offer structured internship programmes for engineering, architecture, interior design, and management students across India. Gain real hands-on experience working alongside professionals on live projects.</p>
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {[{t:'Civil & Structural Engineering',d:'6-month internship on live construction sites.'},{t:'Interior Design',d:'Creative project support at Inovvio Interior.'},{t:'MEP Engineering',d:'Hands-on MEP systems exposure on real projects.'},{t:'Project Management',d:'Site coordination, scheduling and reporting.'}].map(r=>(
+                  <div key={r.t} className="bg-white/10 border border-white/10 rounded-2xl p-4">
+                    <h4 className="text-sm font-bold text-white mb-1">{r.t}</h4>
+                    <p className="text-xs text-white/70">{r.d}</p>
+                  </div>
+                ))}
+              </div>
+              <a href="mailto:internships@mahendramlandmark.com" className="inline-block px-8 py-4 rounded-full bg-white text-[#0A4D8C] font-bold text-sm hover:scale-105 transition-transform shadow-lg">Apply for Internship</a>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=900&q=80" alt="Internships" className="w-full h-full object-cover"/>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>

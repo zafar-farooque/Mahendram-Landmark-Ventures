@@ -565,29 +565,202 @@ function SustainabilityCommitment() {
   );
 }
 
+const AWARDS = [
+  { year:'2025', title:'Excellence in Industrial Construction', org:'National Infrastructure Awards India' },
+  { year:'2024', title:'Best Commercial Interior Project', org:'Design & Architecture Summit, Mumbai' },
+  { year:'2023', title:'Safety Champion of the Year', org:'Construction Safety Council of India' },
+  { year:'2022', title:'Fastest Growing Infrastructure Company', org:'Entrepreneur India Awards' },
+];
+
+function AwardsSection() {
+  return (
+    <section id="about-awards" className="section-padding">
+      <div className="container-xl">
+        <div className="text-center mb-12">
+          <FadeIn><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Recognition</p></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Awards & Recognition</h2></FadeIn>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {AWARDS.map((a,i)=>(
+            <FadeIn key={a.title} delay={i*0.1}>
+              <div className="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-100 dark:border-white/10 flex flex-col items-center text-center group hover:-translate-y-1 transition-transform shadow-sm">
+                <div className="w-14 h-14 rounded-full bg-[#F0F7FF] dark:bg-[#29ABE2]/10 flex items-center justify-center mb-4 text-2xl group-hover:scale-110 transition-transform">🏆</div>
+                <p className="text-2xl font-black text-gray-200 dark:text-gray-700 mb-2">{a.year}</p>
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-1 leading-tight">{a.title}</h3>
+                <p className="text-[10px] text-gray-500 font-medium">{a.org}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CertificationsSection() {
+  return (
+    <section id="about-certifications" className="section-padding bg-[#F8FAFC] dark:bg-[#0A1628]/30">
+      <div className="container-xl">
+        <div className="text-center mb-12">
+          <FadeIn><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Standards & Compliance</p></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Certifications</h2></FadeIn>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { code:'ISO 9001', title:'Quality Management', desc:'Ensuring consistent quality across all project deliverables and processes.', color:'#29ABE2' },
+            { code:'ISO 14001', title:'Environmental Management', desc:'Committed to reducing environmental impact across our construction operations.', color:'#34D399' },
+            { code:'ISO 45001', title:'Occupational Health & Safety', desc:'Protecting our workforce with internationally certified safety systems.', color:'#F59E0B' },
+            { code:'IGBC / LEED', title:'Green Building', desc:'Delivering certified green buildings aligned with India\'s sustainability goals.', color:'#10B981' },
+          ].map((c,i)=>(
+            <FadeIn key={c.code} delay={i*0.1}>
+              <div className="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow h-full">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-xs text-white mb-4" style={{background:c.color}}>{c.code.split('/')[0].trim()}</div>
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{c.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SafetyQualitySection() {
+  return (
+    <section id="about-safety-quality" className="section-padding">
+      <div className="container-xl">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <FadeIn>
+            <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl">
+              <img src="/indian_safety_quality.png" alt="Safety & Quality" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="text-3xl font-black">2M+</p>
+                <p className="text-sm font-medium opacity-80">Safe Man-Hours Worked</p>
+              </div>
+            </div>
+          </FadeIn>
+          <div className="flex flex-col gap-6">
+            <FadeIn delay={0.1}>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#29ABE2]">Our Commitment</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">Safety, Quality &<br/>Sustainability</h2>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">At Mahendram, safety is not a department — it is a core value woven into every project activity. Our Zero-Harm philosophy, supported by robust Quality Management Systems and sustainable construction practices, ensures we protect our people, our clients, and the environment.</p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <ul className="space-y-3">
+                {['Zero-Harm Safety Philosophy','Behaviour-Based Safety (BBS) Programme','Regular third-party safety audits','100% PPE compliance on all sites','IGBC & LEED-aligned green construction','Waste reduction & recycled material usage'].map((item,i)=>(
+                  <li key={i} className="flex items-start gap-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <CheckCircle2 size={16} className="text-[#29ABE2] flex-shrink-0 mt-0.5" />{item}
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CSRSection() {
+  return (
+    <section id="about-csr" className="section-padding bg-[#F8FAFC] dark:bg-[#0A1628]/30">
+      <div className="container-xl">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col gap-6 order-2 lg:order-1">
+            <FadeIn>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#34D399]">Giving Back</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mt-2">Corporate Social<br/>Responsibility</h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">We believe infrastructure development must create value beyond the project boundary. Our CSR initiatives focus on skill development, community upliftment, and environmental stewardship in every region where we operate across India.</p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="grid grid-cols-2 gap-5">
+                {[
+                  { icon:'🎓', title:'Skill Development', desc:'Free vocational training in construction trades for underprivileged youth.' },
+                  { icon:'🏥', title:'Community Health', desc:'Free health check-up camps near project sites, benefiting 5000+ families.' },
+                  { icon:'🌳', title:'Green Initiatives', desc:'10,000+ trees planted across our project locations since 2020.' },
+                  { icon:'📚', title:'Education Support', desc:'Scholarships for children of our site workers and local communities.' },
+                ].map(c=>(
+                  <div key={c.title} className="bg-white dark:bg-[#111827] rounded-2xl p-5 border border-gray-100 dark:border-white/10 shadow-sm">
+                    <span className="text-2xl mb-3 block">{c.icon}</span>
+                    <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">{c.title}</h4>
+                    <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.3} className="order-1 lg:order-2">
+            <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=900&q=80" alt="CSR Initiatives" className="w-full h-full object-cover" />
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InvestorRelationsSection() {
+  return (
+    <section id="about-investor-relations" className="section-padding">
+      <div className="container-xl">
+        <div className="text-center mb-12">
+          <FadeIn><p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 text-[#29ABE2]">Transparency & Trust</p></FadeIn>
+          <FadeIn delay={0.1}><h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Investor Relations</h2></FadeIn>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon:'📊', title:'Financial Overview', desc:'Consistent revenue growth backed by a diversified project portfolio across India.' },
+            { icon:'📑', title:'Annual Reports', desc:'Transparent, audited financial disclosures available to all stakeholders on request.' },
+            { icon:'🏗️', title:'Order Book', desc:'₹500Cr+ active order book across infrastructure, interiors, and facility management.' },
+            { icon:'📬', title:'Investor Contact', desc:'Reach our Investor Relations team at investors@mahendramlandmark.com for queries.' },
+          ].map((c,i)=>(
+            <FadeIn key={c.title} delay={i*0.1}>
+              <div className="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-100 dark:border-white/10 shadow-sm h-full hover:shadow-md transition-shadow">
+                <span className="text-3xl mb-4 block">{c.icon}</span>
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">{c.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function About() {
   return (
     <div className="bg-[#f8f9fa] dark:bg-[#0A0F1A] min-h-screen transition-colors duration-300">
       <Helmet>
-        <title>About Us | Mahendram Landmark</title>
-        <meta name="description" content="Learn about Mahendram Landmark Ventures Pvt Ltd." />
+        <title>About Us | Mahendram Landmark Ventures</title>
+        <meta name="description" content="Learn about Mahendram Landmark Ventures — India's integrated infrastructure, engineering and asset management company." />
       </Helmet>
-      
+
       <PageHero />
       <FloatingStats />
-      
-      {/* Sections now float seamlessly on the unified off-white background */}
-      <OurStory />
+
+      {/* Sequence: Overview → Why Mahendram → Leadership → Our Journey → Vision/Mission/Values → Awards → Certifications → Safety/Quality → Governance → CSR → Investor Relations */}
       <Overview />
       <WhyMahendram />
-      <Divisions />
       <LeadershipTeam />
-      <PanIndiaPresence />
-      <CoreValues />
-      <CorporateGovernance />
-      <SustainabilityCommitment />
       <Timeline />
+      <CoreValues />
+      <AwardsSection />
+      <CertificationsSection />
+      <SafetyQualitySection />
+      <CorporateGovernance />
+      <CSRSection />
+      <InvestorRelationsSection />
+      <PanIndiaPresence />
       <CTABanner />
     </div>
   );
 }
+
