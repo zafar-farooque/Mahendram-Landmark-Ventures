@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-C2mE1E-9.js";import{d as t}from"./index-BBJ5sspS.js";var n=e();function r({children:e,delay:r=0,className:i=``}){return(0,n.jsx)(t.div,{className:i,initial:{opacity:0,y:40},whileInView:{opacity:1,y:0},viewport:{once:!0,amount:.2},transition:{duration:.7,ease:`easeOut`,delay:r},children:e})}export{r as t};
