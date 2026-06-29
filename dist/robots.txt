@@ -1,0 +1,28 @@
+# Mahendram Landmark Ventures — robots.txt
+
+# Allow all standard crawlers
+User-agent: *
+Allow: /
+
+# Explicitly allow ChatGPT / OpenAI crawler
+User-agent: OAI-SearchBot
+Allow: /
+
+# Explicitly allow Google's AI crawler (used for AI Overviews)
+User-agent: GoogleOther
+Allow: /
+
+# Explicitly allow Anthropic's Claude crawler
+User-agent: ClaudeBot
+Allow: /
+
+# Explicitly allow Perplexity AI crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Explicitly allow Microsoft Bing / Copilot crawler
+User-agent: bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://mahendram.com/sitemap.xml
