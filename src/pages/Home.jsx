@@ -134,9 +134,9 @@ export default function Home() {
         <div className="w-full max-w-[1750px] px-6 lg:px-12 xl:px-16 mx-auto relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           <div className="flex flex-col gap-6 text-center lg:text-left lg:col-span-6 xl:col-span-5">
             <FadeIn delay={0}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 shadow-sm border border-gray-100 dark:border-white/10 mb-2 mx-auto lg:mx-0 w-max backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
-                <span className="text-[10px] font-black text-gray-700 dark:text-gray-300 tracking-[0.2em] uppercase">
+              <div className="inline-flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-2xl sm:rounded-full bg-white dark:bg-white/5 shadow-sm border border-gray-100 dark:border-white/10 mb-2 mx-auto lg:mx-0 max-w-[95%] sm:max-w-full backdrop-blur-md">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#29ABE2] animate-pulse flex-shrink-0" />
+                <span className="text-[9px] sm:text-[10px] font-black text-gray-700 dark:text-gray-300 tracking-widest sm:tracking-[0.2em] uppercase text-center break-words leading-tight">
                   India's Integrated Built Environment Company
                 </span>
               </div>
