@@ -25,4 +25,4 @@ User-agent: bingbot
 Allow: /
 
 # Sitemap location
-Sitemap: https://mahendram-landmark-ventures.vercel.app/sitemap.xml
+Sitemap: https://mahendram.com/sitemap.xml
